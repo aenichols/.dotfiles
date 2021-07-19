@@ -4,7 +4,7 @@
 # Required for x applications
 setxkbmap -option caps:ctrl_modifier
 
-export STOW_FOLDERS="bin,nvim,tmux,uwuntu,netflix,personal,i3,zsh,xkb"
+export STOW_FOLDERS="bin,nvim,tmux,uwuntu,bngteam,personal,i3,zsh,xkb"
 
 startMongo() {
     sudo systemctl start mongod
@@ -17,7 +17,7 @@ increaseWatchers() {
 }
 
 change_background() {
-    dconf write /org/mate/desktop/background/picture-filename "'$HOME/dotfiles/backgrounds/$(ls ~/dotfiles/backgrounds | fzf)'"
+    #dconf write /org/mate/desktop/background/picture-filename "'$HOME/dotfiles/backgrounds/$(ls ~/dotfiles/backgrounds | fzf)'"
 }
 
 
@@ -43,10 +43,10 @@ commitDotFiles() {
     pushd personal
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin master
+    git push origin main
     popd
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin master
+    git push origin main
     popd
 }
