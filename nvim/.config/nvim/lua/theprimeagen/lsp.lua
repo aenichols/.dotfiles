@@ -1,6 +1,6 @@
 
 
-local sumneko_root_path = 'C:/Users/anthony.nichols/.vscode/extensions/sumneko.lua-1.20.4/server'
+local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-1.20.4/server'
 local sumneko_binary = sumneko_root_path .. "/bin/Windows/lua-language-server"
 
 local function on_attach()
@@ -45,7 +45,7 @@ require'lspconfig'.sumneko_lua.setup {
     },
 }
 
-local probeLoc  = 'C:/Users/anthony.nichols/.vscode/extensions/angular.ng-template-11.2.11/node_modules'
+local probeLoc  = vim.env.HOME .. "/AppData/Roaming/npm/node_modules"
 local angularCmd = { "ngserver.cmd", "--stdio", "--tsProbeLocations", probeLoc , "--ngProbeLocations", probeLoc }
 require'lspconfig'.angularls.setup {
   on_attach = on_attach,

@@ -31,11 +31,12 @@ require('telescope').setup {
 
 require('telescope').load_extension('fzy_native')
 
+local dotfiles_nvim = vim.env.DOTFILES .. "/nvim/.config/nvim"
 local M = {}
  M.search_dotfiles = function()
      require("telescope.builtin").find_files({
-         prompt_title = "< VimRC >" .. vim.env.DOTFILES,
-         cwd = "$HOME/AppData/Local/nvim",
+         prompt_title = "< VimRC >",
+         cwd = dotfiles_nvim,
      })
  end
 
@@ -96,7 +97,7 @@ local M = {}
      end
  end
 
- M.anime_selector = image_selector("< Animoos > ", "~/.dotfiles-windows/rooster/animoos/")
+ M.anime_selector = image_selector("< Animoos > ", vim.env.DOTFILES .. "/rooster/animoos/")
 
  M.git_branches = function()
   require("telescope.builtin").git_branches({
