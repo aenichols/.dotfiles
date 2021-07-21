@@ -32,4 +32,4 @@
 !                                                       ___// /__                                                                                                     
 !                                                     (`(`(---"-`)                                                                                                    
 ```
-<img src="https://pbs.twimg.com/profile_images/1384205443065532416/Lhsaov7U_400x400.png" align="CENTER"/>
+<img src="https://github.com/ThePrimeagen/harpoon/raw/master/harpoon.png" align="CENTER"/>
