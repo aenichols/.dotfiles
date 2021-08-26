@@ -1,7 +1,7 @@
 
 require("harpoon").setup({
     projects = {
-        ["$HOME/Source/ConnectBooster/ConnectBooster.Frontend"] = {
+        ["$HOME/work/ConnectBooster/ConnectBooster.Frontend"] = {
             term = {
                 cmds = {
                     "ng s",

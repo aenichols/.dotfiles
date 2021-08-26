@@ -6,10 +6,11 @@ local M = {}
 local highlight = vim.api.nvim_set_hl
 local get_namespace = vim.api.nvim_get_namespaces
 local nsValue = get_namespace()[ns]
-local hl = {langs = {}, plugins = {}}
+local hl = { langs = {}, plugins = {} }
 
 hl.overrides = {
-  Visual = {bg = '#ffffff', fg = p.black },
+  Visual = { bg = '#ffffff', fg = p.black },
+  CursorColumn = { bg = '#404040' },
 }
 
 local function load_highlights(ns, highlights)
@@ -19,12 +20,10 @@ local function load_highlights(ns, highlights)
 end
 
 local function load_tokyo_hightlights()
-
     load_highlights(ns, hl.overrides)
 end
 
 function M.setup()
-
     load_tokyo_hightlights()
 end
 

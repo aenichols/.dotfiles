@@ -42,6 +42,7 @@ Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good'
+Plug 'theprimeagen/refactoring.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
 
@@ -102,7 +103,7 @@ let g:airline_powerline_fonts = 1
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
@@ -116,7 +117,7 @@ let mapleader = " "
 
 nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> :lua require("harpoon.term").sendCommand(2, "eslint --fix " ..vim.fn.getreg('%')); require("harpoon.term").gotoTerminal(2)<CR>
-nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>vhw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :Ex<CR>
@@ -124,15 +125,21 @@ nnoremap <Leader><CR> :so ~/AppData/Local/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
-"nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 nnoremap <Leader>ee oconsole.log(`HALLO ${}`);<esc>hhhi
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+nnoremap <leader>gt <Plug>PlenaryTestFile
+nnoremap <leader>vwm :lua require("vim-with-me").init()<CR>
+nnoremap <leader>dwm :lua require("vim-with-me").disconnect()<CR>
+nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<CR>
+nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
+nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " greatest remap ever
-vnoremap <leader>p "_dP
+xnoremap <leader>p "_dP
 
 " next greatest remap ever : asbjornHaland
 nnoremap <leader>y "+y
@@ -151,6 +158,10 @@ let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
 nnoremap <Leader>ww ofunction wait(ms: number): Promise<void> {<CR>return new Promise(res => setTimeout(res, ms));<CR>}<esc>k=i{<CR>
 
 inoremap <C-c> <esc>
+
+" Rooster maps
+" Vim Swap Ends
+nnoremap <leader>vse i<CR><ESC>V:m '<-2<CR>gv=gv<ESC>J
 
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
@@ -174,7 +185,7 @@ augroup END
 augroup THE_PRIMEAGEN
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufWritePre * %s/ $//e
+    autocmd BufWritePre * %s/$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
 

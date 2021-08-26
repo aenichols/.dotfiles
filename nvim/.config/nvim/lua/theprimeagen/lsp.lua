@@ -1,5 +1,3 @@
-
-
 local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-1.20.4/server'
 local sumneko_binary = sumneko_root_path .. "/bin/Windows/lua-language-server"
 
@@ -12,7 +10,10 @@ local function on_cwd()
   return vim.loop.cwd()
 end
 
-require'lspconfig'.tsserver.setup { on_attach=on_attach }
+require'lspconfig'.tsserver.setup {
+  on_attach=on_attach,
+  root_dir = on_cwd
+}
 
 require'lspconfig'.clangd.setup {
     on_attach = on_attach,
@@ -50,6 +51,7 @@ local angularCmd = { "ngserver.cmd", "--stdio", "--tsProbeLocations", probeLoc ,
 require'lspconfig'.angularls.setup {
   on_attach = on_attach,
   cmd = angularCmd,
+  filetypes = { "html" },
   root_dir = on_cwd,
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = angularCmd

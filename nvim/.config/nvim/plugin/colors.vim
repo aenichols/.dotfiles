@@ -27,11 +27,6 @@ fun! ColorMyPencils()
     highlight netrwDir guifg=#5eacd3
     highlight qfFileName guifg=#aed75f
     hi TelescopeBorder guifg=#5eacd
-
-    "ROOSTER
-    hi CursorColumn guibg=#404040
-    hi Search guibg=black guifg=wheat
-    hi IncSearch guibg=black guifg=pink
 endfun:
 
 call ColorMyPencils()

@@ -59,5 +59,4 @@ map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
 
 " Vim Setup Splits
-nmap <leader>vss  :wincmd o<CR>:G<CR>gU<CR>:wincmd v<CR>:wincmd H<CR>:wincmd l<CR>:wincmd v<CR>10<C-W>-:wincmd l<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>abash
-
+nmap <leader>vss  :wincmd o<CR>:enew<CR>:G<CR>:wincmd j<CR>:wincmd v<CR>:wincmd H<CR>:wincmd l<CR>:wincmd v<CR>10<C-W>-:wincmd l<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>abash<CR><C-\><C-n>:wincmd j<CR>

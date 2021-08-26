@@ -196,12 +196,12 @@ actions.search_private_proxy = function()
     local selection = action_state.get_selected_entry()
 
     require('telescope.actions').close(prompt_bufnr)
-    require('harpoon.term').sendCommand(1, 'ng s --proxy-config ./private_proxy/' .. selection.value)
+    require('harpoon.term').sendCommand(1, 'ng s --proxy-config ./.private_proxies/' .. selection.value)
  end
 
  require('telescope.builtin').find_files({
     prompt_title = '< Private Proxies >',
-    cwd = cwd .. '/private_proxy',
+    cwd = cwd .. '/.private_proxies',
     attach_mappings = function(prompt_bufnr, map)
       map('i', '<CR>', send_harpoon)
       map('n', '<CR>', send_harpoon)
