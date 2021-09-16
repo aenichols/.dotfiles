@@ -119,6 +119,8 @@ end
       attach_mappings = function(_, map)
           map("i", "<c-d>", actions.git_delete_branch)
           map("n", "<c-d>", actions.git_delete_branch)
+      map('i', '<c-u>', actions.git_upstream)
+      map('n', '<c-u>', actions.git_upstream)
           return true
       end,
  })

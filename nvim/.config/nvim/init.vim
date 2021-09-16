@@ -1,4 +1,7 @@
 set path+=**
+set path+=~/work/**
+set path+=~/.dotfiles/**
+set path+=~/.dotfiles-windows/**
 " Nice menu when typing `:find *.py`
 set wildmode=longest,list,full
 set wildmenu
@@ -31,18 +34,18 @@ Plug 'nvim-treesitter/playground'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
-" THANKS BFREDL
-Plug 'bryall/contextprint.nvim'
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 
 Plug 'rust-lang/rust.vim'
 Plug 'darrikonn/vim-gofmt'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
-Plug 'theprimeagen/vim-be-good'
-Plug 'theprimeagen/refactoring.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
 
@@ -52,18 +55,22 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+Plug 'vim-conf-live/vimconflive2021-colorscheme'
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'tiagovla/tokyodark.nvim'
 Plug 'folke/tokyonight.nvim'
 
 " HARPOON!!
-Plug 'ThePrimeagen/harpoon'
-Plug 'ThePrimeagen/rfc-reader'
 Plug 'mhinz/vim-rfc'
 
 " prettier
 Plug 'sbdchd/neoformat'
+
+" Adding local modules
+Plug 'ThePrimeagen/harpoon'
+Plug 'theprimeagen/vim-be-good'
+Plug 'theprimeagen/refactoring.nvim'
 
 " should I try another status bar???
 Plug 'vim-airline/vim-airline'
@@ -100,11 +107,10 @@ let g:airline_powerline_fonts = 1
 "let g:ale_disable_lsp = 1
 "let g:ale_virtualtext_cursor = 1
 
-" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
+"let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
-
+lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
@@ -115,8 +121,19 @@ endif
 let loaded_matchparen = 1
 let mapleader = " "
 
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+
 nnoremap <silent> Q <nop>
-nnoremap <silent> <C-f> :lua require("harpoon.term").sendCommand(2, "eslint --fix " ..vim.fn.getreg('%')); require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c "$DOTFILES/bin/.local/bin/tmux-cht.sh"')<CR>
+tnoremap <silent> <C-f> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
+nnoremap <leader>vesl :silent lua require("harpoon.term").sendCommand(2, "eslint --fix " ..vim.fn.getreg('%')); require("harpoon.term").gotoTerminal(2)<CR>
 nnoremap <leader>vhw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
@@ -134,9 +151,15 @@ nnoremap <leader>dwm :lua require("vim-with-me").disconnect()<CR>
 nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<CR>
 nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
 nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>
+nnoremap <leader>x :!chmod +x %<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap Y yg$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
 
 " greatest remap ever
 xnoremap <leader>p "_dP
