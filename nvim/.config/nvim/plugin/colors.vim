@@ -1,6 +1,6 @@
-let g:theprimeagen_colorscheme = "tokyodark"
 fun! ColorMyPencils()
     let g:gruvbox_contrast_dark = 'hard'
+
     if exists('+termguicolors')
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -18,11 +18,15 @@ fun! ColorMyPencils()
     endif
 
     highlight ColorColumn ctermbg=0 guibg=grey
-    hi SignColumn guibg=none
-    hi CursorLineNR guibg=None
+    highlight SignColumn guibg=none
+    highlight CursorLineNR guibg=none
     highlight Normal guibg=none
+    highlight Folded guibg=none
+    highlight FoldColumn guibg=none guifg=#000000
+
     " highlight LineNr guifg=#ff8659
     " highlight LineNr guifg=#aed75f
+
     highlight LineNr guifg=#5eacd3
     highlight netrwDir guifg=#5eacd3
     highlight qfFileName guifg=#aed75f
@@ -54,21 +58,21 @@ function! SetCursorLineNrColorInsert(mode)
 endfunction
 
 function! SetCursorLineNrColorVisual()
-  set updatetime=0
+    set updatetime=0
 
-  " Visual mode: yellow
-  highlight CursorLineNr cterm=none ctermfg=9 guifg=#d29026
+    " Visual mode: yellow
+    highlight CursorLineNr cterm=none ctermfg=9 guifg=#d29026
 
-  " Set list
-  set list
+    " Set list
+    set list
 
-  return ''
+    return ''
 endfunction
 
 function! ResetCursorLineNrColor()
-  set updatetime=4000
-  highlight CursorLineNr cterm=none ctermfg=0 guifg=#d2c926
-  set nolist
+    set updatetime=4000
+    highlight CursorLineNr cterm=none ctermfg=0 guifg=#d2c926
+    set nolist
 endfunction
 
 vnoremap <silent> <expr> <SID>SetCursorLineNrColorVisual SetCursorLineNrColorVisual()

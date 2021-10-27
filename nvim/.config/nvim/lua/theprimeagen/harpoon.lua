@@ -8,6 +8,14 @@ require("harpoon").setup({
                     "eslint --fix ",
                 }
             }
+        },
+        ["$IDENTITY"] = {
+            term = {
+                cmds = {
+                    "ng s",
+                    "eslint --fix ",
+                }
+            }
         }
     }
 })

@@ -1,10 +1,13 @@
 set path+=**
+
 set path+=~/work/**
 set path+=~/.dotfiles/**
 set path+=~/.dotfiles-windows/**
+
 " Nice menu when typing `:find *.py`
 set wildmode=longest,list,full
 set wildmenu
+
 " Ignore files
 set wildignore+=*.pyc
 set wildignore+=*_build/*
@@ -21,7 +24,10 @@ Plug 'ambv/black'
 
 " Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'mattn/emmet-vim'
 
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -31,7 +37,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " Debugger Plugins
-Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'Pocco81/DAPInstall.nvim'
 Plug 'szw/vim-maximizer'
 
 " Snippets
@@ -55,7 +62,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-Plug 'vim-conf-live/vimconflive2021-colorscheme'
+"Plug 'vim-conf-live/vimconflive2021-colorscheme'
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'tiagovla/tokyodark.nvim'
@@ -80,32 +87,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'
 
 " Ale for stupid EsLints
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
+
+" Csharp ¯\_(ツ)_/¯
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
-
-"Tokyo Night
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-"Tokyo Dark
-let g:tokyodark_transparent_background = 1
-let g:tokyodark_enable_italic_comment = 1
-let g:tokyodark_enable_italic = 1
-let g:tokyodark_color_gamma = "1.0"
-
-"AirLine
-let g:airline_theme='bubblegum'
-let g:airline_powerline_fonts = 1
-
-"Ale
-"let g:ale_echo_msg_format = '%linter% : %s'
-"let g:ale_linters_explicit = 1
-"let g:ale_linters = {
-"\   'typescript': ['eslint'],
-"\}
-"let g:ale_disable_lsp = 1
-"let g:ale_virtualtext_cursor = 1
 
 "let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
@@ -133,8 +120,9 @@ smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c "$DOTFILES/bin/.local/bin/tmux-cht.sh"')<CR>
 tnoremap <silent> <C-f> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
+
 nnoremap <leader>vesl :silent lua require("harpoon.term").sendCommand(2, "eslint --fix " ..vim.fn.getreg('%')); require("harpoon.term").gotoTerminal(2)<CR>
-nnoremap <leader>vhw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :Ex<CR>
@@ -142,7 +130,11 @@ nnoremap <Leader><CR> :so ~/AppData/Local/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
-nnoremap <Leader>ee oconsole.log(`HALLO ${}`);<esc>hhhi
+
+" TODO change based on language
+"nnoremap <Leader>ee oconsole.log(`HALLO ${}`);<esc>hhhi
+nnoremap <Leader>ee oSystem.Console.WriteLine($"HALLO {Newtonsoft.Json.JsonConvert.SerializeObject()}");<esc>hhhhi
+
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 nnoremap <leader>gt <Plug>PlenaryTestFile
@@ -151,7 +143,8 @@ nnoremap <leader>dwm :lua require("vim-with-me").disconnect()<CR>
 nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<CR>
 nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
 nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>
-nnoremap <leader>x :!chmod +x %<CR>
+
+nnoremap <leader>x :silent !chmod +x %<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -171,7 +164,6 @@ nnoremap <leader>Y gg"+yG
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
-
 
 " vim TODO
 nmap <Leader>tu <Plug>BujoChecknormal
@@ -207,8 +199,11 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
+    autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc,cs Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritePre * %s/$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
+
+    autocmd ColorScheme * :call ColorMyPencils()
 augroup END
 

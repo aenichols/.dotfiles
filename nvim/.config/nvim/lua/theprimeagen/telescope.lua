@@ -1,8 +1,9 @@
-local actions = require('telescope.actions')
-local action_state = require("telescope.actions.state")
-local make_entry = require("telescope.make_entry")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")
-local utils = require("telescope.utils")
+local action_state = require("telescope.actions.state")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
 
 require("telescope").setup({
     defaults = {
@@ -24,6 +25,8 @@ require("telescope").setup({
                 ["<M-w>"] = actions.delete_buffer,
             }
         },
+        use_unix_friendly_paths = true,
+        preview = { check_mime_type = false },
     },
     extensions = {
         fzy_native = {
@@ -110,28 +113,29 @@ end
              map("i", "<CR>", refactor)
              map("n", "<CR>", refactor)
              return true
-         end
+         end,
      }):find()
  end
 
+--##############################################################################
+--#ROOSTER                                                                    #
+--##############################################################################
  M.git_branches = function()
   require("telescope.builtin").git_branches({
       attach_mappings = function(_, map)
           map("i", "<c-d>", actions.git_delete_branch)
           map("n", "<c-d>", actions.git_delete_branch)
-      map('i', '<c-u>', actions.git_upstream)
-      map('n', '<c-u>', actions.git_upstream)
+          map('i', '<c-u>', actions.git_upstream)
+          map('n', '<c-u>', actions.git_upstream)
           return true
       end,
  })
 
-end
+ end
 
---##############################################################################
---#ROOSTER                                                                    #
---##############################################################################
 M.git_local_branches = require("theprimeagen.xsvrooster.telescope").git_local_branches;
 M.search_private_proxy  = require("theprimeagen.xsvrooster.telescope").search_private_proxy;
+M.search_curl_requests  = require("theprimeagen.xsvrooster.telescope").search_curl_requests;
 
 return M
 

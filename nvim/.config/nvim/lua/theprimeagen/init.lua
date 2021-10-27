@@ -1,9 +1,10 @@
 require("theprimeagen.xsvrooster.telescope")
 local colors = require("theprimeagen.xsvrooster.colors")
+
 require("theprimeagen.telescope")
+require("theprimeagen.debugger")
 require("theprimeagen.harpoon")
 require("theprimeagen.lsp")
---require("theprimeagen.statusline")
 
 P = function(v)
   print(vim.inspect(v))

@@ -26,6 +26,7 @@ augroup END
 "GOYO
 autocmd! User GoyoEnter nested call ThePrimeagenTurnOffGuides()
 autocmd! User GoyoLeave nested call ThePrimeagenTurnOnGuides()
+autocmd! User GoyoLeave nested call ColorMyPencils()
 
 nnoremap <leader>az :Goyo<cr>
 

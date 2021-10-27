@@ -14,7 +14,7 @@ nnoremap <leader>vrr :Lspsaga lsp_finder<CR>
 nnoremap <leader>vrn :Lspsaga rename<CR>
 nnoremap <leader>vh :Lspsaga hover_doc<CR>
 nnoremap <leader>vca :Lspsaga code_action<CR>
-"nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <leader>vn :Lspsaga diagnostic_jump_next<CR>
 nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 
@@ -26,7 +26,7 @@ augroup END
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.autocomplete = v:true
-let g:compe.debug = v:true
+let g:compe.debug = v:false
 let g:compe.min_length = 1
 let g:compe.preselect = 'enable'
 let g:compe.throttle_time = 80
@@ -46,5 +46,3 @@ let g:compe.source.nvim_lua = v:true
 let g:compe.source.vsnip = v:true
 let g:compe.source.ultisnips = v:true
 let g:compe.source.luasnip = v:true
-
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')

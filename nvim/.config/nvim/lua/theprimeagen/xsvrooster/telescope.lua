@@ -1,43 +1,18 @@
 local utils = require('telescope.utils')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
-local strings = require('plenary.strings')
-local entry_display = require('telescope.pickers.entry_display')
-local pickers = require('telescope.pickers')
-local finders = require('telescope.finders')
-local previewers = require('telescope.previewers')
-local conf = require('telescope.config').values
 
 actions.git_fetch_branch_tolocal = function(prompt_bufnr)
   local cwd = action_state.get_current_picker(prompt_bufnr).cwd
   local selection = action_state.get_selected_entry()
   actions.close(prompt_bufnr)
-  local stdout, ret, stderr = utils.get_os_command_output({ 'git', 'fetch', '-f', 'origin' , selection.value .. ':' .. selection.value }, cwd)
+  local ret, stderr = utils.get_os_command_output({ 'git', 'fetch', '-f', 'origin' , selection.value .. ':' .. selection.value }, cwd)
 
   if ret == 0 then
     print("Finished Fetching")
     print(selection.value)
   else
     print(string.format('Error when fetching branch into local: %s', selection.value, table.concat(stderr, '  ')))
-    print(string.format('Git returned: "%s"', selection.value, table.concat(stderr, '  ')))
-  end
-end
-
-actions.git_merge = function(prompt_bufnr)
-  local cwd = action_state.get_current_picker(prompt_bufnr).cwd
-  local selection = action_state.get_selected_entry()
-
-  local confirmation = vim.fn.input('Do you really wanna merge branch ' .. selection.value .. '? [Y/n] ')
-  if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
-
-  actions.close(prompt_bufnr)
-  local _, ret, stderr = utils.get_os_command_output({ 'git', 'merge', selection.value }, cwd)
-
-  if ret == 0 then
-    print("Merged into target: ")
-    print(selection.value)
-  else
-    print(string.format('Error when merging branch into target: %s', selection.value, table.concat(stderr, '  ')))
     print(string.format('Git returned: "%s"', selection.value, table.concat(stderr, '  ')))
   end
 end
@@ -90,9 +65,31 @@ actions.search_private_proxy = function()
  require('telescope.builtin').find_files({
     prompt_title = '< Private Proxies >',
     cwd = cwd .. '/.private_proxies',
-    attach_mappings = function(prompt_bufnr, map)
-      map('i', '<CR>', send_harpoon)
-      map('n', '<CR>', send_harpoon)
+    attach_mappings = function(_, map)
+      map('i', '<c-x>', send_harpoon)
+      map('n', '<c-x>', send_harpoon)
+      return true
+    end
+ })
+end
+
+actions.search_curl_requests = function()
+ local curl_files = vim.env.DOTFILES .. "/../work/cURL/"
+
+ local function send_request(prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+
+    require('telescope.actions').close(prompt_bufnr)
+
+    vim.api.nvim_command('!sh ' .. curl_files .. selection.value .. ' >> ' .. curl_files .. '.out.sh 2>>&1')
+ end
+
+ require('telescope.builtin').find_files({
+    prompt_title = '< cURL rEQUESTS >',
+    cwd = curl_files,
+    attach_mappings = function(_, map)
+      map('i', '<c-x>', send_request)
+      map('n', '<c-x>', send_request)
       return true
     end
  })

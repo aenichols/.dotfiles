@@ -57,6 +57,9 @@ set fillchars=fold:\ ,
 set foldlevelstart=20
 
 "Column Ruler Override
+autocmd BufEnter *   set colorcolumn=800
 autocmd BufEnter *.cs   set colorcolumn=160
 autocmd BufEnter *.xaml set colorcolumn=160
 autocmd BufEnter *.ts   set colorcolumn=140
+
+command Curl !sh  % >> .out.sh 2>>&1
