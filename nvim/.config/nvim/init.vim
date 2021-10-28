@@ -175,6 +175,7 @@ nnoremap <Leader>ww ofunction wait(ms: number): Promise<void> {<CR>return new Pr
 inoremap <C-c> <esc>
 
 " Rooster maps
+let g:netrw_liststyle= 3
 " Vim Swap Ends
 nnoremap <leader>vse i<CR><ESC>V:m '<-2<CR>gv=gv<ESC>J
 

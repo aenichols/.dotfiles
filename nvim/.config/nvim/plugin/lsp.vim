@@ -1,6 +1,6 @@
 " Do this in lua?? maybe...
 "svim.o is short for something teej thinks makes sense.
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 fun! LspLocationList()

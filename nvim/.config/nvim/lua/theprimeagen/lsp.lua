@@ -1,9 +1,12 @@
-local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.3.7/server'
+local util = require("lspconfig/util")
+
+local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.4.4/server'
 local sumneko_binary = sumneko_root_path .. "/bin/Windows/lua-language-server"
 
 local function on_cwd()
   return vim.loop.cwd()
 end
+
 --
 -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -69,6 +72,7 @@ require'lspconfig'.clangd.setup(config({
 
 require'lspconfig'.sumneko_lua.setup(config({
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
+    root_dir = on_cwd;
     settings = {
         Lua = {
             runtime = {
@@ -105,15 +109,24 @@ require'lspconfig'.angularls.setup(config({
 }))
 
 --OmniSharp
-local pid = vim.fn.getpid()
--- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-local omnisharp_bin = "C:/OmniSharp/OmniSharp.exe"
--- on Windows
--- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
-require'lspconfig'.omnisharp.setup(config({
-    root_dir = on_cwd,
-    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
-    ...
+--local pid = vim.fn.getpid()
+---- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+--local omnisharp_bin = "C:/OmniSharp/OmniSharp.exe"
+---- on Windows
+---- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
+--require'lspconfig'.omnisharp.setup(config({
+--    root_dir = on_cwd,
+--    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+--    ...
+--}))
+
+--csharp_ls
+require'lspconfig'.csharp_ls.setup(config({
+    root_dir = function()
+        local fname = on_cwd()
+        local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
+        return found_root
+    end
 }))
 
 local opts = {
