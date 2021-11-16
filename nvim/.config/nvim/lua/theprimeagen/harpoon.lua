@@ -9,7 +9,7 @@ require("harpoon").setup({
                 }
             }
         },
-        ["$IDENTITY"] = {
+        ["C:\\Users\\anthony.nichols\\work\\ConnectBoosterVNext\\src\\ConnectBooster.Identity"] = {
             term = {
                 cmds = {
                     "ng s",

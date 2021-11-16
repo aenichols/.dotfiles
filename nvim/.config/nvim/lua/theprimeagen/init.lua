@@ -1,4 +1,5 @@
 require("theprimeagen.xsvrooster.telescope")
+local eightyninepace = require("theprimeagen.xsvrooster.89pace.prog")
 local colors = require("theprimeagen.xsvrooster.colors")
 
 require("theprimeagen.telescope")
@@ -21,3 +22,4 @@ if pcall(require, 'plenary') then
 end
 
 colors.setup()
+eightyninepace.setup()

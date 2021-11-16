@@ -1,27 +1,25 @@
 local util = require("lspconfig/util")
 
-local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.4.4/server'
+local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.4.7/server'
 local sumneko_binary = sumneko_root_path .. "/bin/Windows/lua-language-server"
 
 local function on_cwd()
   return vim.loop.cwd()
 end
 
---
+local  function on_root()
+  local fname = on_cwd()
+  local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
+  return found_root
+end
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
 cmp.setup({
     snippet = {
         expand = function(args)
-            -- For `vsnip` user.
-            -- vim.fn["vsnip#anonymous"](args.body)
-
-            -- For `luasnip` user.
             require('luasnip').lsp_expand(args.body)
-
-            -- For `ultisnips` user.
-            -- vim.fn["UltiSnips#Anon"](args.body)
         end,
     },
     mapping = {
@@ -31,30 +29,17 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
-
     sources = {
         { name = 'nvim_lsp' },
-
-        -- For vsnip user.
-        -- { name = 'vsnip' },
-
-        -- For luasnip user.
         { name = 'luasnip' },
-
-        -- For ultisnips user.
-        -- { name = 'ultisnips' },
-
+        { name = "path" },
         { name = 'buffer' },
-    }
+    },
+    experimental = {
+        native_menu = false,
+        ghost_text = true,
+    },
 })
-
---[[
--- Setup lspconfig.
-require('lspconfig')[%YOUR_LSP_SERVER%].setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-}-- Setup nvim-cmp.
-    ]]
--- local cmp = require'cmp'
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
@@ -109,25 +94,25 @@ require'lspconfig'.angularls.setup(config({
 }))
 
 --OmniSharp
---local pid = vim.fn.getpid()
----- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
---local omnisharp_bin = "C:/OmniSharp/OmniSharp.exe"
----- on Windows
----- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
---require'lspconfig'.omnisharp.setup(config({
---    root_dir = on_cwd,
---    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
---    ...
---}))
+local pid = vim.fn.getpid()
+-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+local omnisharp_bin = "C:/OmniSharp/OmniSharp.exe"
+-- on Windows
+-- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
+require'lspconfig'.omnisharp.setup(config({
+    root_dir = on_root,
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+    ...
+}))
 
 --csharp_ls
-require'lspconfig'.csharp_ls.setup(config({
-    root_dir = function()
-        local fname = on_cwd()
-        local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
-        return found_root
-    end
-}))
+--require'lspconfig'.csharp_ls.setup(config({
+--    root_dir = function()
+--        local fname = on_cwd()
+--        local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
+--        return found_root
+--    end
+--}))
 
 local opts = {
     -- whether to highlight the currently hovered symbol

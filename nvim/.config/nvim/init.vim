@@ -55,6 +55,7 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-abolish'
 
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
@@ -91,6 +92,9 @@ Plug 'w0rp/ale'
 
 " Csharp ¯\_(ツ)_/¯
 Plug 'editorconfig/editorconfig-vim'
+
+" Github CoPilot
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -175,7 +179,6 @@ nnoremap <Leader>ww ofunction wait(ms: number): Promise<void> {<CR>return new Pr
 inoremap <C-c> <esc>
 
 " Rooster maps
-let g:netrw_liststyle= 3
 " Vim Swap Ends
 nnoremap <leader>vse i<CR><ESC>V:m '<-2<CR>gv=gv<ESC>J
 
