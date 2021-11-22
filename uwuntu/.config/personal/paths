@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-addToPathFront $DENO_INSTALL
-addToPath /home/aenichols/personal/lua-language-server/bin/Linux
-addToPath /usr/local/go/bin
-addToPath $GOPATH/bin
-#addToPath $HOME/work/wrapper
-#addToPath /usr/local/netflix/tvui-automation-analyzer
-#addToPath /usr/local/netflix/encoders/bin/
-addToPath $HOME/.yarn/bin
-addToPath /usr/lib/llvm-8/bin
-#addToPath $HOME/personal/uhh/build
-addToPath $HOME/.cargo/bin
-addToPath $HOME/.rustup
+#addToPathFront $DENO_INSTALL
+#addToPath /home/aenichols/personal/lua-language-server/bin/Linux
+#addToPath /usr/local/go/bin
+#addToPath $GOPATH/bin
+##addToPath $HOME/work/wrapper
+##addToPath /usr/local/netflix/tvui-automation-analyzer
+##addToPath /usr/local/netflix/encoders/bin/
+#addToPath $HOME/.yarn/bin
+#addToPath /usr/lib/llvm-8/bin
+##addToPath $HOME/personal/uhh/build
+#addToPath $HOME/.cargo/bin
+#addToPath $HOME/.rustup
+#
+## ccache
+#addToPathFront /usr/lib/ccache
 
-# ccache
-addToPathFront /usr/lib/ccache
+export IDENTITY="$HOME/work/ConnectBoosterVNext/src/ConnectBooster.Identity"
+export AU="$HOME/work/ConnectBooster/ConnectBooster.Frontend"
+export QP="$HOME/work/QuickerPay/Source"
+
+addToPath "/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin"

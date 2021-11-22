@@ -13,74 +13,102 @@ local  function on_root()
   return found_root
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require("cmp")
+local source_mapping = {
+  buffer = "[Buffer]",
+  nvim_lsp = "[LSP]",
+  nvim_lua = "[Lua]",
+  path = "[Path]",
+  copilot = "[CP]",
+}
+local lspkind = require("lspkind")
+require('lspkind').init({
+  with_text = true,
+})
 
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    mapping = {
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = "path" },
-        { name = 'buffer' },
-    },
-    experimental = {
-        native_menu = false,
-        ghost_text = true,
-    },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.kind = lspkind.presets.default[vim_item.kind]
+      local menu = source_mapping[entry.source.name]
+      if entry.source.name == 'cmp_copilot' then
+        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+          menu = entry.completion_item.data.detail .. ' ' .. menu
+        end
+        vim_item.kind = ''
+      end
+      vim_item.menu = menu
+      return vim_item
+    end
+  },
+  sources = {
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" },
+  },
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
 })
 
 local function config(_config)
-    return vim.tbl_deep_extend("force", {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    }, _config or {})
+  return vim.tbl_deep_extend("force", {
+    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  }, _config or {})
 end
 
-require'lspconfig'.tsserver.setup(config({
-  root_dir = on_cwd
-}))
+--ts
+require'lspconfig'.tsserver.setup(config({ root_dir = on_cwd }))
 
-require'lspconfig'.clangd.setup(config({
-    root_dir = on_cwd
-}))
+--cpp
+require'lspconfig'.clangd.setup(config({ root_dir = on_cwd }))
 
+--lua
 require'lspconfig'.sumneko_lua.setup(config({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
-    root_dir = on_cwd;
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = vim.split(package.path, ';'),
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                },
-            },
+  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
+  root_dir = on_cwd;
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
         },
+      },
     },
+  },
 }))
 
+--angularls
 local probeLoc  = vim.env.HOME .. "/AppData/Roaming/npm/node_modules"
 local angularCmd = { "ngserver.cmd", "--stdio", "--tsProbeLocations", probeLoc , "--ngProbeLocations", probeLoc }
 require'lspconfig'.angularls.setup(config({
@@ -100,9 +128,9 @@ local omnisharp_bin = "C:/OmniSharp/OmniSharp.exe"
 -- on Windows
 -- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
 require'lspconfig'.omnisharp.setup(config({
-    root_dir = on_root,
-    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
-    ...
+  root_dir = on_root,
+  cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+  ...
 }))
 
 --csharp_ls
@@ -115,36 +143,41 @@ require'lspconfig'.omnisharp.setup(config({
 --}))
 
 local opts = {
-    -- whether to highlight the currently hovered symbol
-    -- disable if your cpu usage is higher than you want it
-    -- or you just hate the highlight
-    -- default: true
-    highlight_hovered_item = true,
+  -- whether to highlight the currently hovered symbol
+  -- disable if your cpu usage is higher than you want it
+  -- or you just hate the highlight
+  -- default: true
+  highlight_hovered_item = true,
 
-    -- whether to show outline guides
-    -- default: true
-    show_guides = true,
+  -- whether to show outline guides
+  -- default: true
+  show_guides = true,
 }
 
 require('symbols-outline').setup(opts)
 
 local snippets_paths = function()
-    local plugins = { "friendly-snippets" }
-    local paths = {}
-    local path
-    local root_path = vim.env.HOME .. '/.vim/plugged/'
-    for _, plug in ipairs(plugins) do
-        path = root_path .. plug
-        if vim.fn.isdirectory(path) ~= 0 then
-            table.insert(paths, path)
-        end
+  local plugins = { "friendly-snippets" }
+  local paths = {}
+  local path
+  local root_path = vim.env.HOME .. '/.vim/plugged/'
+  for _, plug in ipairs(plugins) do
+    path = root_path .. plug
+    if vim.fn.isdirectory(path) ~= 0 then
+      table.insert(paths, path)
     end
-    return paths
+  end
+  return paths
 end
 
 require("luasnip.loaders.from_vscode").lazy_load({
-    paths = snippets_paths(),
-    include = nil,  -- Load all languages
-    exclude = {}
+  paths = snippets_paths(),
+  include = nil,  -- Load all languages
+  exclude = {}
 })
 
+-- Severity limit override -- report Error, Warning, Information < Hint -- neovim.lsp.protocol.DiagnosticSeverity
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = { severity_limit = "Information" },
+  underline = { severity_limit  = "Warning" },
+})

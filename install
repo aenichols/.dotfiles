@@ -1,10 +1,23 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # I am using zsh instead of bash.  I was having some troubles using bash with
 # arrays.  Didn't want to investigate, so I just did zsh
+#pushd $DOTFILES
+#for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+#do
+#    stow -D $folder
+#    stow $folder
+#done
+#popd
+
+# source
+source $HOME/.dotfiles/bash/.bashrc
+source $HOME/.dotfiles/bash/.bash_profile
+
+# use dploy stow instead of gnu stow since winders and stirf
 pushd $DOTFILES
+
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
-    stow -D $folder
-    stow $folder
+    python -m dploy stow $folder $HOME
 done
 popd

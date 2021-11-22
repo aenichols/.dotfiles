@@ -5,15 +5,16 @@ local action_state = require('telescope.actions.state')
 actions.git_fetch_branch_tolocal = function(prompt_bufnr)
   local cwd = action_state.get_current_picker(prompt_bufnr).cwd
   local selection = action_state.get_selected_entry()
+  print("Fetching Into Local: " .. selection.value)
   actions.close(prompt_bufnr)
-  local ret, stderr = utils.get_os_command_output({ 'git', 'fetch', '-f', 'origin' , selection.value .. ':' .. selection.value }, cwd)
+  local stdout, ret, stderr = utils.get_os_command_output({ 'git', 'fetch', '-f', 'origin' , selection.value .. ':' .. selection.value }, cwd)
 
   if ret == 0 then
-    print("Finished Fetching")
-    print(selection.value)
+    print("Finished Fetching Into Local: " .. selection.value)
   else
-    print(string.format('Error when fetching branch into local: %s', selection.value, table.concat(stderr, '  ')))
-    print(string.format('Git returned: "%s"', selection.value, table.concat(stderr, '  ')))
+    print(string.format('Error when fetching branch into local: %s', selection.value))
+    print(string.format('Git returned: "%s out: %s"', vim.inspect(stdout)))
+    print(string.format('Git returned: "%s error: %s"', vim.inspect(stderr)))
   end
 end
 
