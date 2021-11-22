@@ -29,6 +29,8 @@ M.setup_commands = function ()
  vim.cmd('command! PacerA lua ' .. ns .. '.runal()')
  vim.cmd('command! PacerStop lua ' .. ns .. '.stop()')
  vim.cmd('command! PacerStart lua ' .. ns .. '.start()')
+ vim.cmd('command! PacerStatus lua ' .. ns .. '.update_status_line()')
+ vim.cmd('command! PacerActivities lua ' .. ns .. '.get_activities()')
 end
 
 return M

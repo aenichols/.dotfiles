@@ -27,7 +27,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'mattn/emmet-vim'
+Plug 'hrsh7th/cmp-copilot'
+Plug 'onsails/lspkind-nvim'
 
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -63,7 +64,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-"Plug 'vim-conf-live/vimconflive2021-colorscheme'
+Plug 'vim-conf-live/vimconflive2021-colorscheme'
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'tiagovla/tokyodark.nvim'
@@ -101,7 +102,7 @@ call plug#end()
 "let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 

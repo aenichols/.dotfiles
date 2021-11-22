@@ -32,7 +32,7 @@ local function load_tokyo_hightlights(cs)
     vim.g.tokyodark_enable_italic_comment = 1
     vim.g.tokyodark_enable_italic = 1
     vim.g.tokyodark_color_gamma = "1.0"
-    --load_highlights(ns, hl.overrides)
+    load_highlights(ns, hl.overrides)
 end
 
 function M.setup()

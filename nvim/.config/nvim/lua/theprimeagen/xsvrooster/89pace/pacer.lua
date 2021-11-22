@@ -2,6 +2,8 @@ local C = require("theprimeagen.xsvrooster.89pace.config")
 local S = C.session
 local dates = require("theprimeagen.xsvrooster.89pace.dates")
 
+local default_section_x = vim.g.airline_section_x
+
 local M = {}
 
 M.run = function()
@@ -31,6 +33,10 @@ M.build_status = function()
   end
 end
 
+M.get_activities = function ()
+  print(vim.inspect(S.activity_types))
+end
+
 M.get_status = function()
   return S.status
 end
@@ -49,14 +55,22 @@ M.update_status_line = function()
     false
   )
   vim.call("airline#parts#define_function", "89pace", "Get89PaceStatus")
+
   -- conditions should be- current viewport, width > 175
   vim.call("airline#parts#define_minwidth", "89pace", "175")
+  -- FIXME: conditions should be- current viewport only - HOW?
   --vim.call("airline#parts#define_condition", "89pace", "nvim_buf_get_name(0) == expand('%')")
+
+  -- FIXME: should be a better way- show me da way
   -- create section
-  vim.cmd("let g:airline_section_x = airline#section#create(['89pace'])")
-  -- update airline
-  vim.call("airline#update_statusline")
- -- print(vim.inspect(vim.api.nvim_buf_get_name(0)) .. vim.inspect(vim.fn.expand('%')))
+  if default_section_x ~= nil then
+    vim.cmd("let g:pace_section_x = airline#section#create_right(['89pace'])")
+    vim.cmd("let g:airline_section_x = '" .. default_section_x .. '%{airline#util#prepend(" ",0)}' .. vim.g.pace_section_x .. "'")
+    -- update airline
+    vim.call("airline#update_statusline")
+  else
+    default_section_x = vim.g.airline_section_x
+  end
 end
 
 -- Gets the current time for the currently selected task id.

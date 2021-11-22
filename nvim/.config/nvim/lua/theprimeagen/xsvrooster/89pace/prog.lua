@@ -19,7 +19,7 @@ M.setup = function()
   -- Waits 3000ms, then repeats every defern(ms) until timer:close().
   timer:start(3000, C.defern, vim.schedule_wrap(function()
     -- check airline is loaded and is currently tracking
-    if vim.g.loaded_airline ~= 1 or S.trackingState == 1 then
+    if vim.g.loaded_airline ~= 1 or (vim.g.pace_section_x ~= nil and S.trackingState == 1) then
       return
     end
     pacer.refreshal()

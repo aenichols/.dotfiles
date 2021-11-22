@@ -1,10 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-# Super cool keyboard stuffs.
-# Required for x applications
-setxkbmap -option caps:ctrl_modifier
-
-export STOW_FOLDERS="bin,nvim,tmux,uwuntu,bngteam,personal,i3,zsh,xkb"
+# stow it
+export STOW_FOLDERS="bin,nvim,tmux,uwuntu,i3,zsh,xkb,bash,git"
 
 startMongo() {
     sudo systemctl start mongod
@@ -16,10 +13,9 @@ increaseWatchers() {
     sudo sysctl -p
 }
 
-change_background() {
-    #dconf write /org/mate/desktop/background/picture-filename "'$HOME/dotfiles/backgrounds/$(ls ~/dotfiles/backgrounds | fzf)'"
-}
-
+#change_background() {
+#    #dconf write /org/mate/desktop/background/picture-filename "'$HOME/dotfiles/backgrounds/$(ls ~/dotfiles/backgrounds | fzf)'"
+#}
 
 die () {
     echo >&2 "$@"
@@ -40,13 +36,16 @@ addToPathFront() {
 
 commitDotFiles() {
     pushd $DOTFILES
-    pushd personal
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
     git push origin main
     popd
-    git add .
-    git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
-    popd
+}
+
+man() {
+    VAR1="http://man.he.net/?topic="
+    VAR2=$1
+    VAR3="&section=all"
+    VAR4="$VAR1$VAR2$VAR3"
+    curl -v --silent "$VAR4" 2>&1 | sed -n "/<PRE>/,/<\/PRE>/p"
 }

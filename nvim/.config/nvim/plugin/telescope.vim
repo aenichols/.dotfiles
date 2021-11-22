@@ -1,7 +1,5 @@
 lua require("theprimeagen")
 
-nnoremap <leader>rr :lua require('theprimeagen.telescope').refactors()<CR>
-vnoremap <leader>rr :lua require('theprimeagen.telescope').refactors()<CR>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
@@ -16,4 +14,3 @@ nnoremap <leader>gc :lua require('theprimeagen.telescope').git_branches()<CR>
 nnoremap <leader>glc :lua require('theprimeagen.telescope').git_local_branches()<CR>
 nnoremap <leader>vpp :lua require('theprimeagen.telescope').search_private_proxy()<CR>
 nnoremap <leader>vcr :lua require('theprimeagen.telescope').search_curl_requests()<CR>
-

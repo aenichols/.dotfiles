@@ -24,3 +24,12 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'netrw://.*']
 
 " Goyo
 let g:goyo_width = '75%'
+
+autocmd! User GoyoEnter nested call ThePrimeagenTurnOffGuides()
+autocmd! User GoyoLeave nested call ThePrimeagenTurnOnGuides()
+autocmd! User GoyoLeave nested call ColorMyPencils()
+
+nnoremap <leader>az :Goyo<cr>
+
+" 89pace
+nnoremap <leader>eps :lua require("theprimeagen.xsvrooster.89pace.pacer").start({ tfsId = , activity_idx =  })
