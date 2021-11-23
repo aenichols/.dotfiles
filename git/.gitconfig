@@ -40,6 +40,8 @@
     dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
     # Undo Commit; leaves files. Only for non-public commits
     uncommit = reset --soft HEAD^
+    # You only live once
+    yolo = !"git push origin master --force --no-verify"
 
 [apply]
     # Detect whitespace errors when applying a patch

@@ -27,7 +27,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-copilot'
+" Plug 'hrsh7th/cmp-copilot'
 Plug 'onsails/lspkind-nvim'
 
 Plug 'glepnir/lspsaga.nvim'
