@@ -49,3 +49,17 @@ man() {
     VAR4="$VAR1$VAR2$VAR3"
     curl -v --silent "$VAR4" 2>&1 | sed -n "/<PRE>/,/<\/PRE>/p"
 }
+
+setFavAnimoos() {
+  pushd $DOTFILES
+  rm -rf $HOME/.dotfiles-windows/rooster/main_animoos/*
+  python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos/fav_animoos $HOME/.dotfiles-windows/rooster/main_animoos
+  popd
+}
+
+setAnimoos() {
+  pushd $DOTFILES
+  rm -rf $HOME/.dotfiles-windows/rooster/main_animoos/*
+  python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos $HOME/.dotfiles-windows/rooster/main_animoos
+  popd
+}

@@ -88,11 +88,16 @@ Plug 'vim-airline/vim-airline-themes'
 " Zen Mode
 Plug 'junegunn/goyo.vim'
 
+" Zen Bones
+Plug 'rktjmp/lush.nvim'
+Plug 'mcchrish/zenbones.nvim'
+
 " Ale for stupid EsLints
 Plug 'w0rp/ale'
 
 " Csharp ¯\_(ツ)_/¯
-Plug 'editorconfig/editorconfig-vim'
+"Plug 'editorconfig/editorconfig-vim'
+Plug 'gpanders/editorconfig.nvim'
 
 " Github CoPilot
 Plug 'github/copilot.vim'

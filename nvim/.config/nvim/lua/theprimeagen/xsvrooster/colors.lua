@@ -36,7 +36,8 @@ local function load_tokyo_hightlights(cs)
 end
 
 function M.setup()
-    vim.g['theprimeagen_colorscheme'] = "gruvbox"
+    vim.g['theprimeagen_colorscheme'] = "randombones"
+    --vim.g['theprimeagen_colorscheme'] = "gruvbox"
     --vim.g['theprimeagen_colorscheme'] = "tokyodark"
     local cs = vim.g.theprimeagen_colorscheme
 

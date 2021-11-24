@@ -9,7 +9,7 @@ alias vims="NVIM_LISTEN_ADDRESS=/tmp/nvim $VIM"
 alias work="cd ~/work"
 
 alias cbp="cat $DOTFILES/bash/.bash_profile"
-alias ebp="$VIM $DOTFILES/.bash_profile"
+alias ebp="$VIM $DOTFILES/bash/.bash_profile"
 alias etc="$VIM $DOTFILES/tmux/.tmux.conf"
 alias bp="dotFileInstall && source ~/.bashrc"
 alias enrc="pushd $DOTFILES/nvim/.config/nvim && $VIM $DOTFILES/nvim/.config/nvim/init.vim && popd"
