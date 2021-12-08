@@ -23,3 +23,5 @@ end
 
 colors.setup()
 eightyninepace.setup()
+
+require("Comment").setup()

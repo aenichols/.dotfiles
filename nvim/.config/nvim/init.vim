@@ -27,7 +27,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-" Plug 'hrsh7th/cmp-copilot'
+Plug 'hrsh7th/cmp-copilot'
 Plug 'onsails/lspkind-nvim'
 
 Plug 'glepnir/lspsaga.nvim'
@@ -102,6 +102,9 @@ Plug 'gpanders/editorconfig.nvim'
 " Github CoPilot
 Plug 'github/copilot.vim'
 
+" Commenter
+Plug 'numToStr/Comment.nvim'
+
 call plug#end()
 
 "let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
@@ -141,7 +144,7 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
 
-" TODO change based on language
+" TODO change based on language - implement csharp into primes refactor plugin
 "nnoremap <Leader>ee oconsole.log(`HALLO ${}`);<esc>hhhi
 nnoremap <Leader>ee oSystem.Console.WriteLine($"HALLO {Newtonsoft.Json.JsonConvert.SerializeObject()}");<esc>hhhhi
 
@@ -166,7 +169,6 @@ nnoremap J mzJ`z
 
 " greatest remap ever
 xnoremap <leader>p "_dP
-
 " next greatest remap ever : asbjornHaland
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
@@ -213,7 +215,5 @@ augroup THE_PRIMEAGEN
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritePre * %s/$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-
-    autocmd ColorScheme * :call ColorMyPencils()
 augroup END
 

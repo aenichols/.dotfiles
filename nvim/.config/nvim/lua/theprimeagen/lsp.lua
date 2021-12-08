@@ -1,6 +1,6 @@
 local util = require("lspconfig/util")
 
-local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.4.7/server'
+local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.5.3/server'
 local sumneko_binary = sumneko_root_path .. "/bin/Windows/lua-language-server"
 
 local function on_cwd()
@@ -19,10 +19,11 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
-  buffer = "[Buffer]",
+  copilot = "[CP]",
   nvim_lsp = "[LSP]",
+  buffer = "[Buffer]",
   nvim_lua = "[Lua]",
-  path = "[Path]"
+  path = "[Path]",
 }
 local lspkind = require("lspkind")
 require('lspkind').init({
@@ -45,17 +46,18 @@ cmp.setup({
     format = function(entry, vim_item)
       vim_item.kind = lspkind.presets.default[vim_item.kind]
       local menu = source_mapping[entry.source.name]
-      --if entry.source.name == 'cmp_copilot' then
-      --  if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-      --    menu = entry.completion_item.data.detail .. ' ' .. menu
-      --  end
-      --  vim_item.kind = ''
-      --end
+      if entry.source.name == 'copilot' then
+        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+          menu = entry.completion_item.data.detail .. ' ' .. menu
+        end
+        vim_item.kind = ''
+      end
       vim_item.menu = menu
       return vim_item
     end
   },
   sources = {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },

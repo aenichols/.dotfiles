@@ -63,3 +63,5 @@ autocmd BufEnter *.xaml set colorcolumn=160
 autocmd BufEnter *.ts   set colorcolumn=140
 
 command Curl !sh  % >> .out.sh 2>>&1
+
+"##############################################################################
