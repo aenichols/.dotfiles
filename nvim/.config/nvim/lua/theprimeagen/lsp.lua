@@ -40,7 +40,6 @@ cmp.setup({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   formatting = {
     format = function(entry, vim_item)
@@ -68,6 +67,7 @@ cmp.setup({
     ghost_text = true,
   },
 })
+
 
 local function config(_config)
   return vim.tbl_deep_extend("force", {

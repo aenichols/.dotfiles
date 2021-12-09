@@ -134,7 +134,6 @@ nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c "$DOTFILES/bin/.local/bin/tmux-cht.sh"')<CR>
 tnoremap <silent> <C-f> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
 
-nnoremap <leader>vesl :silent lua require("harpoon.term").sendCommand(2, "eslint --fix " ..vim.fn.getreg('%')); require("harpoon.term").gotoTerminal(2)<CR>
 nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
@@ -169,6 +168,7 @@ nnoremap J mzJ`z
 
 " greatest remap ever
 xnoremap <leader>p "_dP
+
 " next greatest remap ever : asbjornHaland
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y

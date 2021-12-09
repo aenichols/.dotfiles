@@ -18,3 +18,8 @@ nnoremap <silent><leader>ts :lua require("harpoon.term").gotoTerminal(2)<CR>
 nnoremap <silent><leader>cd :lua require("harpoon.term").sendCommand(1, 1)<CR>
 nnoremap <silent><leader>ce :lua require("harpoon.term").sendCommand(1, "eslint --fix")<CR>
 
+"##############################################################################
+"#ROOSTER                                                                     #
+"##############################################################################
+
+nnoremap <leader>vesl :silent lua require("harpoon.term").sendCommand(2, "eslint --fix " ..vim.fn.getreg('%')); require("harpoon.term").gotoTerminal(2)<CR>
