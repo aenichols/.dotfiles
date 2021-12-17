@@ -145,7 +145,7 @@ nnoremap <Leader>rp :resize 100<CR>
 
 " TODO change based on language - implement csharp into primes refactor plugin
 "nnoremap <Leader>ee oconsole.log(`HALLO ${}`);<esc>hhhi
-nnoremap <Leader>ee oSystem.Console.WriteLine($"HALLO {Newtonsoft.Json.JsonConvert.SerializeObject()}");<esc>hhhhi
+nnoremap <Leader>ee oSystem.Console.WriteLine($"HALLO {System.Text.Json.JsonSerializer.Serialize()}");<esc>hhhhi
 
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>

@@ -2,8 +2,8 @@ set relativenumber
 set hlsearch
 set hidden
 set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
+set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
 set nu
@@ -35,19 +35,11 @@ set colorcolumn=80
 "##############################################################################
 "#ROOSTER                                                                     #
 "##############################################################################
-set cursorcolumn
-
-"syntax
-syntax on
-"xaml
-au BufNewFile,BufRead *.xaml   setf xml
-"Razor
-au BufNewFile,BufRead *.cshtml set syntax=html
 
 set mouse=a
 
 "View hidden characters
-:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 
 "folding
 set foldmethod=expr
@@ -55,12 +47,6 @@ set foldexpr=nvim_treesitter#foldexpr()
 set foldcolumn=2
 set fillchars=fold:\ ,
 set foldlevelstart=20
-
-"Column Ruler Override
-autocmd BufEnter *   set colorcolumn=800
-autocmd BufEnter *.cs   set colorcolumn=160
-autocmd BufEnter *.xaml set colorcolumn=160
-autocmd BufEnter *.ts   set colorcolumn=140
 
 command Curl !sh  % >> .out.sh 2>>&1
 
