@@ -28,19 +28,36 @@ local function load_tokyo_hightlights(cs)
     }
 
     --Tokyo Dark
-    vim.g.tokyodark_transparent_background = 1
+    vim.g.tokyodark_transparent_background = 0
     vim.g.tokyodark_enable_italic_comment = 1
     vim.g.tokyodark_enable_italic = 1
     vim.g.tokyodark_color_gamma = "1.0"
     load_highlights(ns, hl.overrides)
 end
 
-function M.setup()
-    vim.g['theprimeagen_colorscheme'] = "randombones"
-    --vim.g['theprimeagen_colorscheme'] = "gruvbox"
-    --vim.g['theprimeagen_colorscheme'] = "tokyodark"
-    local cs = vim.g.theprimeagen_colorscheme
+function M.random()
+    local colors = {
+        'gruvbox',
+        'tokyodark',
+        -- random bones
+        'zenwritten',
+        'neobones',
+        'rosebones',
+        'forestbones',
+        'nordbones',
+        'tokyobones',
+        'seoulbones',
+        'duckbones',
+        'zenburned',
+        'kanagawabones'
+    }
+    local color = colors[math.random(#colors)]
+    vim.g['theprimeagen_colorscheme'] = color
+end
 
+function M.setup()
+    M.random()
+    local cs = vim.g.theprimeagen_colorscheme
     load_tokyo_hightlights(cs)
 end
 

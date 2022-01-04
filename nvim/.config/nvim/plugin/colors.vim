@@ -1,4 +1,6 @@
 fun! ColorMyPencils()
+    lua require("theprimeagen.xsvrooster.colors").setup()
+
     let g:gruvbox_contrast_dark = 'hard'
 
     if exists('+termguicolors')
@@ -16,6 +18,12 @@ fun! ColorMyPencils()
         " TODO: What the way to use g:theprimeagen_colorscheme
         colorscheme gruvbox
     endif
+
+    if g:theprimeagen_colorscheme == "tokyodark"
+        return
+    endif
+
+    " post color setup
 
     highlight ColorColumn ctermbg=0 guibg=grey
     highlight SignColumn guibg=none
