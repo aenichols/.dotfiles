@@ -29,9 +29,9 @@ endfun:
 
 augroup SetLanguage
     au!
-    au BufEnter           *            set colorcolumn=800
-    au BufNewFile,BufRead *.xaml       call SetXaml()
-    au BufNewFile,BufRead *.cs         call SetCSharp()
-    au BufNewFile,BufRead *.css,*.html call SetHTML()
-    au BufNewFile,BufRead *.ts         call SetTypeScript()
+    au BufEnter *            set colorcolumn=800
+    au BufEnter *.xaml       call SetXaml()
+    au BufEnter *.cs         call SetCSharp()
+    au BufEnter *.css,*.html call SetHTML()
+    au BufEnter *.ts         call SetTypeScript()
 augroup END

@@ -60,7 +60,7 @@ actions.search_private_proxy = function()
     local selection = action_state.get_selected_entry()
 
     require('telescope.actions').close(prompt_bufnr)
-    require('harpoon.term').sendCommand(1, 'ng s --proxy-config ./.private_proxies/' .. selection.value)
+    require('harpoon.term').sendCommand(1, 'ng s --proxy-config ./.private_proxies/' .. selection.value:gsub("\\", "/"))
  end
 
  require('telescope.builtin').find_files({

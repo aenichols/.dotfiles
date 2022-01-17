@@ -25,8 +25,11 @@ require("telescope").setup({
                 ["<M-w>"] = actions.delete_buffer,
             }
         },
-        use_unix_friendly_paths = true,
         preview = { check_mime_type = false },
+        --use_unix_friendly_paths = true,
+        path_display = function(opts, path)
+            return path:gsub("\\", "/")
+        end,
     },
     extensions = {
         fzy_native = {
