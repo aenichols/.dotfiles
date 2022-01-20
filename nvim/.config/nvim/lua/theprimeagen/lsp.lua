@@ -19,11 +19,11 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
-  copilot = "[CP]",
   nvim_lsp = "[LSP]",
   buffer = "[Buffer]",
   nvim_lua = "[Lua]",
   path = "[Path]",
+  copilot = "[CP]",
 }
 local lspkind = require("lspkind")
 require('lspkind').init({
@@ -56,11 +56,11 @@ cmp.setup({
     end
   },
   sources = {
-    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "copilot" },
   },
   experimental = {
     native_menu = false,
@@ -121,26 +121,28 @@ require'lspconfig'.angularls.setup(config({
   end,
 }))
 
---OmniSharp
+-- --OmniSharp
 local pid = vim.fn.getpid()
 -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-local omnisharp_bin = "C:/OmniSharp/OmniSharp.exe"
+local omnisharp_exe = "C:/OmniSharp/OmniSharp.exe"
+local omnisharp_exe_vscode  = vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-1.23.17/.omnisharp/1.37.17/OmniSharp.exe'
 -- on Windows
 -- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
 require'lspconfig'.omnisharp.setup(config({
   root_dir = on_root,
-  cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+  cmd = { omnisharp_exe, "--languageserver" , "--hostPID", tostring(pid) },
   ...
 }))
 
 --csharp_ls
---require'lspconfig'.csharp_ls.setup(config({
---    root_dir = function()
---        local fname = on_cwd()
---        local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
---        return found_root
---    end
---}))
+--dotnet tool install --global csharp-ls
+-- require'lspconfig'.csharp_ls.setup(config({
+--     root_dir = function()
+--         local fname = on_cwd()
+--         local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
+--         return found_root
+--     end
+-- }))
 
 local opts = {
   -- whether to highlight the currently hovered symbol
