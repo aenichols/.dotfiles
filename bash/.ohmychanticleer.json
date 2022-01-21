@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
@@ -11,7 +12,7 @@
           "foreground": "#98C379",
           "properties": {
             "prefix": "",
-            "text": "\u279C",
+            "text": "::<>",
             "postfix": ""
           }
         },
@@ -39,7 +40,7 @@
           "style": "plain",
           "foreground": "#BF616A",
           "properties": {
-            "template": "\u2717",
+            "template": "¯\\_(ツ)_/¯ ",
             "prefix": " ",
             "postfix": ""
           }
