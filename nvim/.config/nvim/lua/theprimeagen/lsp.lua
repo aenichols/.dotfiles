@@ -1,7 +1,7 @@
 local util = require("lspconfig/util")
 
-local sumneko_root_path = vim.env.HOME .. '/.vscode/extensions/sumneko.lua-2.5.3/server'
-local sumneko_binary = sumneko_root_path .. "/bin/Windows/lua-language-server"
+local sumneko_root_path = vim.fn.expand(vim.env.HOME .. '/.vscode/extensions/sumneko.lua-*/server')
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 local function on_cwd()
   return vim.loop.cwd()
@@ -121,27 +121,23 @@ require'lspconfig'.angularls.setup(config({
   end,
 }))
 
--- --OmniSharp
-local pid = vim.fn.getpid()
--- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-local omnisharp_exe = "C:/OmniSharp/OmniSharp.exe"
-local omnisharp_exe_vscode  = vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-1.23.17/.omnisharp/1.37.17/OmniSharp.exe'
--- on Windows
--- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
-require'lspconfig'.omnisharp.setup(config({
-  root_dir = on_root,
-  cmd = { omnisharp_exe, "--languageserver" , "--hostPID", tostring(pid) },
-  ...
-}))
+--OmniSharp
+-- local pid = vim.fn.getpid()
+-- -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+-- local omnisharp_exe = "C:/OmniSharp/OmniSharp.exe"
+-- local omnisharp_exe_vscode  = vim.fn.expand(vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-*/.omnisharp/*/OmniSharp.exe')
+-- -- on Windows
+-- -- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
+-- require'lspconfig'.omnisharp.setup(config({
+--   root_dir = on_root,
+--   cmd = { omnisharp_exe_vscode, "--languageserver" , "--hostPID", tostring(pid) },
+--   ...
+-- }))
 
 --csharp_ls
 --dotnet tool install --global csharp-ls
 -- require'lspconfig'.csharp_ls.setup(config({
---     root_dir = function()
---         local fname = on_cwd()
---         local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
---         return found_root
---     end
+--     root_dir = on_root,
 -- }))
 
 local opts = {

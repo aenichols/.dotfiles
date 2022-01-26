@@ -26,6 +26,8 @@ alias pclip="xclip -selection clipboard"
 alias cnpm="cat ~/.npmrc"
 alias pnpm='rm ~/.npmrc'
 
+alias showPath="sed 's/:/\n/g' <<< '$PATH'"
+
 # ls
 alias la="ls -la"
 alias ls="ls -F --color=auto --show-control-chars"

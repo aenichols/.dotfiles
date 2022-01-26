@@ -1,5 +1,5 @@
-local pacer = require("theprimeagen.xsvrooster.89pace.pacer")
-local C = require("theprimeagen.xsvrooster.89pace.config")
+local pacer = require("xsvrooster.89pace.pacer")
+local C = require("xsvrooster.89pace.config")
 local S = C.session
 
 local M = {}
@@ -22,7 +22,7 @@ M.setup = function()
     if vim.g.loaded_airline ~= 1 or (vim.g.pace_section_x ~= nil and S.trackingState == 1) then
       return
     end
-    pacer.refreshal()
+    pacer.refresh_airline()
   end))
 end
 

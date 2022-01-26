@@ -4,6 +4,18 @@ set cursorcolumn
 
 fun! SetCSharp()
   set colorcolumn=160
+
+  " COC remaps
+  nnoremap <buffer> <leader>vd  :call CocAction('jumpDefinition')<CR>
+  nnoremap <buffer> <leader>vi  :call CocAction('jumpImplementation')<CR>
+  nnoremap <buffer> <leader>vsh :call CocAction('showSignatureHelp')<CR>
+  nnoremap <buffer> <leader>vrr :call CocAction('jumpReferences')<CR>
+  nnoremap <buffer> <leader>vrn :call CocAction('rename')<CR>
+  nnoremap <buffer> <leader>vh  :call CocAction('doHover')<CR>
+  nnoremap <buffer> <leader>vca :CocAction<CR>
+  nnoremap <buffer> <leader>vsd :call CocAction('diagnosticInfo')<CR>
+  nnoremap <buffer> <leader>vn  :call CocAction('diagnosticNext')<CR>
+  nnoremap <buffer> <leader>vll :CocDiagnostics<CR>
 endfun:
 
 fun! SetTypeScript()

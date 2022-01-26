@@ -1,4 +1,3 @@
-
 require("harpoon").setup({
     projects = {
         ["$HOME/work/ConnectBooster/ConnectBooster.Frontend"] = {

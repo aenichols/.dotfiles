@@ -75,7 +75,7 @@ actions.search_private_proxy = function()
 end
 
 actions.search_curl_requests = function()
- local curl_files = vim.env.DOTFILES .. "/../work/cURL/"
+ local curl_files = "~/work/cURL/"
 
  local function send_request(prompt_bufnr)
     local selection = action_state.get_selected_entry()

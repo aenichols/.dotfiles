@@ -31,8 +31,9 @@ autocmd! User GoyoLeave nested call ThePrimeagenTurnOnGuides()
 nnoremap <leader>az :Goyo<cr>
 
 " 89pace
-nnoremap <leader>eps :lua require("theprimeagen.xsvrooster.89pace.pacer").start({ tfsId = , activity_idx =  })
+nnoremap <leader>eps :lua require("xsvrooster.89pace.pacer").start({ tfsId = , activity_idx =  })
 
 " Copilot copilot.vim/autoload/copilot.vim ln 154 s:filetype_defaults
 " 'TelescopePrompt': 0
 let g:copilot_filetypes = { 'TelescopePrompt': v:false, }
+let g:copilot_enabled = v:false

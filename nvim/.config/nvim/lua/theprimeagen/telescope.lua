@@ -1,8 +1,9 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local previewers = require("telescope.previewers")
-local action_state = require("telescope.actions.state")
-local conf = require("telescope.config").values
+require("telescope.pickers")
+require("telescope.finders")
+require("telescope.previewers")
+require("telescope.actions.state")
+require("telescope.config")
+
 local actions = require("telescope.actions")
 
 require("telescope").setup({
@@ -27,7 +28,7 @@ require("telescope").setup({
         },
         preview = { check_mime_type = false },
         --use_unix_friendly_paths = true,
-        path_display = function(opts, path)
+        path_display = function(_, path)
             return path:gsub("\\", "/")
         end,
     },
@@ -136,9 +137,9 @@ end
 
  end
 
-M.git_local_branches = require("theprimeagen.xsvrooster.telescope").git_local_branches;
-M.search_private_proxy  = require("theprimeagen.xsvrooster.telescope").search_private_proxy;
-M.search_curl_requests  = require("theprimeagen.xsvrooster.telescope").search_curl_requests;
+M.git_local_branches = require("xsvrooster.telescope").git_local_branches;
+M.search_private_proxy  = require("xsvrooster.telescope").search_private_proxy;
+M.search_curl_requests  = require("xsvrooster.telescope").search_curl_requests;
 
 return M
 

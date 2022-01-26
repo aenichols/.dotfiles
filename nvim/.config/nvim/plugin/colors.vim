@@ -1,5 +1,5 @@
 fun! ColorMyPencils()
-    lua require("theprimeagen.xsvrooster.colors").setup()
+    lua require("xsvrooster.colors").setup()
 
     let g:gruvbox_contrast_dark = 'hard'
 
@@ -53,45 +53,30 @@ nnoremap <leader>cmb :let g:theprimeagen_colorscheme =
 
 " Colorize line numbers in insert and visual modes
 " ------------------------------------------------
-function! SetCursorLineNrColorInsert(mode)
-    " Insert mode: blue
-    if a:mode == "i"
-        highlight CursorLineNr ctermfg=4 guifg=#26d2c4
-
-    " Replace mode: red
-    elseif a:mode == "r"
-        highlight CursorLineNr ctermfg=1 guifg=#dc322f
-
-    endif
-endfunction
-
-function! SetCursorLineNrColorVisual()
+function! SetVisualList()
     set updatetime=0
-
-    " Visual mode: yellow
-    highlight CursorLineNr cterm=none ctermfg=9 guifg=#d29026
-
     " Set list
     set list
-
-    return ''
+    " move cursor to force an update
+    return 'lh'
 endfunction
 
-function! ResetCursorLineNrColor()
+function! ResetVisualList()
     set updatetime=4000
-    highlight CursorLineNr cterm=none ctermfg=0 guifg=#d2c926
     set nolist
 endfunction
 
-vnoremap <silent> <expr> <SID>SetCursorLineNrColorVisual SetCursorLineNrColorVisual()
-nnoremap <silent> <script> v v<SID>SetCursorLineNrColorVisual
-nnoremap <silent> <script> V V<SID>SetCursorLineNrColorVisual
-nnoremap <silent> <script> <C-v> <C-v><SID>SetCursorLineNrColorVisual
+vnoremap <silent> <expr> <SID>SetVisualList SetVisualList()
+nnoremap <silent> <script> v v<SID>SetVisualList
+nnoremap <silent> <script> V V<SID>SetVisualList
+nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualList
 
 augroup CursorLineNrColorSwap
     autocmd!
-    autocmd InsertEnter * call SetCursorLineNrColorInsert(v:insertmode)
-    autocmd InsertLeave * call ResetCursorLineNrColor()
-    autocmd CursorHold * call ResetCursorLineNrColor()
+    " Reset list when leaving insert mode from visual block mode
+    autocmd InsertEnter *.* call ResetVisualList()
+    " Reset list when idle in normal mode
+    " This wiil cause the start screen to disappear
+    autocmd CursorHold *.* call ResetVisualList()
 augroup END
 

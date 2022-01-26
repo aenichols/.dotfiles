@@ -98,6 +98,9 @@ Plug 'w0rp/ale'
 " Csharp ¯\_(ツ)_/¯
 "Plug 'editorconfig/editorconfig-vim'
 Plug 'gpanders/editorconfig.nvim'
+" Csharp coc.nvim START ==============================================================
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Csharp coc.nvim END ================================================================
 
 " Github CoPilot
 Plug 'github/copilot.vim'
@@ -107,9 +110,11 @@ Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 
-"let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
+lua require("xsvrooster")
+
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1

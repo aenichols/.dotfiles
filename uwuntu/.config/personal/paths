@@ -19,4 +19,19 @@ export IDENTITY="$HOME/work/ConnectBoosterVNext/src/ConnectBooster.Identity"
 export AU="$HOME/work/ConnectBooster/ConnectBooster.Frontend"
 export QP="$HOME/work/QuickerPay/Source"
 
-addToPath "/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin"
+addToPathFront "/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin"
+#addToPathFront "/C/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin"
+addToPathFront "/C/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin"
+
+# OmniSharp.exe -v (find MSBuild Instance - Registered MSBuild Instances))
+# {"Event":"log","Body":{"LogLevel":"INFORMATION","Name":"OmniSharp.MSBuild.Discovery.MSBuildLocator","Message":"Located
+# 3 MSBuild instance(s)\r\n
+#
+# 1: Visual Studio Professional 2019 16.11.32106.194 16.11.2 - \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin\"\r\n
+# 2: Visual Studio Build Tools 2022 17.0.32112.339 17.0.0 - \"C:\\Program Files (x86)\\Micro soft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\"\r\n
+# 3: StandAlone 17.0.0 - \"C:\\OmniSharp\\.msbuild\\Current\\Bin\""},"Seq":14,"Type":"event"}
+#
+#
+# {"Event":"log","Body":{"LogLevel":"DEBUG","Name":"OmniSharp.CompositionHostBuilder","Message":"MSBuild
+#     instance Visual Studio Professional 2019 16.11.32106.194 16.11.2 scored
+#     at 2"},"Seq":15,"Type":"event"}

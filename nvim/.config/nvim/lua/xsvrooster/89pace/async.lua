@@ -1,7 +1,7 @@
 local M = {}
 local co = coroutine
 
--- local a = require("theprimeagen.xsvrooster.89pace.async")
+-- local a = require("xsvrooster.89pace.async")
 --  -- thunkify pacer run
 --  local pr = a.wrap(function ()
 --    if vim.g.loaded_airline ~= 1 then

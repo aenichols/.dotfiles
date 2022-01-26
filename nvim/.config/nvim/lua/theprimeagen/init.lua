@@ -1,6 +1,3 @@
-require("theprimeagen.xsvrooster.telescope")
-local eightyninepace = require("theprimeagen.xsvrooster.89pace.prog")
-
 require("theprimeagen.telescope")
 require("theprimeagen.debugger")
 require("theprimeagen.harpoon")
@@ -19,7 +16,3 @@ if pcall(require, 'plenary') then
     return require(name)
   end
 end
-
-eightyninepace.setup()
-
-require("Comment").setup()

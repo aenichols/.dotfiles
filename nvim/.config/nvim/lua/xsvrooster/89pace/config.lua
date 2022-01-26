@@ -24,7 +24,7 @@ S.status = ""
 M.session = S
 
 M.setup_commands = function ()
- local ns = 'require("theprimeagen/xsvrooster/89pace/pacer")'
+ local ns = 'require("xsvrooster/89pace/pacer")'
  vim.cmd('command! Pacer lua ' .. ns .. '.run()')
  vim.cmd('command! PacerA lua ' .. ns .. '.runal()')
  vim.cmd('command! PacerStop lua ' .. ns .. '.stop()')
