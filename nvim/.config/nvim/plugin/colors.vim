@@ -54,6 +54,7 @@ nnoremap <leader>cmb :let g:theprimeagen_colorscheme =
 " Colorize line numbers in insert and visual modes
 " ------------------------------------------------
 function! SetVisualList()
+    let g:set_visual_list = v:true
     set updatetime=0
     " Set list
     set list
@@ -62,8 +63,10 @@ function! SetVisualList()
 endfunction
 
 function! ResetVisualList()
-    set updatetime=4000
-    set nolist
+    if exists('g:set_visual_list')
+        set updatetime=4000
+        set nolist
+    endif
 endfunction
 
 vnoremap <silent> <expr> <SID>SetVisualList SetVisualList()
@@ -74,9 +77,9 @@ nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualList
 augroup CursorLineNrColorSwap
     autocmd!
     " Reset list when leaving insert mode from visual block mode
-    autocmd InsertEnter *.* call ResetVisualList()
+    autocmd InsertEnter * call ResetVisualList()
     " Reset list when idle in normal mode
     " This wiil cause the start screen to disappear
-    autocmd CursorHold *.* call ResetVisualList()
+    autocmd CursorHold * call ResetVisualList()
 augroup END
 

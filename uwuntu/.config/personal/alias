@@ -41,3 +41,6 @@ alias obsidian="$HOME/AppData/Local/Obsidian/Obsidian.exe"
 
 # mock cli ¯\_(ツ)_/¯ works
 alias identity="$HOME/work/my_cli/identity/myidentity"
+
+# environment aliases
+alias listEnv="listEnv"

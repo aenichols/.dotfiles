@@ -63,3 +63,27 @@ setAnimoos() {
   python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos $HOME/.dotfiles-windows/rooster/main_animoos
   popd
 }
+
+gitBranchClean() {
+    git fetch --prune origin
+    git branch -l 'AN/*' | sed 's/\*//g' | sed 's/\//\\\\\\\\\//g' | xargs | sed 's/ /|/g' | xargs -I@@ bash -c 'git branch -rl "origin/AN/*" | sed -E -e "/@@$/d"' | sed 's/origin\///g' | xargs -I{} echo 'git push origin --delete {}'
+    read -n1 -s -r -p $'Are you sure you wish to delete these remote branches...[N]y\n' key
+    if [[ $key == 'y'  ]] || [[ $key == 'Y' ]]; then
+        git branch -l 'AN/*' | sed 's/\*//g' | sed 's/\//\\\\\\\\\//g' | xargs | sed 's/ /|/g' | xargs -I@@ bash -c 'git branch -rl "origin/AN/*" | sed -E -e "/@@$/d"' | sed 's/origin\///g' | xargs -I{} git push origin --delete {}
+    else
+        echo Finished without deleting.
+    fi
+}
+
+listEnv() {
+    echo addToPath
+    echo addToPathFront
+    echo commitDotFiles
+    echo die
+    echo gitBranchClean
+    echo increaseWatchers
+    echo man
+    echo setAnimoos
+    echo setFavAnimoos
+    echo startMongo
+}
