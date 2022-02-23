@@ -38,7 +38,10 @@ fun! ColorMyPencils()
     highlight LineNr guifg=#5eacd3
     highlight netrwDir guifg=#5eacd3
     highlight qfFileName guifg=#aed75f
-    hi TelescopeBorder guifg=#5eacd
+    highlight TelescopeBorder guifg=#5eacd
+
+    " Coc-Omnisharp
+    highlight CocHintHighlight guibg=none
 endfun:
 
 call ColorMyPencils()

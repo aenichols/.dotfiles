@@ -19,11 +19,8 @@ end
 
 -- Build status line- 89pace> <activityType.name:color> <tfsId> <tfsDescription?> Tracking: <hh.mm.ss:red or green> <stopped-icon or check>
 M.build_status = function()
-
     -- alter stop sign
     local stop_sign = ""
-
-
     -- 89pace> <activityType.name:color> <tfsId> <tfsDescription?> Tracking: <hh.mm.ss:red or green> <stopped-icon or check>
     S.status = "89pace  " .. S.activity_name .. " " .. S.tfs_id .. " Tracking: "
     -- Is not tracking
@@ -40,6 +37,7 @@ M.build_status = function()
 end
 
 M.get_activities = function ()
+    print(vim.inspect(S.activity_types))
     for i, activity in ipairs(S.activity_types) do
         print(i, activity.name)
     end
@@ -63,17 +61,15 @@ M.update_status_line = function()
     false
     )
     vim.call("airline#parts#define_function", "89pace", "Get89PaceStatus")
-
     -- conditions should be- current viewport, width > 175
     vim.call("airline#parts#define_minwidth", "89pace", "175")
     -- FIXME: conditions should be- current viewport only - HOW?
     --vim.call("airline#parts#define_condition", "89pace", "nvim_buf_get_name(0) == expand('%')")
-
+    --
     -- save default section x
     if vim.g.airline_section_x ~= nil and default_section_x == nil then
         default_section_x = vim.g.airline_section_x
     end
-
     -- FIXME: should be a better way- show me da way
     -- create section
     if default_section_x ~= nil then

@@ -76,13 +76,15 @@ end
 
 actions.search_curl_requests = function()
  local curl_files = "~/work/cURL/"
+ local out_file = vim.fn.expand(curl_files .. ".out.sh"):gsub("\\", "/")
 
  local function send_request(prompt_bufnr)
     local selection = action_state.get_selected_entry()
+    local selection_fpath = vim.fn.expand(curl_files .. selection.value):gsub("\\", "/")
 
     require('telescope.actions').close(prompt_bufnr)
 
-    vim.api.nvim_command('!sh ' .. curl_files .. selection.value .. ' >> ' .. curl_files .. '.out.sh 2>>&1')
+    vim.api.nvim_command('!sh ' .. selection_fpath .. ' >> ' .. out_file .. ' 2>>&1')
  end
 
  require('telescope.builtin').find_files({

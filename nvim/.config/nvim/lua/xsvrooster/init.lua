@@ -8,3 +8,6 @@ eightyninepace.setup()
 
 -- Comment
 require("Comment").setup()
+
+-- TrueZen
+require("xsvrooster.truezen")

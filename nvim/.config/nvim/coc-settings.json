@@ -1,5 +1,7 @@
 {
     "diagnostic.virtualText": true,
+    "diagnostic.virtualTextLevel": "warning",
+    "diagnostic.signLevel": "hint",
     "diagnostic.hintSign": "H",
     "diagnostic.infoSign": "I",
     "diagnostic.warningSign": "W",

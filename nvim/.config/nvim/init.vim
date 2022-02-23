@@ -55,6 +55,7 @@ Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'gruvbox-community/gruvbox'
+Plug 'luisiacc/gruvbox-baby'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'
 
@@ -80,13 +81,14 @@ Plug 'sbdchd/neoformat'
 Plug 'ThePrimeagen/harpoon'
 Plug 'theprimeagen/vim-be-good'
 Plug 'theprimeagen/refactoring.nvim'
+Plug 'theprimeagen/jvim.nvim'
 
 " should I try another status bar???
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Zen Mode
-Plug 'junegunn/goyo.vim'
+Plug 'folke/zen-mode.nvim'
 
 " Zen Bones
 Plug 'rktjmp/lush.nvim'
@@ -177,7 +179,7 @@ xnoremap <leader>p "_dP
 " next greatest remap ever : asbjornHaland
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
+nmap <leader>Y "+Y
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
@@ -216,7 +218,7 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
-    autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc,cs Neoformat
+    autocmd BufWritePre *.lua Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritePre * %s/$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}

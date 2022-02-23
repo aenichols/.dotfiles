@@ -37,7 +37,8 @@ end
 
 function M.random()
     local colors = {
-        'gruvbox',
+        --'gruvbox',
+        'gruvbox-baby',
         'tokyodark',
         -- random bones
         'zenwritten',
