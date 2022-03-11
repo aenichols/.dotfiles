@@ -51,7 +51,6 @@ Plug 'darrikonn/vim-gofmt'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
-Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'gruvbox-community/gruvbox'
@@ -82,6 +81,7 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'theprimeagen/vim-be-good'
 Plug 'theprimeagen/refactoring.nvim'
 Plug 'theprimeagen/jvim.nvim'
+Plug 'theprimeagen/nvim-treesitter-context'
 
 " should I try another status bar???
 Plug 'vim-airline/vim-airline'
@@ -101,7 +101,8 @@ Plug 'w0rp/ale'
 "Plug 'editorconfig/editorconfig-vim'
 Plug 'gpanders/editorconfig.nvim'
 " Csharp coc.nvim START ==============================================================
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Built in lsp or should I say omnisharp is not ready - many issues =/
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Csharp coc.nvim END ================================================================
 
 " Github CoPilot
@@ -207,7 +208,7 @@ endfun
 " ES
 com! W w
 
-nmap <leader>nn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+cmap <leader>nn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
@@ -218,7 +219,7 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
-    autocmd BufWritePre *.lua Neoformat
+    " autocmd BufWritePre *.lua Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritePre * %s/$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}

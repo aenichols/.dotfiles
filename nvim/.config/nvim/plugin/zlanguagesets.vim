@@ -5,17 +5,31 @@ set cursorcolumn
 fun! SetCSharp()
   set colorcolumn=160
 
+            " Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
+            " Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
+        "Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
+            " Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")
+            " Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+            " Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
+            " Nnoremap("<leader>vca", ":lua vim.lsp.buf.code_action()<CR>")
+            " Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
+            " Nnoremap("<leader>vrn", ":lua vim.lsp.buf.rename()<CR>")
+            " Inoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   " COC remaps
-  nnoremap <buffer> <leader>vd  :call CocAction('jumpDefinition')<CR>
-  nnoremap <buffer> <leader>vi  :call CocAction('jumpImplementation')<CR>
-  nnoremap <buffer> <leader>vsh :call CocAction('showSignatureHelp')<CR>
+  " Main
+  nnoremap <buffer> gd  :call CocAction('jumpDefinition')<CR>
+  nnoremap <buffer> K  :call CocAction('doHover')<CR>
+  nnoremap <buffer> <leader>vws :CocList<CR>
+  nnoremap <buffer> <leader>vd :call CocAction('diagnosticInfo')<CR>
+  nnoremap <buffer> [d  :call CocAction('diagnosticNext')<CR>
+  nnoremap <buffer> ]d  :call CocAction('diagnosticPrevious')<CR>
+  nnoremap <buffer> <leader>vca :CocAction<CR>
   nnoremap <buffer> <leader>vrr :call CocAction('jumpReferences')<CR>
   nnoremap <buffer> <leader>vrn :call CocAction('rename')<CR>
-  nnoremap <buffer> <leader>vh  :call CocAction('doHover')<CR>
-  nnoremap <buffer> <leader>vca :CocAction<CR>
-  nnoremap <buffer> <leader>vsd :call CocAction('diagnosticInfo')<CR>
-  nnoremap <buffer> <leader>vn  :call CocAction('diagnosticNext')<CR>
-  nnoremap <buffer> <leader>vll :CocDiagnostics<CR>
+  inoremap <buffer> <C-h> :call CocAction('showSignatureHelp')<CR>
+
+  " Custom
+  nnoremap <buffer> <leader>vi  :call CocAction('jumpImplementation')<CR>
 endfun:
 
 fun! SetTypeScript()
