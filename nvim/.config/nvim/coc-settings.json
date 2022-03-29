@@ -1,4 +1,5 @@
 {
+    "omnisharp.version": "v1.38.1",
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextLevel": "warning",
     "diagnostic.signLevel": "hint",
