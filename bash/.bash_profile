@@ -16,8 +16,8 @@ alias la="ls -la"
 alias ls="ls -F --color=auto --show-control-chars"
 
 # mock cli ¯\_(ツ)_/¯ works
-alias identity="$HOME/work/my_cli/identity/myidentity"
-alias qp="$HOME/work/my_cli/quickerpay/myquickerpay"
+alias identity="$HOME/work/mycli/identity/myidentity"
+alias qp="$HOME/work/mycli/quickerpay/myquickerpay"
 
 # startup
 alias startw="$HOME/.dotfiles-windows/rooster/sw"
