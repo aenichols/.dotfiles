@@ -36,6 +36,9 @@ set colorcolumn=80
 "#ROOSTER                                                                     #
 "##############################################################################
 
+"global status line
+set laststatus=3
+
 set mouse=a
 
 "View hidden characters

@@ -8,12 +8,15 @@ local M = {}
 M.setup = function()
   -- commands
   C.setup_commands()
-  -- initial run
-  pacer.run()
+
   -- airline
   if C.airline_enabled ~= true then
     return
   end
+
+  -- initial run
+  pacer.run()
+
   -- Create a timer handle (implementation detail: uv_timer_t).
   local timer = vim.loop.new_timer()
   -- Waits 3000ms, then repeats every defern(ms) until timer:close().
