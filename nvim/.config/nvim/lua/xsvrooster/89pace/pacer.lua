@@ -191,6 +191,7 @@ end
 -- Send current week for approval
 local function lweek_approval(date)
     -- Jeanette Haugen
+    -- FIXME: should not be hardcoded
     -- {
     --     "uniqueName": "jeanette.h@bngholdingsinc.com",
     --     "displayName": null,
@@ -200,22 +201,33 @@ local function lweek_approval(date)
     --     "name": "Jeanette Haugen",
     --     "id": "1dd838bf-5ae3-4f6d-beee-6217446f7d75"
     -- }
+    -- json request body object
+    local request = {
+        weekStart = date,
+        assignedManagerId = "1dd838bf-5ae3-4f6d-beee-6217446f7d75",
+    }
     -- request options
     local opts = {
         method = "post",
         url = C.your_api_root .. "/rest/timeApproval/week?" .. C.your_api_param_stable,
-        body = {
-            weekStart = date,
-            assignedManagerId = "1dd838bf-5ae3-4f6d-beee-6217446f7d75",
-        },
+        body = vim.fn.json_encode(request),
         headers = {
+            Content_Type = "application/json",
+            Accept = "application/json",
             Authorization = "Bearer " .. C.your_api_token,
         },
         dry_run = false,
     }
     -- call
-    local res = C.curl[opts.method](opts)
-    print("[ 89pace ] Approve week request sent." .. C.dump(res))
+    local response = C.curl[opts.method](opts)
+    local result = vim.fn.json_decode(response.body)
+    -- check response
+    if result ~= nil and result.data == true then
+        print("[ 89pace ] Approve week request sent. [SUCCEEDED]\n")
+    else
+        print("[ 89pace ] Approve week request sent. [FAILED]\n" .. C.dump(response))
+        print("[ 89pace ] Approve week request sent. Options:\n" .. C.dump(opts))
+    end
 end
 
 M.approve_week = function()

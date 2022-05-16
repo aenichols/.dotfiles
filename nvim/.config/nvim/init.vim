@@ -27,8 +27,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-copilot'
 Plug 'onsails/lspkind-nvim'
+" Plug 'github/copilot.vim'
+" Plug 'hrsh7th/cmp-copilot'
 
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -36,6 +37,7 @@ Plug 'simrat39/symbols-outline.nvim'
 " Neovim Tree shitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'romr/nvim-treesitter-context'
 
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
@@ -102,11 +104,8 @@ Plug 'w0rp/ale'
 Plug 'gpanders/editorconfig.nvim'
 " Csharp coc.nvim START ==============================================================
 " Built in lsp or should I say omnisharp is not ready - many issues =/
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Csharp coc.nvim END ================================================================
-
-" Github CoPilot
-Plug 'github/copilot.vim'
 
 " Commenter
 Plug 'numToStr/Comment.nvim'

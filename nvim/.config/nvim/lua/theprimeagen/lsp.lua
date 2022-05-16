@@ -18,9 +18,6 @@ local source_mapping = {
     copilot = "[CP]",
 }
 local lspkind = require("lspkind")
--- require("lspkind").init({
---     mode = 'symbol_text',
--- })
 
 cmp.setup({
     snippet = {
@@ -54,10 +51,10 @@ cmp.setup({
         { name = "path" },
         { name = "copilot" },
     },
-    experimental = {
-        native_menu = false,
-        ghost_text = true,
-    },
+    -- experimental = {
+    --     native_menu = false,
+    --     ghost_text = true,
+    -- },
 })
 
 local function config(_config)
@@ -65,6 +62,7 @@ local function config(_config)
         capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = function()
             Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
+            Nnoremap("gi", ":lua vim.lsp.buf.implementation()<CR>")
             Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
             Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
             Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")

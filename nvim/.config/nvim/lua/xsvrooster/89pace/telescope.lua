@@ -14,6 +14,10 @@ local function get_activity_table()
     return list
 end
 
+local function handle_activity_selection()
+    vim.api.
+end
+
 M.activities  = function()
     require("telescope.pickers").new({}, {
         prompt_title = "Picante Activities",
@@ -32,7 +36,7 @@ end
 return M
 
         -- attach_mappings = function(_, map)
-        --     actions.select_default:replace(actions.git_checkout)
+        --   require  actions.select_default:replace(actions.git_checkout)
         --     map("i", "<c-t>", actions.git_track_branch)
         --     map("n", "<c-t>", actions.git_track_branch)
         --

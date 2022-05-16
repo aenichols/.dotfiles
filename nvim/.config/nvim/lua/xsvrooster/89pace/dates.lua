@@ -20,14 +20,14 @@ end
 M.get_last_week_start_date = function()
    local date = os.date("*t", os.time())
    date.day = date.day - (date.wday - 1) + 1 - 7
-   local new_date = os.date("%y-%m-%d", os.time(date))
+   local new_date = os.date("%Y-%m-%d", os.time(date))
    return new_date
 end
 
 M.get_week_start_date = function()
    local date = os.date("*t", os.time())
    date.day = date.day - (date.wday - 1) + 1
-   local new_date = os.date("%y-%m-%d", os.time(date))
+   local new_date = os.date("%Y-%m-%d", os.time(date))
    return new_date
 end
 
