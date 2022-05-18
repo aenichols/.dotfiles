@@ -25,11 +25,11 @@ Plug 'ambv/black'
 " Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
+" Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
-" Plug 'github/copilot.vim'
-" Plug 'hrsh7th/cmp-copilot'
+Plug 'github/copilot.vim'
+Plug 'hrsh7th/cmp-copilot'
 
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -60,7 +60,7 @@ Plug 'luisiacc/gruvbox-baby'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'
 
-" telescope requirements...
+" Telescope requirements...
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -100,11 +100,11 @@ Plug 'mcchrish/zenbones.nvim'
 Plug 'w0rp/ale'
 
 " Csharp ¯\_(ツ)_/¯
-"Plug 'editorconfig/editorconfig-vim'
+" Plug 'editorconfig/editorconfig-vim'
 Plug 'gpanders/editorconfig.nvim'
 " Csharp coc.nvim START ==============================================================
 " Built in lsp or should I say omnisharp is not ready - many issues =/
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Csharp coc.nvim END ================================================================
 
 " Commenter

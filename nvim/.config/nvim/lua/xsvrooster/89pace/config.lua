@@ -1,13 +1,13 @@
 local M = {}
 
-M.curl = require("plenary.curl")
-M.log = require("plenary.log").new({ plugin = "89pace.nvim", level = "debug" })
+M.curl = require('plenary.curl')
+M.log = require('plenary.log').new({ plugin = '89pace.nvim', level = 'debug' })
 
 -- FIXME: this is bad ¯\_(ツ)_/¯ will move to local config file and revoke after initial dev
-M.your_api_root = "https://connectbooster.timehub.7pace.com/api"
-M.your_api_param_legacy = "api-version=2.1"
-M.your_api_param_stable = "api-version=3.1"
-M.your_api_token = "tOGlkFZkff9CbbtabwEJM3YSxJsIuaQ31RLeJMeZF9k"
+M.your_api_root = 'https://connectbooster.timehub.7pace.com/api'
+M.your_api_param_legacy = 'api-version=2.1'
+M.your_api_param_stable = 'api-version=3.1'
+M.your_api_token = 'tOGlkFZkff9CbbtabwEJM3YSxJsIuaQ31RLeJMeZF9k'
 
 -- 0qVE-p_DBJ_R-kSZbXk7Y4wksNwIgSstkbs8S03gSKE
 -- tOGlkFZkff9CbbtabwEJM3YSxJsIuaQ31RLeJMeZF9k
@@ -25,22 +25,53 @@ S.activity_name = nil
 S.activity_color = nil
 S.activity_default = nil
 S.activity_types = nil
-S.status = ""
+S.status = ''
 
 M.session = S
 
+local ns = "require('xsvrooster/89pace/pacer')"
+local ts = "require('xsvrooster/89pace/telescope')"
+
+local function pacer_completion()
+    return {
+        'Start',
+        'Stop',
+        'List',
+        'ApproveWeek',
+        'ApproveLastWeek',
+    }
+end
+
+local function pacer_complete(opts)
+    if opts == nil then
+        return
+    end
+
+    if opts.args == nil or opts.args == '' then
+        -- 89pace depracated for telescope flow
+        --noremap <leader>eps :lua require('xsvrooster.89pace.pacer').start({ tfsId = , activity_idx =  })
+        vim.cmd('lua ' .. ts .. '.activities()')
+    elseif opts.args == 'Start' then
+        vim.cmd('lua ' .. ns .. '.start()')
+    elseif opts.args == 'Stop' then
+        vim.cmd('lua ' .. ns .. '.stop()')
+    elseif opts.args == 'List' then
+        vim.cmd('lua ' .. ns .. '.get_activities()')
+    elseif opts.args == 'ApproveWeek' then
+        vim.cmd('lua ' .. ns .. '.approve_week()')
+    elseif opts.args == 'ApproveLastWeek' then
+        vim.cmd('lua ' .. ns .. '.approve_lastweek()')
+    else
+        print('Pacer command [ ' .. opts.args ..' ] not supported')
+    end
+end
+
 M.setup_commands = function ()
- local ns = 'require("xsvrooster/89pace/pacer")'
- local ts = 'require("xsvrooster/89pace/telescope")'
- vim.cmd('command! Pacer lua ' .. ns .. '.run()')
- vim.cmd('command! PacerA lua ' .. ns .. '.runal()')
- vim.cmd('command! PacerStop lua ' .. ns .. '.stop()')
- vim.cmd('command! PacerStart lua ' .. ns .. '.start()')
- vim.cmd('command! PacerStatus lua ' .. ns .. '.update_status_line()')
- vim.cmd('command! PacerActivities lua ' .. ns .. '.get_activities()')
- vim.cmd('command! PacerTSActivities lua ' .. ts .. '.activities()')
- vim.cmd('command! PacerSendWeekForApproval lua ' .. ns .. '.approve_week()')
- vim.cmd('command! PacerSendLastWeekForApproval lua ' .. ns .. '.approve_lastweek()')
+    vim.api.nvim_create_user_command('Pacer', pacer_complete, {
+        nargs = '?',
+        desc = 'pacer, but I barely know her',
+        complete = pacer_completion
+    })
 end
 
 M.dump = function (o)

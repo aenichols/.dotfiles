@@ -1,3 +1,4 @@
+local P = require("xsvrooster.89pace.pacer")
 local C = require("xsvrooster.89pace.config")
 local S = C.session
 
@@ -14,45 +15,46 @@ local function get_activity_table()
     return list
 end
 
-local function handle_activity_selection()
-    vim.api.
+local function handle_activity_selection(selection)
+    if  selection == nil then
+        return
+    end
+    vim.ui.input("Selected [" .. selection .. "], Please enter a work item id: ", function(value)
+        if value == nil then
+            return
+        end
+        -- parse out idx # activity_desc
+        local idx, _ = string.match(selection, "(%d+)%s+(.+)")
+        -- convert to number
+        idx = tonumber(idx)
+        -- start pacer by selection
+        P.start({ tfsId = value, activity_idx = idx })
+    end)
 end
 
-M.activities  = function()
+local function on_selection(prompt_bufnr)
+    local content = require("telescope.actions.state").get_selected_entry(
+        prompt_bufnr
+    )
+    require("telescope.actions").close(prompt_bufnr)
+    handle_activity_selection(content.value)
+end
+
+M.activities = function()
+    local opts = require("telescope.themes").get_cursor()
+
     require("telescope.pickers").new({}, {
         prompt_title = "Picante Activities",
         finder = require("telescope.finders").new_table({
             results = get_activity_table(),
         }),
-        sorter = require("telescope.config").values.generic_sorter({}),
+        sorter = require("telescope.config").values.generic_sorter(opts),
         attach_mappings = function(_, map)
-            map("i", "<CR>", print("HALLO Picante Activities"))
-            map("n", "<CR>", print("HALLO Picante Activities"))
+            map("i", "<CR>", on_selection)
+            map("n", "<CR>", on_selection)
             return true
         end,
     }):find()
 end
 
 return M
-
-        -- attach_mappings = function(_, map)
-        --   require  actions.select_default:replace(actions.git_checkout)
-        --     map("i", "<c-t>", actions.git_track_branch)
-        --     map("n", "<c-t>", actions.git_track_branch)
-        --
-        --     map("i", "<c-r>", actions.git_rebase_branch)
-        --     map("n", "<c-r>", actions.git_rebase_branch)
-        --
-        --     map("i", "<c-a>", actions.git_create_branch)
-        --     map("n", "<c-a>", actions.git_create_branch)
-        --
-        --     map("i", "<c-s>", actions.git_switch_branch)
-        --     map("n", "<c-s>", actions.git_switch_branch)
-        --
-        --     map("i", "<c-d>", actions.git_delete_branch)
-        --     map("n", "<c-d>", actions.git_delete_branch)
-        --
-        --     map("i", "<c-y>", actions.git_merge_branch)
-        --     map("n", "<c-y>", actions.git_merge_branch)
-        --     return true
-        -- end,

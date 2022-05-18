@@ -22,19 +22,8 @@ let g:ale_virtualtext_cursor = 1
 " Editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'netrw://.*']
 
-" Goyo
-" let g:goyo_width = '75%'
-"
-" autocmd! User GoyoEnter nested call ThePrimeagenTurnOffGuides()
-" autocmd! User GoyoLeave nested call ThePrimeagenTurnOnGuides()
-"
-" nnoremap <leader>az :Goyo<cr>
-
 " TrueZen
  nnoremap <leader>az :ZenMode<cr>
-
-" 89pace
-nnoremap <leader>eps :lua require("xsvrooster.89pace.pacer").start({ tfsId = , activity_idx =  })
 
 " Copilot copilot.vim/autoload/copilot.vim ln 154 s:filetype_defaults
 " 'TelescopePrompt': 0

@@ -5,9 +5,6 @@ local function on_cwd()
     return vim.loop.cwd()
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
@@ -21,15 +18,18 @@ local lspkind = require("lspkind")
 
 cmp.setup({
     snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
     },
-    mapping = {
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-d>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -44,22 +44,28 @@ cmp.setup({
             return vim_item
         end
     },
-    sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
-        { name = "copilot" },
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "path" },
+      { name = "copilot" },
+    }, {
+      { name = 'buffer' },
+    }),
+    experimental = {
+        native_menu = false,
+        ghost_text = true,
     },
-    -- experimental = {
-    --     native_menu = false,
-    --     ghost_text = true,
-    -- },
-})
+  })
+
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
-        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        capabilities = capabilities,
         on_attach = function()
             Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
             Nnoremap("gi", ":lua vim.lsp.buf.implementation()<CR>")
@@ -165,7 +171,7 @@ local opts = {
     show_guides = true,
 }
 
-require("symbols-outline").setup(opts)
+--require("symbols-outline").setup(opts)
 
 local snippets_paths = function()
     local plugins = { "friendly-snippets" }
@@ -181,11 +187,11 @@ local snippets_paths = function()
     return paths
 end
 
-require("luasnip.loaders.from_vscode").lazy_load({
-    paths = snippets_paths(),
-    include = nil,  -- Load all languages
-    exclude = {}
-})
+--require("luasnip.loaders.from_vscode").lazy_load({
+--    paths = snippets_paths(),
+--    include = nil,  -- Load all languages
+--    exclude = {}
+--})
 
 -- Severity limit override -- report Error, Warning, Information < Hint -- neovim.lsp.protocol.DiagnosticSeverity
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

@@ -12,11 +12,9 @@ require("telescope").setup({
         prompt_prefix = " >",
         color_devicons = true,
         keep_last_buf = true,
-
         file_previewer   = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer   = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
         mappings = {
             i = {
                 ["<C-q>"] = actions.send_to_qflist,
@@ -74,11 +72,9 @@ local function select_background(prompt_bufnr, map)
             require("telescope.actions").close(prompt_bufnr)
         end
     end
-
     map("i", "<C-p>", function()
         set_the_background()
     end)
-
     map("i", "<CR>", function()
         set_the_background(true)
     end)
@@ -92,7 +88,6 @@ local function image_selector(prompt, cwd)
 
             attach_mappings = function(prompt_bufnr, map)
                 select_background(prompt_bufnr, map)
-
                 -- Please continue mapping (attaching additional key maps):
                 -- Ctrl+n/p to move up and down the list.
                 return true

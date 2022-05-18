@@ -16,7 +16,7 @@ fun! ColorMyPencils()
         call luaeval('vim.highlight.create("visual", { ctermbg=0, guibg=white, guifg=black }, false)', [])
     else
         " TODO: What the way to use g:theprimeagen_colorscheme
-        colorscheme gruvbox
+        colorscheme gruvbox-baby
     endif
 
     if g:theprimeagen_colorscheme == "tokyodark"
