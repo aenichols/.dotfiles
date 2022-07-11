@@ -26,7 +26,4 @@ alias teams="$HOME/AppData/Local/Microsoft/Teams/current/Teams.exe"
 alias outlook="/C/Program Files/Microsoft Office/root/Office16/Outlook.exe"
 alias obsidian="$HOME/AppData/Local/Obsidian/Obsidian.exe"
 
-# TODO: move to proper location
-# terra
-# alias
 source $HOME/.secrets

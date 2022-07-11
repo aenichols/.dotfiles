@@ -12,7 +12,7 @@ fun! SetCSharp()
   nnoremap <buffer> <leader>vd  :call CocAction('diagnosticInfo')<CR>
   nnoremap <buffer> [d          :call CocAction('diagnosticNext')<CR>
   nnoremap <buffer> ]d          :call CocAction('diagnosticPrevious')<CR>
-  nnoremap <buffer> <leader>vca :CocAction<CR>
+  nnoremap <buffer> <leader>vca <Plug>(coc-codeaction-line)
   nnoremap <buffer> <leader>vrr :call CocAction('jumpReferences')<CR>
   nnoremap <buffer> <leader>vrn :call CocAction('rename')<CR>
   inoremap <buffer> <C-h>       :call CocAction('showSignatureHelp')<CR>
@@ -47,3 +47,16 @@ augroup SetLanguage
     au BufEnter *.css,*.html    call SetHTML()
     au BufEnter *.ts            call SetTypeScript()
 augroup END
+
+let g:my_coc_file_types = [ 'cs' ]
+
+function! s:disable_coc_for_type()
+	if index(g:my_coc_file_types, &filetype) == -1
+	        let b:coc_enabled = 0
+	endif
+endfunction
+
+augroup CocGroup
+	autocmd!
+	autocmd BufNew,BufEnter * call s:disable_coc_for_type()
+augroup end

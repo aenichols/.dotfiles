@@ -2,6 +2,10 @@ local utils = require('telescope.utils')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 
+local function transform_path_sep(path)
+    return path:gsub("\\", "/")
+end
+
 actions.git_fetch_branch_tolocal = function(prompt_bufnr)
   local cwd = action_state.get_current_picker(prompt_bufnr).cwd
   local selection = action_state.get_selected_entry()
@@ -54,13 +58,13 @@ actions.git_local_branches = function()
 end
 
 actions.search_private_proxy = function()
- local cwd = vim.loop.cwd()
+ local cwd = vim.env.AU
 
  local function send_harpoon(prompt_bufnr)
     local selection = action_state.get_selected_entry()
 
     require('telescope.actions').close(prompt_bufnr)
-    require('harpoon.term').sendCommand(1, 'ng s --proxy-config ./.private_proxies/' .. selection.value:gsub("\\", "/"))
+    require('harpoon.term').sendCommand(1, 'ng s --proxy-config ./.private_proxies/' .. transform_path_sep(selection.value))
  end
 
  require('telescope.builtin').find_files({
@@ -76,11 +80,11 @@ end
 
 actions.search_curl_requests = function()
  local curl_files = "~/work/cURL/"
- local out_file = vim.fn.expand(curl_files .. ".out.sh"):gsub("\\", "/")
+ local out_file = transform_path_sep(vim.fn.expand(curl_files .. ".out.sh"))
 
  local function send_request(prompt_bufnr)
     local selection = action_state.get_selected_entry()
-    local selection_fpath = vim.fn.expand(curl_files .. selection.value):gsub("\\", "/")
+    local selection_fpath = transform_path_sep(vim.fn.expand(curl_files .. selection.value))
 
     require('telescope.actions').close(prompt_bufnr)
 

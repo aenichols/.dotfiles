@@ -39,8 +39,14 @@ alias teams="$HOME/AppData/Local/Microsoft/Teams/current/Teams.exe"
 alias outlook="/C/Program Files/Microsoft Office/root/Office16/Outlook.exe"
 alias obsidian="$HOME/AppData/Local/Obsidian/Obsidian.exe"
 
-# mock cli ¯\_(ツ)_/¯ works
+# mock cli ¯\_(ツ)_/¯ works - run cli
 alias identity="$HOME/work/my_cli/identity/myidentity"
 
 # environment aliases
 alias listEnv="listEnv"
+
+# lazy git
+alias lg="lazygit"
+
+# terraform
+alias tf="terraform"

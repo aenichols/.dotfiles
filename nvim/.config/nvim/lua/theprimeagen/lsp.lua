@@ -8,11 +8,11 @@ end
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
-    nvim_lsp = "[LSP]",
     buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
     nvim_lua = "[Lua]",
-    path = "[Path]",
     copilot = "[CP]",
+    path = "[Path]",
 }
 local lspkind = require("lspkind")
 
@@ -24,11 +24,10 @@ cmp.setup({
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-d>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
     }),
     formatting = {
         format = function(entry, vim_item)
@@ -44,14 +43,13 @@ cmp.setup({
             return vim_item
         end
     },
-    sources = cmp.config.sources({
+    sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "path" },
-      { name = "copilot" },
-    }, {
       { name = 'buffer' },
-    }),
+      { name = "copilot" },
+    },
     experimental = {
         native_menu = false,
         ghost_text = true,

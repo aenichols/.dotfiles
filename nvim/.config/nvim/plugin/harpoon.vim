@@ -13,8 +13,8 @@ nnoremap <silent><C-h>7 :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <silent><C-h>8 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent><C-h>9 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><C-h>0 :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <silent><leader>ta :lua require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <silent><leader>ts :lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <silent><leader>ta :lua require("harpoon.term").gotoTerminal({ idx = 1, create_with = ":terminal bash" })<CR>
+nnoremap <silent><leader>ts :lua require("harpoon.term").gotoTerminal({ idx = 2, create_with = ":terminal bash" })<CR>
 nnoremap <silent><leader>cd :lua require("harpoon.term").sendCommand(1, 1)<CR>
 nnoremap <silent><leader>ce :lua require("harpoon.term").sendCommand(1, "eslint --fix")<CR>
 

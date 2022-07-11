@@ -238,4 +238,84 @@ M.approve_lastweek = function()
     lweek_approval(dates.get_last_week_start_date())
 end
 
+local function lget_workitems_ids()
+    -- json request body object
+    local request = {
+        query = "SELECT [System.Id] FROM workitems WHERE [System.TeamProject] = @project AND [System.AssignedTo] = 'Anthony Nichols' AND NOT [System.WorkItemType] IN ('Feature') AND NOT [System.WorkItemType] CONTAINS 'Test' AND NOT [System.State] IN ('Closed', 'Resolved') ORDER BY [System.ChangedDate] DESC",
+    }
+    -- request options
+    local opts = {
+        method = "post",
+        url = "https://connectbooster.visualstudio.com/ConnectBooster/_apis/wit/wiql?api-version=6.0",
+        body = vim.fn.json_encode(request),
+        headers = {
+            Content_Type = "application/json",
+            Accept = "application/json",
+            Authorization = "Basic OjJzbmVnc3I0eXVlbTRlbDd2amFwMm80ZWt2d3U3dmd3M3p5eXVxZGZ0Y3hhNTJlNjN0c3E="
+        },
+        dry_run = false,
+    }
+    -- call
+    local response = C.curl[opts.method](opts)
+    local result = vim.fn.json_decode(response.body)
+    -- check response
+    if result == nil then
+        print("[ 89pace ] Get devops items ids request sent. [FAILED]\n" .. C.dump(response))
+        print("[ 89pace ] Get devops items ids request sent. Options:\n" .. C.dump(opts))
+        return
+    end
+    local workitem_ids = {}
+    -- get comma delimited list of work item ids
+    -- check response
+    for _, workitem in ipairs(result.workItems) do
+        table.insert(workitem_ids, workitem.id)
+    end
+    return workitem_ids
+end
+
+local function lget_workitems_actual(workitem_ids)
+    -- json request body object
+    local request = {
+        ids = workitem_ids,
+        fields = {
+            "System.Id",
+            "System.Title"
+        }
+    }
+    -- request options
+    local opts = {
+        method = "post",
+        url = "https://connectbooster.visualstudio.com/ConnectBooster/_apis/wit/workitemsbatch?api-version=6.0",
+        body = vim.fn.json_encode(request),
+        headers = {
+            Content_Type = "application/json",
+            Accept = "application/json",
+            Authorization = "Basic OjJzbmVnc3I0eXVlbTRlbDd2amFwMm80ZWt2d3U3dmd3M3p5eXVxZGZ0Y3hhNTJlNjN0c3E="
+        },
+        dry_run = false,
+    }
+    -- call
+    local response = C.curl[opts.method](opts)
+    local result = vim.fn.json_decode(response.body)
+    -- check response
+    if result == nil then
+        print("[ 89pace ] Get devops items actual request sent. [FAILED]\n" .. C.dump(response))
+        print("[ 89pace ] Get devops items actual request sent. Options:\n" .. C.dump(opts))
+        return
+    end
+    -- parse actuals
+    local actuals = {}
+    for _, workitem in ipairs(result.value) do
+        table.insert(actuals, workitem.fields)
+    end
+    return actuals
+end
+
+
+M.get_devops_items = function()
+    local workitem_ids = lget_workitems_ids()
+    local actuals = lget_workitems_actual(workitem_ids)
+    return actuals
+end
+
 return M

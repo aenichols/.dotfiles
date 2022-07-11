@@ -31,7 +31,10 @@ function M.random()
         'space-vim-dark',
         'spacemacs-theme',
     }
-    local color = colors[math.random(#colors)]
+    math.randomseed(os.time())
+    local cn = #colors
+    local rn = math.random() and math.random() and math.random() and math.random(cn)
+    local color = colors[rn]
     vim.g['theprimeagen_colorscheme'] = color
 end
 

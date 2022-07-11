@@ -39,6 +39,8 @@ local function pacer_completion()
         'List',
         'ApproveWeek',
         'ApproveLastWeek',
+        'Refresh',
+        'Test',
     }
 end
 
@@ -61,6 +63,10 @@ local function pacer_complete(opts)
         vim.cmd('lua ' .. ns .. '.approve_week()')
     elseif opts.args == 'ApproveLastWeek' then
         vim.cmd('lua ' .. ns .. '.approve_lastweek()')
+    elseif opts.args == 'Refresh' then
+        vim.cmd('lua ' .. ns .. '.run()')
+    elseif opts.args == 'Test' then
+        vim.cmd('lua ' .. ns .. '.get_devops_items()')
     else
         print('Pacer command [ ' .. opts.args ..' ] not supported')
     end
