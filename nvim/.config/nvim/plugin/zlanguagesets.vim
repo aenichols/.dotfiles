@@ -58,5 +58,5 @@ endfunction
 
 augroup CocGroup
 	autocmd!
-	autocmd BufNew,BufEnter * call s:disable_coc_for_type()
+	autocmd BufReadPost * call s:disable_coc_for_type()
 augroup end

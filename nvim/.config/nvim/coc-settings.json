@@ -41,5 +41,5 @@
     },
     "coc.source.around.shortcut": "Buffer",
     "coc.source.buffer.shortcut": "Buffer",
-    "coc.source.file.shortcut": "Path",
+    "coc.source.file.shortcut": "Path"
 }
