@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+rm -rf $XDG_CONFIG_HOME/nvim
+if [[ -z "$1" || "$1" == "lua" ]]; then
+    python -m dploy stow ./nvim-lua-config $HOME
+else
+    python -m dploy stow ./nvim $HOME
+fi
+
