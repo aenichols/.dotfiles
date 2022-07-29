@@ -41,24 +41,3 @@ vim.opt.shortmess:append("c")
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
-
--- ############################################################################
--- #ROOSTER                                                                   #
--- ############################################################################
-
---global status line
-vim.g.laststatus = "3"
-
-vim.g.mouse = "a"
-
---View hidden characters
-vim.g.listchars = "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»"
-
---folding
-vim.g.foldmethod = "expr"
-vim.g.foldexpr = "nvim_treesitter#foldexpr()"
-vim.g.foldcolumn = 2
-vim.g.fillchars= "fold:\\ ,"
-vim.g.foldlevelstart = 20
-
---command Curl !sh  % >> .out.sh 2>>&1

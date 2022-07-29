@@ -9,12 +9,6 @@ local M = {}
 -- Language
 local language_group = augroup('LanguageGroup', {})
 
-M.setup_ft = function()
-    local ft = vim.bo.filetype
-
-end
-
-
 local fe_setup = function()
     vim.wo.colorcolumn = "160"
     vim.bo.tabstop = 2
@@ -55,19 +49,4 @@ autocmd({"BufEnter"}, {
         nnoremap("<leader>vrn", ":call CocAction('rename')<CR>", buffer)
         nnoremap("<C-h>", ":call CocAction('showSignatureHelp')<CR>", buffer)
     end,
-})
-
--- Coc
-local coc_group = augroup('COCGroup', {})
-
-local disable_coc_for_type = function()
-    if 'cs' == vim.bo.filetype then
-        vim.bo.coc_enabled = 0
-    end
-end
-
-autocmd({"BufReadPost"}, {
-    group = coc_group,
-    pattern = '*',
-    callback = disable_coc_for_type,
 })

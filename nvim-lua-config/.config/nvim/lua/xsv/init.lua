@@ -10,3 +10,9 @@ require("xsv.truezen")
 
 -- Language
 require("xsv.language")
+
+-- VisualWhitespace
+require("xsv.visual-whitespace")
+
+-- Overrides
+require("xsv.set")

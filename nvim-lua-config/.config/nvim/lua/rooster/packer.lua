@@ -48,6 +48,9 @@ return require("packer").startup(function()
     use("vim-airline/vim-airline")
     use("vim-airline/vim-airline-themes")
 
+    -- Maximizer
+    use("szw/vim-maximizer")
+
     -- Zen Mode
     use("folke/zen-mode.nvim")
 

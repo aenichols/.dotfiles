@@ -60,10 +60,10 @@ nnoremap("<leader>k", "<cmd>wincmd k<CR>")
 nnoremap("<leader>l", "<cmd>wincmd l<CR>")
 
 -- Maps Ctrl-[Arrows] to resizing a window split
-nmap("<C-M-h>", "<C-w><", { silent = true })
-nmap("<C-M-j>", "<C-W>-", { silent = true })
-nmap("<C-M-k>", "<C-W>+", { silent = true })
-nmap("<C-M-l>", "<C-w>>", { silent = true })
+nmap("<C-M-h>", "<C-w><", silent)
+nmap("<C-M-j>", "<C-W>-", silent)
+nmap("<C-M-k>", "<C-W>+", silent)
+nmap("<C-M-l>", "<C-w>>", silent)
 
 nmap("S", "ddO")
 nmap("cc", "S")
@@ -79,9 +79,7 @@ inoremap("<MiddleMouse>", "<Nop>")
 nmap("<leader>vss" ,":wincmd o<CR>:enew<CR>:G<CR>:wincmd j<CR>:wincmd v<CR>:wincmd H<CR>:wincmd l<CR>:wincmd v<CR>10<C-W>-:wincmd l<CR>:lua require(\"harpoon.term\").gotoTerminal(1)<CR>abash<CR><C-\\><C-n>:wincmd j<CR>")
 
 -- ColorMyPencils
-nnoremap("<leader>cmp", function()
-    require("xsv.colors").colorMyPencils()
-end)
+nnoremap("<leader>cmp", require("xsv.colors").colorMyPencils)
 
 -- Log Line
 nnoremap("<Leader>ee", "oSystem.Console.WriteLine($\"HALLO {System.Text.Json.JsonSerializer.Serialize()}\");<esc>hhhhi")
@@ -93,4 +91,7 @@ tnoremap("<C-f>", "<C-\\><C-n>:lua require('lspsaga.floaterm').close_float_termi
 -- Minimal
 nnoremap("<leader>ao", minimal.turn_on_guides)
 nnoremap("<leader>ae", minimal.turn_off_guides)
+
+-- Maximizer
+nnoremap("<leader>m", "<cmd>MaximizerToggle<CR>")
 
