@@ -9,20 +9,14 @@ local M = {}
 -- Functions
 M.setVisualList = function ()
     vim.g.set_visual_list = true
-    -- set list
     vim.api.nvim_command("set list")
-
-    -- move cursor to force redraw
-    vim.api.nvim_input("lh")
+    vim.cmd("redraw!")
 end
 
 M.resetVisualList = function ()
     if vim.g.set_visual_list then
-        -- reset list
         vim.api.nvim_command("set nolist")
-
-        -- move cursor to force redraw
-        vim.api.nvim_input("lh")
+        vim.cmd("redraw!")
     end
 end
 
