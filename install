@@ -8,6 +8,8 @@
 #    stow $folder
 #done
 #popd
+python -m pip install --upgrade pip
+python -m pip install dploy
 
 # source
 source $HOME/.dotfiles/bash/.bashrc

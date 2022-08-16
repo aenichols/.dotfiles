@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 alias xsc="xclip -selection clipboard"
-
-#!/usr/bin/env bash
 alias esc="$HOME/.config/sway/config"
 
 alias vim="$VIM"
