@@ -174,18 +174,19 @@ require"lspconfig".angularls.setup(config({
 --     local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
 --     return found_root
 -- end
---
--- local pid = vim.fn.getpid()
--- -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
--- local omnisharp_exe = "C:/OmniSharp/OmniSharp.exe"
+
+local pid = vim.fn.getpid()
+-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+local omnisharp_exe = "C:/OmniSharp/OmniSharp.exe"
 -- local omnisharp_exe_vscode  = vim.fn.expand(vim.env.HOME .. "/.vscode/extensions/ms-dotnettools.csharp-*/.omnisharp/*/OmniSharp.exe")
--- -- on Windows
--- -- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
--- require"lspconfig".omnisharp.setup(config({
---   root_dir = on_root,
---   cmd = { omnisharp_exe_vscode, "--languageserver" , "--hostPID", tostring(pid) },
---   ...
--- }))
+-- on Windows
+-- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
+require"lspconfig".omnisharp.setup(config({
+  handlers = { ["textDocument/definition"] = require('omnisharp_extended').handler, },
+  root_dir = on_cwd,
+  cmd = { omnisharp_exe, "--languageserver" , "--hostPID", tostring(pid) },
+  ...
+}))
 
 --csharp_ls
 --dotnet tool install --global csharp-ls

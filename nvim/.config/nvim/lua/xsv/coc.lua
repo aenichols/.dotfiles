@@ -10,8 +10,8 @@ local disable_coc_for_type = function()
     end
 end
 
-autocmd({"FileType"}, {
-    group = coc_group,
-    pattern = '*',
-    callback = disable_coc_for_type,
-})
+-- autocmd({"FileType"}, {
+--     group = coc_group,
+--     pattern = '*',
+--     callback = disable_coc_for_type,
+-- })

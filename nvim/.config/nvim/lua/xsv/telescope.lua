@@ -28,15 +28,13 @@ actions.git_upstream = function(prompt_bufnr)
 
   local confirmation = vim.fn.input('Do you want to set the upstream to ' .. selection.value .. '? [Y/n] ')
   if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
-
   actions.close(prompt_bufnr)
   print("Setting upstream to:")
   print(selection.value)
   local _, ret, stderr = utils.get_os_command_output({ 'git', 'push', '--set-upstream', 'origin', selection.value }, cwd)
 
   if ret == 0 then
-    print("Set upstream to: ")
-    print(selection.value)
+    print("Set upstream to: " .. selection.value)
   else
     print(string.format('Error while setting the upstream: %s', selection.value, table.concat(stderr, '  ')))
     print(string.format('Git returned: "%s"', selection.value, table.concat(stderr, '  ')))

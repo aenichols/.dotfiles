@@ -67,7 +67,7 @@ return require("packer").startup(function(use)
     use("gpanders/editorconfig.nvim")
 
     -- Csharp lsp
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- use {'neoclide/coc.nvim', branch = 'release'}
 
     -- Commenter
     use("numToStr/Comment.nvim")
@@ -75,4 +75,7 @@ return require("packer").startup(function(use)
     -- Copilot
     use("github/copilot.vim")
     use("hrsh7th/cmp-copilot")
+
+    -- Extended Omnisharp Lsp
+    use("hoffs/omnisharp-extended-lsp.nvim")
 end)
