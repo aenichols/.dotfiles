@@ -86,6 +86,7 @@ nnoremap("<Leader>ee", "oSystem.Console.WriteLine($\"HALLO {System.Text.Json.Jso
 
 -- Float Terminal
 nnoremap("<C-f>", "<cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c \"$DOTFILES/bin/.local/bin/tmux-cht.sh\"')<CR>", silent)
+nnoremap("<Leader>lg", "<cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c \"lazygit\"')<CR>", silent)
 tnoremap("<C-f>", "<C-\\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>", silent)
 
 -- Minimal
