@@ -1,0 +1,7 @@
+gui:
+  theme:
+    activeBorderColor:
+      - '#00ff00'
+      - bold
+git:
+  parseEmoji: true

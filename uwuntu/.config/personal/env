@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # stow it
-export STOW_FOLDERS="bin,nvim,tmux,uwuntu,i3,zsh,xkb,bash,git"
+export STOW_FOLDERS="bin,nvim,tmux,uwuntu,i3,zsh,xkb,bash,git,ideavim,lazygit"
 
 startWork() {
     $HOME/AppData/Local/Programs/Opera/opera.exe &

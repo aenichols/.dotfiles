@@ -67,6 +67,7 @@ local function config(_config)
         capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = function()
             nnoremap("gd", function() vim.lsp.buf.definition() end)
+            nnoremap("gi", function() vim.lsp.buf.implementation() end)
             nnoremap("K", function() vim.lsp.buf.hover() end)
             nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
             nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
