@@ -23,6 +23,14 @@ return require("packer").startup(function(use)
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
 
+    -- Testing out jupyter ascending
+    use('untitled-ai/jupyter_ascending.vim')
+    use('bfredl/nvim-ipy')
+    use('hkupty/iron.nvim')
+    use('GCBallesteros/jupytext.vim')
+    use('kana/vim-textobj-user')
+    use('GCBallesteros/vim-textobj-hydrogen')
+
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/harpoon")
 

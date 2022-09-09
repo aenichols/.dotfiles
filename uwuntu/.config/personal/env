@@ -4,10 +4,10 @@
 export STOW_FOLDERS="bin,nvim,tmux,uwuntu,i3,zsh,xkb,bash,git,ideavim,lazygit"
 
 startWork() {
-    $HOME/AppData/Local/Programs/Opera/opera.exe &
-    #$HOME/AppData/Local/Microsoft/Teams/Update.exe --processStart "Teams.exe" &
-    "/C/Program Files/Microsoft Office/root/Office16/Outlook.exe" &
-    nohup $HOME/AppData/Local/Obsidian/Obsidian.exe &
+    nohup $HOME/AppData/Local/Programs/Opera/opera.exe &>/dev/null &
+    nohup "/C/Program Files (x86)/Microsoft/Teams/current/Teams.exe" &>/dev/null &
+    nohup "/C/Program Files/Microsoft Office/root/Office16/Outlook.exe" &>/dev/null &
+    nohup $HOME/AppData/Local/Obsidian/Obsidian.exe &>/dev/null &
 }
 
 startMongo() {
