@@ -85,9 +85,9 @@ nnoremap("<leader>cmp", require("xsv.colors").colorMyPencils)
 nnoremap("<Leader>ee", "oSystem.Console.WriteLine($\"HALLO {System.Text.Json.JsonSerializer.Serialize()}\");<esc>hhhhi")
 
 -- Float Terminal
-nnoremap("<C-f>", "<cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c \"$DOTFILES/bin/.local/bin/tmux-cht.sh\"')<CR>", silent)
-nnoremap("<Leader>lg", "<cmd>lua require('lspsaga.floaterm').open_float_terminal('bash -c \"lazygit\"')<CR>", silent)
-tnoremap("<C-f>", "<C-\\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>", silent)
+nnoremap("<C-f>", [[<cmd>lua require('floaterm').open({ name='ft1', command='bash -c $SCRIPTS/tmux-cht.sh'})<CR>]], { silent = true })
+nnoremap("<Leader>lg", [[<cmd>lua require('floaterm').open({ name='ft1', command='bash -c lazygit'})<CR>]], { silent = true })
+nnoremap("<Leader>ft", [[<cmd>lua require('floaterm').open({ name='ft1', command='bash'})<CR>]], { silent = true })
 
 -- Minimal
 nnoremap("<leader>ao", minimal.turn_on_guides)

@@ -15,11 +15,6 @@
 ## ccache
 #addToPathFront /usr/lib/ccache
 
-export ID="$HOME/work/Identity/src/Identity.Server"
-export AU="$HOME/work/ConnectBooster/ConnectBooster.Frontend"
-export QP="$HOME/work/QuickerPay/Source"
-export CLI="$HOME/work/mycli"
-
 addToPathFront "/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin"
 #addToPathFront "/C/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin"
 addToPathFront "/C/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin"

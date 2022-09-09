@@ -86,4 +86,7 @@ return require("packer").startup(function(use)
 
     -- Extended Omnisharp Lsp
     use("hoffs/omnisharp-extended-lsp.nvim")
+
+    -- Floating terminal
+    use("doums/floaterm.nvim")
 end)

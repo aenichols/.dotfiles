@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 alias xsc="xclip -selection clipboard"
 alias esc="$HOME/.config/sway/config"
 
@@ -30,21 +31,20 @@ alias showPath="sed 's/:/\n/g' <<< '$PATH'"
 alias la="ls -la"
 alias ls="ls -F --color=auto --show-control-chars"
 
-# startup
-alias startw="$HOME/.dotfiles-windows/rooster/sw"
-alias opera="$HOME/AppData/Local/Programs/Opera/opera.exe"
-alias teams="$HOME/AppData/Local/Microsoft/Teams/current/Teams.exe"
-alias outlook="/C/Program Files/Microsoft Office/root/Office16/Outlook.exe"
-alias obsidian="$HOME/AppData/Local/Obsidian/Obsidian.exe"
-
-# mock cli ¯\_(ツ)_/¯ works - run cli
-alias identity="$HOME/work/my_cli/identity/myidentity"
+# mock cli ¯\_(ツ)_/¯ works
+alias identity="$HOME/work/mycli/identity/myidentity"
+alias qp="$HOME/work/mycli/quickerpay/myquickerpay"
 
 # environment aliases
-alias listEnv="listEnv"
+alias le="listEnv"
 
 # lazy git
 alias lg="lazygit"
 
 # terraform
 alias tf="terraform"
+
+# screenkey
+alias sk=$SCRIPTS/screenkey.sh
+alias killSK=$SCRIPTS/kill_screenkey.sh
+
