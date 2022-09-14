@@ -6,7 +6,28 @@ fi
 
 # List directory contents
 alias ls="ls -F --color=auto --show-control-chars"
-alias sl=ls
+
+alias sl=steam-locomotive
+
+function steam-locomotive() {
+  tput setaf 3; echo ''
+  tput setaf 3; echo ''
+  tput setaf 4; echo '                      (+++++++++++)'
+  tput setaf 4; echo '                  (++++)'
+  tput setaf 4; echo '               (+++)'
+  tput setaf 4; echo '             (+++)'
+  tput setaf 4; echo '            (++)'
+  tput setaf 4; echo '            [~]'
+  tput setaf 4; echo '            | | (~)  (~)  (~)    /~~~~~~~~~~~~'
+  tput setaf 4; echo '         /~~~~~~~~~~~~~~~~~~~~~~~  [~_~_] |    * * * /~~~~~~~~~~~|'
+  tput setaf 4; echo '       [|  %___________________           | |~~~~~~~~            |'
+  tput setaf 4; echo '         \[___] ___   ___   ___\  No. 4   | |   A.T. & S.F.      |'
+  tput setaf 4; echo '      /// [___+/-+-\-/-+-\-/-+ \\_________|=|____________________|= Oops I did it again!'
+  tput setaf 4; echo '    //// @-=-@ \___/ \___/ \___/  @-==-@      @-==-@      @-==-@'
+  tput setaf 4; echo ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+  tput setaf 3; echo ''
+}
+
 alias la='ls -al'
 alias ll='ls -A' # Compact view, show hidden
 alias l='ls -a'
