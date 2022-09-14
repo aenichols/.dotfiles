@@ -11,7 +11,7 @@ alias cbp="cat $DOTFILES/bash/.bash_profile"
 alias ebp="$VIM $DOTFILES/bash/.bash_profile"
 alias etc="$VIM $DOTFILES/tmux/.tmux.conf"
 alias bp="dotFileInstall && source ~/.bashrc"
-alias enrc="pushd $DOTFILES/nvim/.config/nvim && $VIM $DOTFILES/nvim/.config/nvim/init.vim && popd"
+alias enrc="pushd $DOTFILES/nvim/.config/nvim && $VIM $DOTFILES/nvim/.config/nvim/init.lua && popd"
 alias eirc="$VIM $XDG_CONFIG_HOME/i3/i3config"
 alias cvrc="cat $DOTFILES/vimrc/.vimrc"
 alias dotFileInstall="$DOTFILES/install"
@@ -27,9 +27,6 @@ alias pnpm='rm ~/.npmrc'
 
 alias showPath="sed 's/:/\n/g' <<< '$PATH'"
 
-# ls
-alias la="ls -la"
-alias ls="ls -F --color=auto --show-control-chars"
 
 # mock cli ¯\_(ツ)_/¯ works
 alias identity="$HOME/work/mycli/identity/myidentity"

@@ -16,7 +16,7 @@ export CLI="$HOME/work/mycli"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 source $PERSONAL/env
-for i in `find -L $PERSONAL | grep ".*personal/.*"`; do
+for i in `find -L $PERSONAL -type f | grep ".*personal/.*"`; do
     source $i
 done
 

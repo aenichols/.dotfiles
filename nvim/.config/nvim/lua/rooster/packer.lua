@@ -89,4 +89,13 @@ return require("packer").startup(function(use)
 
     -- Floating terminal
     use("doums/floaterm.nvim")
+
+    -- Dashboard
+    use("kyazdani42/nvim-web-devicons")
+    use({
+        'goolord/alpha-nvim',
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.theta'.config)
+        end
+    })
 end)
