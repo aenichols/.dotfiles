@@ -18,8 +18,8 @@ nnoremap("<C-h>9", function() require("harpoon.ui").nav_file(3) end, silent)
 nnoremap("<C-h>0", function() require("harpoon.ui").nav_file(4) end, silent)
 
 -- Terminal
-nnoremap("<leader>ta", function() require("harpoon.term").gotoTerminal({ idx = 1, create_with = ":terminal bash" }) end, silent)
-nnoremap("<leader>ts", function() require("harpoon.term").gotoTerminal({ idx = 2, create_with = ":terminal bash" }) end, silent)
+nnoremap("<leader>ta", function() require("harpoon.term").gotoTerminal({ idx = 1 }) end, silent)
+nnoremap("<leader>ts", function() require("harpoon.term").gotoTerminal({ idx = 2 }) end, silent)
 nnoremap("<leader>cd", function() require("harpoon.term").sendCommand(1, 1) end, silent)
 nnoremap("<leader>ce", function() require("harpoon.term").sendCommand(1, "eslint --fix") end, silent)
 

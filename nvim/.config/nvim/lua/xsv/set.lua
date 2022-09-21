@@ -14,3 +14,4 @@ vim.opt.foldlevelstart = 20
 vim.opt.foldcolumn = "2"
 
 --command Curl !sh  % >> .out.sh 2>>&1
+

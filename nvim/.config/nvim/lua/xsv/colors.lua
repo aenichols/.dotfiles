@@ -5,31 +5,31 @@ function M.random()
         -- gruvy
         'gruvbox-baby',
 
-        -- zenbones
-        'zenwritten',
-        --'neobones',
-        'rosebones',
-        'forestbones',
-        --'nordbones',
-        'tokyobones',
-        'seoulbones',
-        'duckbones',
-        --'zenburned',
-        --'kanagawabones',
-
-        -- atelier
-        'atelier_lakesidedark',
-        'atelier_cavedark',
-        'atelier_dunedark',
-        'atelier_savannadark',
-        'atelier_heathdark',
-        'atelier_plateaudark',
-        'atelier_forestdark',
-        'atelier_estuarydark',
-
-        -- other
-        'space-vim-dark',
-        'spacemacs-theme',
+        -- -- zenbones
+        -- 'zenwritten',
+        -- --'neobones',
+        -- 'rosebones',
+        -- 'forestbones',
+        -- --'nordbones',
+        -- 'tokyobones',
+        -- 'seoulbones',
+        -- 'duckbones',
+        -- --'zenburned',
+        -- --'kanagawabones',
+        --
+        -- -- atelier
+        -- 'atelier_lakesidedark',
+        -- 'atelier_cavedark',
+        -- 'atelier_dunedark',
+        -- 'atelier_savannadark',
+        -- 'atelier_heathdark',
+        -- 'atelier_plateaudark',
+        -- 'atelier_forestdark',
+        -- 'atelier_estuarydark',
+        --
+        -- -- other
+        -- 'space-vim-dark',
+        -- 'spacemacs-theme',
     }
     math.randomseed(os.time())
     local cn = #colors
@@ -61,22 +61,22 @@ function M.colorMyPencils()
         bg = "none",
     })
 
-    hl("ColorColumn", {
-        ctermbg = 0,
-        bg = "#555555",
-    })
+    -- hl("ColorColumn", {
+    --     ctermbg = 0,
+    --     bg = "#555555",
+    -- })
 
     hl("CursorLineNR", {
         bg = "None"
     })
 
-    hl("Normal", {
-        bg = "none"
-    })
+    -- hl("Normal", {
+    --     bg = "none"
+    -- })
 
-    hl("LineNr", {
-        fg = "#5eacd3"
-    })
+    -- hl("LineNr", {
+    --     fg = "#5eacd3"
+    -- })
 
     hl("netrwDir", {
         fg = "#5eacd3"

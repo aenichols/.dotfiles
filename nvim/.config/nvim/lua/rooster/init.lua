@@ -5,6 +5,7 @@ require("rooster.set")
 require("rooster.packer")
 require("rooster.neogit")
 require("rooster.fugitive")
+require("rooster.fugitive")
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})

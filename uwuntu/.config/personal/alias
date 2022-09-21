@@ -16,6 +16,12 @@ alias eirc="$VIM $XDG_CONFIG_HOME/i3/i3config"
 alias cvrc="cat $DOTFILES/vimrc/.vimrc"
 alias dotFileInstall="$DOTFILES/install"
 
+function edit-dir() {
+    pushd $1 && $VIM $1 && popd
+}
+
+alias enp="edit-dir $DOTFILES/../AppData/Local/nvim-data/site/pack/packer/start"
+
 alias pjson="python -mjson.tool"
 alias killBT="rfkill block bluetooth"
 alias unKillBT="rfkill unblock bluetooth"
@@ -37,9 +43,6 @@ alias le="listEnv"
 
 # lazy git
 alias lg="lazygit"
-
-# terraform
-alias tf="terraform"
 
 # screenkey
 alias sk=$SCRIPTS/screenkey.sh

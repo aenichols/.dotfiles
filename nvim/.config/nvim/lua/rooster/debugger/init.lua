@@ -5,6 +5,8 @@ local daptext = require("nvim-dap-virtual-text")
 local remap = require("rooster.keymap")
 local nnoremap = remap.nnoremap
 
+dap.set_log_level('TRACE')
+
 daptext.setup()
 dapui.setup({
     layouts = {
@@ -38,6 +40,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 require("rooster.debugger.node");
+require("rooster.debugger.csharp");
 
 nnoremap("<Home>", function()
     dapui.toggle(1)

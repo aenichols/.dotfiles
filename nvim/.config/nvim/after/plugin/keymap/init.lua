@@ -96,3 +96,6 @@ nnoremap("<leader>ae", minimal.turn_off_guides)
 -- Maximizer
 nnoremap("<leader>m", "<cmd>MaximizerToggle<CR>")
 
+-- Terminal Escape
+tnoremap("<Esc>", "<C-\\><C-n>")
+
