@@ -26,7 +26,6 @@ autocmd({"BufWinEnter", "BufRead", "BufNewFile"}, {
     pattern = "*",
     callback = function()
         vim.opt.formatoptions:remove("o")
-        vim.opt.formatoptions:remove("r")
     end
 })
 
