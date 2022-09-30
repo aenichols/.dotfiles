@@ -16,6 +16,7 @@ require("harpoon").setup({
             term = {
                 cmds = {
                     "clear && dotnet build && dotnet run",
+                    "expect -c \"send \003;\"; clear && dotnet build && dotnet run",
                 }
             }
         },
@@ -24,6 +25,7 @@ require("harpoon").setup({
                 cmds = {
                     "clear && qp build tp",
                     "clear && qp build tp && qp start",
+                    "expect -c \"send \003;\"; clear && qp build tp && qp start",
                 }
             }
         }
