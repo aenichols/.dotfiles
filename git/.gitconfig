@@ -113,6 +113,7 @@
 	directory = C:/Users/anthony.nichols/scoop/apps/scoop/current
 	directory = C:/Users/anthony.nichols/scoop/apps/scoop
 	directory = C:/Users/anthony.nichols/scoop/apps/scoop/current
+	directory = C:/Users/anthony.nichols/work/QuickerPay
 [advice]
 	useCoreFSMonitorConfig = false
 [credential "https://bngidentityserver.scm.azurewebsites.net"]

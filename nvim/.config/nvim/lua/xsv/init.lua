@@ -1,5 +1,5 @@
 local augroup = vim.api.nvim_create_augroup
-RoosterGroup = augroup('ROOSTER', {})
+XSVGroup = augroup('XSV', {})
 local autocmd = vim.api.nvim_create_autocmd
 
 -- 89Pace
@@ -22,7 +22,7 @@ require("xsv.visual-whitespace")
 require("xsv.set")
 
 autocmd({"BufWinEnter", "BufRead", "BufNewFile"}, {
-    group = RoosterGroup,
+    group = XSVGroup,
     pattern = "*",
     callback = function()
         vim.opt.formatoptions:remove("o")

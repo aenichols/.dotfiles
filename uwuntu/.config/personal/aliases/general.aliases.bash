@@ -58,6 +58,7 @@ alias irc='${IRC_CLIENT:=irc}'
 alias rb='ruby'
 alias py='python'
 alias ipy='ipython'
+alias pyi='python -m pip install'
 
 # Pianobar can be found here: http://github.com/PromyLOPh/pianobar/
 alias piano='pianobar'
