@@ -9,9 +9,6 @@ local function on_cwd()
     return vim.loop.cwd()
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
@@ -56,27 +53,27 @@ cmp.setup({
         { name = "buffer" },
         { name = "copilot" },
     },
-    experimental = {
-        native_menu = false,
-        ghost_text = true,
-    },
+    -- experimental = {
+    --     native_menu = false,
+    --     ghost_text = true,
+    -- },
 })
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
-        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = function()
-            nnoremap("gd", function() vim.lsp.buf.definition() end)
-            nnoremap("gi", function() vim.lsp.buf.implementation() end)
-            nnoremap("K", function() vim.lsp.buf.hover() end)
+            nnoremap("gd",          function() vim.lsp.buf.definition() end)
+            nnoremap("gi",          function() vim.lsp.buf.implementation() end)
+            nnoremap("K",           function() vim.cmd("Lspsaga hover_doc") end) -- vim.lsp.buf.hover()
             nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
-            nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
-            nnoremap("[d", function() vim.diagnostic.goto_next() end)
-            nnoremap("]d", function() vim.diagnostic.goto_prev() end)
-            nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
-            nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
-            nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
-            inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+            nnoremap("<leader>vd",  function() vim.cmd("Lspsaga show_line_diagnostics") end) -- vim.diagnostic.open_float()
+            nnoremap("[d",          function() vim.cmd("Lspsaga diagnostic_jump_next") end) -- vim.diagnostic.goto_next()
+            nnoremap("]d",          function() vim.cmd("Lspsaga diagnostic_jump_prev") end) -- vim.diagnostic.goto_prev()
+            nnoremap("<leader>vca", function() vim.cmd("Lspsaga code_action") end) -- vim.lsp.buf.code_action()
+            nnoremap("<leader>vrr", function() vim.cmd("Lspsaga lsp_finder") end) -- vim.lsp.buf.references()
+            nnoremap("<leader>vrn", function() vim.cmd("Lspsaga rename") end) -- vim.lsp.buf.rename()
+            nnoremap("<leader>vpd", function() vim.cmd("Lspsaga peek_definition") end)
+            inoremap("<C-h>",       function() vim.lsp.buf.signature_help() end)
         end,
     }, _config or {})
 end

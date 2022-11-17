@@ -15,6 +15,7 @@ require("telescope").setup({
                 ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
                 ["<M-w>"] = actions.delete_buffer,
+                ["<CR>"] = actions.select_default,
             },
             n = {
                 ["<M-w>"] = actions.delete_buffer,
