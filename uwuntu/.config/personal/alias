@@ -33,7 +33,6 @@ alias pnpm='rm ~/.npmrc'
 
 alias showPath="sed 's/:/\n/g' <<< '$PATH'"
 
-
 # mock cli ¯\_(ツ)_/¯ works
 alias identity="$HOME/work/mycli/identity/myidentity"
 alias qp="$HOME/work/mycli/quickerpay/myquickerpay"

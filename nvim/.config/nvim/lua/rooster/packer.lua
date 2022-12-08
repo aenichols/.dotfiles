@@ -75,6 +75,14 @@ return require("packer").startup(function(use)
     use("numToStr/Comment.nvim")
 
     -- Copilot
+    -- use { "zbirenbaum/copilot.lua" }
+    -- use {
+    --     "zbirenbaum/copilot-cmp",
+    --     after = { "copilot.lua" },
+    --     config = function ()
+    --         require("copilot_cmp").setup()
+    --     end
+    -- }
     use("github/copilot.vim")
     use("hrsh7th/cmp-copilot")
 

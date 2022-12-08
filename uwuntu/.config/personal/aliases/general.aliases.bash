@@ -92,3 +92,7 @@ function catt() {
 		fi
 	done
 }
+
+# MSBuild.exe not sure the difference between this and dotnet msbuild
+alias msbuild='MSBuild.exe'
+
