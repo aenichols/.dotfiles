@@ -1,103 +1,70 @@
-return require("packer").startup(function(use)
-    use("wbthomason/packer.nvim")
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
-    -- Simple plugins can be specified as strings
-    --use("TimUntersberger/neogit")
-    use("tpope/vim-fugitive")
+-- Only required if you have packer configured as `opt`
+vim.cmd.packadd('packer.nvim')
 
-    -- TJ created lodash of neovim
-    use("nvim-lua/plenary.nvim")
-    use("nvim-lua/popup.nvim")
-    use("nvim-telescope/telescope.nvim")
+return require('packer').startup(function(use)
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-    -- All the things
-    use("neovim/nvim-lspconfig")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/nvim-cmp")
-    use("onsails/lspkind-nvim")
-    use("nvim-lua/lsp_extensions.nvim")
-    use("glepnir/lspsaga.nvim")
-    use("simrat39/symbols-outline.nvim")
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
-    -- Primeagen doesn"t create lodash
-    use("ThePrimeagen/harpoon")
-    use("ThePrimeagen/refactoring.nvim")
-
-    use("mbbill/undotree")
-
-    -- Colorscheme section
-    use("gruvbox-community/gruvbox")
-    use("luisiacc/gruvbox-baby")
-    use("folke/tokyonight.nvim")
-    use({"catppuccin/nvim", as = "catppuccin" })
-    use({"rose-pine/neovim", as = "rose-pine" })
-    use("flazz/vim-colorschemes")
-
-    use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate"
-    })
-
-    use("nvim-treesitter/playground")
-    use("romgrk/nvim-treesitter-context")
-
-    use("mfussenegger/nvim-dap")
-    use("rcarriga/nvim-dap-ui")
-    use("theHamsta/nvim-dap-virtual-text")
-
-    -- Airline
-    use("vim-airline/vim-airline")
-    use("vim-airline/vim-airline-themes")
-
-    -- Maximizer
-    use("szw/vim-maximizer")
-
-    -- Zen Mode
-    use("folke/zen-mode.nvim")
-
-    -- Zen Bones
-    use("rktjmp/lush.nvim")
-    use("mcchrish/zenbones.nvim")
-
-    -- Ale for stupid EsLints
-    use("w0rp/ale")
-
-    -- Csharp editorconfig
-    -- use("editorconfig/editorconfig-vim'
-    use("gpanders/editorconfig.nvim")
-
-    -- Csharp lsp
-    -- use {'neoclide/coc.nvim', branch = 'release'}
-
-    -- Commenter
-    use("numToStr/Comment.nvim")
-
-    -- Copilot
-    -- use { "zbirenbaum/copilot.lua" }
-    -- use {
-    --     "zbirenbaum/copilot-cmp",
-    --     after = { "copilot.lua" },
-    --     config = function ()
-    --         require("copilot_cmp").setup()
-    --     end
-    -- }
-    use("github/copilot.vim")
-    use("hrsh7th/cmp-copilot")
-
-    -- Extended Omnisharp Lsp
-    use("hoffs/omnisharp-extended-lsp.nvim")
-
-    -- Floating terminal
-    use("doums/floaterm.nvim")
-
-    -- Dashboard
-    use("kyazdani42/nvim-web-devicons")
     use({
-        'goolord/alpha-nvim',
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.theta'.config)
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            vim.cmd('colorscheme rose-pine')
         end
     })
+
+    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    use('nvim-treesitter/playground')
+    use('aenichols/harpoon')
+    use('mbbill/undotree')
+    use('tpope/vim-fugitive')
+
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    }
+
+    use("folke/zen-mode.nvim")
+    use("github/copilot.vim")
+
+    -- ADDITIONAL ###############################################################
+    -- Comment
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    -- Floating terminal
+    use("doums/floaterm.nvim")
+    -- Maximizer
+    use("szw/vim-maximizer")
+    -- Vim with me
+    use('theprimeagen/vim-with-me')
+
 end)

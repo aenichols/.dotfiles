@@ -31,4 +31,3 @@ require("harpoon").setup({
         }
     }
 })
-

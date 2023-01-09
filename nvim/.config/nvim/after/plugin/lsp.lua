@@ -1,235 +1,83 @@
-local Remap = require("rooster.keymap")
-local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
+local lsp = require("lsp-zero")
 
-local sumneko_root_path = vim.fn.expand(vim.env.HOME .. "/.vscode/extensions/sumneko.lua-*/server")
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+lsp.preset("recommended")
 
-local function on_cwd()
-    return vim.loop.cwd()
-end
-
--- Setup nvim-cmp.
-local cmp = require("cmp")
-local source_mapping = {
-    copilot = "[CP]",
-    nvim_lsp = "[LSP]",
-    nvim_lua = "[Lua]",
-    buffer = "[Buffer]",
-    path = "[Path]",
-}
-
--- lspkind.lua
-local lspkind = require("lspkind")
-
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            -- For `luasnip` user.
-            require("luasnip").lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-    }),
-    formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            local menu = source_mapping[entry.source.name]
-            if entry.source.name == "copilot" then
-                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                    menu = entry.completion_item.data.detail .. " " .. menu
-                end
-                vim_item.kind = ""
-            end
-            vim_item.menu = menu
-            return vim_item
-        end,
-    },
-    sources = {
-        { name = "copilot" },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
-    },
-    -- experimental = {
-    --     native_menu = false,
-    --     ghost_text = true,
-    -- },
+lsp.ensure_installed({
+  'tsserver',
+  'eslint',
+  'sumneko_lua',
+  'rust_analyzer',
+  'omnisharp',
+  'terraformls',
+  'bashls',
+  'vimls',
+  'angularls',
 })
 
-local function config(_config)
-    return vim.tbl_deep_extend("force", {
-        on_attach = function()
-            local opts = { buffer = true };
-            nnoremap("gd",          function() vim.lsp.buf.definition() end, opts)
-            nnoremap("gi",          function() vim.lsp.buf.implementation() end, opts)
-            nnoremap("K",           function() vim.cmd("Lspsaga hover_doc") end, opts) -- vim.lsp.buf.hover()
-            nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-            nnoremap("<leader>vd",  function() vim.cmd("Lspsaga show_line_diagnostics") end, opts) -- vim.diagnostic.open_float()
-            nnoremap("[d",          function() vim.cmd("Lspsaga diagnostic_jump_next") end, opts) -- vim.diagnostic.goto_next()
-            nnoremap("]d",          function() vim.cmd("Lspsaga diagnostic_jump_prev") end, opts) -- vim.diagnostic.goto_prev()
-            nnoremap("<leader>vca", function() vim.cmd("Lspsaga code_action") end, opts) -- vim.lsp.buf.code_action()
-            nnoremap("<leader>vrr", function() vim.cmd("Lspsaga lsp_finder") end, opts) -- vim.lsp.buf.references()
-            nnoremap("<leader>vrn", function() vim.cmd("Lspsaga rename") end, opts) -- vim.lsp.buf.rename()
-            nnoremap("<leader>vpd", function() vim.cmd("Lspsaga peek_definition") end, opts)
-            inoremap("<C-h>",       function() vim.lsp.buf.signature_help() end, opts)
-        end,
-    }, _config or {})
-end
-
-require("lspconfig").tsserver.setup(config())
-
---[[  I cannot seem to get this woring on new computer..
-require("lspconfig").clangd.setup(config({
-    cmd = { "clangd", "--background-index", "--log=verbose" },
-    root_dir = on_cwd,
-}))
---]]
-require("lspconfig").ccls.setup(config())
-
-require("lspconfig").jedi_language_server.setup(config())
-
-require("lspconfig").svelte.setup(config())
-
-require("lspconfig").solang.setup(config())
-
-require("lspconfig").cssls.setup(config())
-
-require("lspconfig").gopls.setup(config({
-    cmd = { "gopls", "serve" },
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}))
-
--- who even uses this?
-require("lspconfig").rust_analyzer.setup(config({
-    cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-    --[[
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
-        },
-    }
-    --]]
-}))
-
-require("lspconfig").sumneko_lua.setup(config({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+-- Fix Undefined global 'vim'
+lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-                -- Setup your lua path
-                path = vim.split(package.path, ";"),
-            },
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
-            },
-        },
-    },
-}))
+                globals = { 'vim' }
+            }
+        }
+    }
+})
 
---angularls
-local probeLoc  = vim.env.HOME .. "/AppData/Roaming/npm/node_modules"
-local angularCmd = { "ngserver.cmd", "--stdio", "--tsProbeLocations", probeLoc , "--ngProbeLocations", probeLoc }
-require"lspconfig".angularls.setup(config({
-    cmd = angularCmd,
-    filetypes = { "html" },
-    root_dir = on_cwd,
-    on_new_config = function(new_config, new_root_dir)
-        new_config.cmd = angularCmd
-        new_config.root_dir = on_cwd
-    end,
-}))
 
---OmniSharp
--- local pid = vim.fn.getpid()
--- local omnisharp_bin = "omnisharp"
--- require'lspconfig'.omnisharp.setup{
---     cmd = { omnisharp_bin, "-l", "Debug", "-v", "Debug", "--languageserver" , "--hostPID", tostring(pid) };
--- }
--- local util = require("lspconfig/util")
--- local  function on_root()
---     local fname = on_cwd()
---     local found_root = util.root_pattern("*.sln", "*.csproj", ".git")(fname) or util.path.dirname(fname)
---     return found_root
--- end
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ["<C-Space>"] = cmp.mapping.complete(),
+})
 
-local pid = vim.fn.getpid()
--- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-local omnisharp_exe = "C:/OmniSharp/OmniSharp.exe"
--- local omnisharp_exe_vscode  = vim.fn.expand(vim.env.HOME .. "/.vscode/extensions/ms-dotnettools.csharp-*/.omnisharp/*/OmniSharp.exe")
--- on Windows
--- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
-require"lspconfig".omnisharp.setup(config({
-  handlers = { ["textDocument/definition"] = require('omnisharp_extended').handler, },
-  root_dir = on_cwd,
-  cmd = { omnisharp_exe, "--languageserver" , "--hostPID", tostring(pid) },
-  ...
-}))
+-- disable completion with tab
+-- this helps with copilot setup
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
 
---csharp_ls
---dotnet tool install --global csharp-ls
--- require"lspconfig".csharp_ls.setup(config({
---     root_dir = on_cwd,
--- }))
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
 
-local opts = {
-    -- whether to highlight the currently hovered symbol
-    -- disable if your cpu usage is higher than you want it
-    -- or you just hate the highlight
-    -- default: true
-    highlight_hovered_item = true,
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
 
-    -- whether to show outline guides
-    -- default: true
-    show_guides = true,
-}
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
 
-require("symbols-outline").setup(opts)
+  if client.name == "eslint" then
+      vim.cmd.LspStop('eslint')
+      return
+  end
 
-local snippets_paths = function()
-    local plugins = { "friendly-snippets" }
-    local paths = {}
-    local path
-    local root_path = vim.env.HOME .. "/.vim/plugged/"
-    for _, plug in ipairs(plugins) do
-        path = root_path .. plug
-        if vim.fn.isdirectory(path) ~= 0 then
-            table.insert(paths, path)
-        end
-    end
-    return paths
-end
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+end)
 
-require("luasnip.loaders.from_vscode").lazy_load({
-    paths = snippets_paths(),
-    include = nil, -- Load all languages
-    exclude = {},
+lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true,
 })
 
 -- Severity limit override -- report Error, Warning, Information < Hint -- neovim.lsp.protocol.DiagnosticSeverity

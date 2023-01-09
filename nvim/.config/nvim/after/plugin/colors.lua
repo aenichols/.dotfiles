@@ -1,11 +1,13 @@
-local color = require("xsv.colors")
+require('rose-pine').setup({
+    disable_background = true
+})
 
-color.colorMyPencils()
+function ColorMyPencils(color)
+	color = color or "rose-pine"
+	vim.cmd.colorscheme(color)
 
-require("catppuccin").setup({
-	transparent_background = false,
-});
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_functions = 1
-vim.g.tokyonight_sidebars = "[ 'qf', 'vista_kind', 'terminal', 'packer' ]"
+ColorMyPencils()
