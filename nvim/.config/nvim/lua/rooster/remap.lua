@@ -11,13 +11,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -43,8 +36,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- ADDITIONAL #################################################################
-vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>")
-
 -- May remove
 vim.keymap.set("n", "<leader>h", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>j", "<cmd>wincmd j<CR>")
@@ -70,9 +61,9 @@ vim.keymap.set({"n", "i"},"<MiddleMouse>", "<Nop>")
 vim.keymap.set("n", "<Leader>ee", "oSystem.Console.WriteLine($\"HALLO {System.Text.Json.JsonSerializer.Serialize()}\");<esc>hhhhi")
 
 -- Float Terminal
-vim.keymap.set("n", "<C-f>", [[<cmd>lua require('floaterm').open({ name='ft1', command='bash -c $SCRIPTS/tmux-cht.sh'})<CR>]], { silent = true })
-vim.keymap.set("n", "<Leader>lg", [[<cmd>lua require('floaterm').open({ name='ft1', command='bash -c lazygit'})<CR>]], { silent = true })
-vim.keymap.set("n", "<Leader>ft", [[<cmd>lua require('floaterm').open({ name='ft1', command='bash'})<CR>]], { silent = true })
+vim.keymap.set("n", "<C-f>", "<cmd>TermExec cmd=\"$SCRIPTS/tmux-cht.sh\"<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>lg", "<cmd>TermExec cmd=\"lazygit\"<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ft", "<cmd>ToggleTerm<CR>", { silent = true })
 
 -- Minimal
 -- vim.keymap.set("<leader>ao", minimal.turn_on_guides)

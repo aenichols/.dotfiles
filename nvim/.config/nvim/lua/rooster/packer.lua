@@ -13,21 +13,31 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
+    use { -- Gruvbox Theme
+        'luisiacc/gruvbox-baby',
+        as = 'gruvbox-baby',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme gruvbox-baby')
         end
-    })
+    }
 
-    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    use { -- Highlight, edit, and navigate code
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
+    }
+    use { -- Additional text objects via treesitter
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter',
+    }
     use('nvim-treesitter/playground')
+
     use('aenichols/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
-    use {
+    use { -- LSP Configuration & Plugins
         'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
@@ -46,13 +56,18 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
+
+            -- Useful status updates for LSP
+            { 'j-hui/fidget.nvim' },
         }
     }
 
-    use("folke/zen-mode.nvim")
-    use("github/copilot.vim")
+    use 'folke/zen-mode.nvim'
+    use 'github/copilot.vim'
 
     -- ADDITIONAL ###############################################################
+    -- Fancier statusline
+    use 'nvim-lualine/lualine.nvim'
     -- Comment
     use {
         'numToStr/Comment.nvim',
@@ -61,10 +76,12 @@ return require('packer').startup(function(use)
         end
     }
     -- Floating terminal
-    use("doums/floaterm.nvim")
+    use { 'akinsho/toggleterm.nvim', tag = '*', config = function()
+        require('toggleterm').setup()
+    end }
     -- Maximizer
-    use("szw/vim-maximizer")
-    -- Vim with me
-    use('theprimeagen/vim-with-me')
+    use 'szw/vim-maximizer'
+    -- Vim be good
+    use 'theprimeagen/vim-be-good'
 
 end)

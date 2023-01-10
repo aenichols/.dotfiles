@@ -44,3 +44,8 @@ autocmd({"BufWinEnter", "BufRead", "BufNewFile"}, {
         vim.opt.formatoptions:remove("o")
     end
 })
+
+require("toggleterm").setup({
+    direction = "float",
+    shell = "bash"
+})

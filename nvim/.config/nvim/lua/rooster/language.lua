@@ -14,7 +14,7 @@ end
 -- HTML, TypeScript
 autocmd({"BufEnter"}, {
     group = language_group,
-    pattern = '*.css,*.html,*.ts',
+    pattern = '*.css,*.html,*.ts,*.tf',
     callback = fe_setup,
 })
 -- Xaml
