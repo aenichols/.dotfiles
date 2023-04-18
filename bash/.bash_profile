@@ -20,4 +20,4 @@ for i in `find -L $PERSONAL -type f | grep ".*personal/.*"`; do
     source $i
 done
 
-# source $HOME/.secrets
+source $HOME/.secrets

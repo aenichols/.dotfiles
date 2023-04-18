@@ -21,6 +21,15 @@ return require('packer').startup(function(use)
         end
     }
 
+    use({
+        "folke/trouble.nvim",
+        config = function()
+            require("trouble").setup {
+                icons = false,
+            }
+        end
+    })
+
     use { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
         run = function()
@@ -64,8 +73,24 @@ return require('packer').startup(function(use)
 
     use 'folke/zen-mode.nvim'
     use 'github/copilot.vim'
+    use 'eandrju/cellular-automaton.nvim'
+    use("laytan/cloak.nvim")
 
-    -- ADDITIONAL ###############################################################
+    -- ADDITIONAL #############################################################
+    -- ChatGPT
+    use {
+      "jackMort/ChatGPT.nvim",
+        config = function()
+          require("chatgpt").setup({
+            -- optional configuration
+          })
+        end,
+        requires = {
+          "MunifTanjim/nui.nvim",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim"
+        }
+    }
     -- Fancier statusline
     use 'nvim-lualine/lualine.nvim'
     -- Comment
