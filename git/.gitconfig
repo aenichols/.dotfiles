@@ -60,8 +60,8 @@
     # Speed up commands involving untracked files such as `git status`.
     # https://git-scm.com/docs/git-update-index#_untracked_cache
     untrackedCache = true
-	autocrlf = true
-	editor = nvim
+    editor = code --wait #nvim
+    ignorecase = true
 
 [color]
     # Use colors in Git commands that are capable of colored output when

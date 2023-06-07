@@ -7,7 +7,8 @@ lsp.ensure_installed({
   'eslint',
   'lua_ls',
   'rust_analyzer',
-  'omnisharp',
+  -- 'omnisharp',
+  'csharp_ls',
   'terraformls',
   'bashls',
   'vimls',
@@ -15,15 +16,7 @@ lsp.ensure_installed({
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim', 'require', 'ColorMyPencils' }
-            }
-        }
-    }
-})
+lsp.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}

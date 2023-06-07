@@ -41,8 +41,57 @@ addToPathFront() {
     fi
 }
 
+commitAll() {
+    commitDotFiles
+    commitWinDotFiles
+    commitOffsec
+    commitAdv360
+    commitHarpoon
+    commitMyCLI
+}
+
 commitDotFiles() {
     pushd $DOTFILES
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    git push origin main
+    popd
+}
+
+commitWinDotFiles() {
+    pushd $DOTFILES_WINDOWS
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    git push origin main
+    popd
+}
+
+commitOffsec() {
+    pushd $OFFSEC
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    git push origin main
+    popd
+}
+
+commitAdv360() {
+    pushd $ADV360
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    git push origin main
+    popd
+}
+
+commitHarpoon() {
+    pushd $HARPOON
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    git push origin main
+    popd
+}
+
+commitMyCLI() {
+    pushd $MYCLI
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
     git push origin main

@@ -13,11 +13,11 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use { -- Gruvbox Theme
-        'luisiacc/gruvbox-baby',
-        as = 'gruvbox-baby',
+    use {
+        'rose-pine/neovim',
+        as = 'rose-pine',
         config = function()
-            vim.cmd('colorscheme gruvbox-baby')
+            vim.cmd('colorscheme rose-pine')
         end
     }
 
@@ -30,17 +30,15 @@ return require('packer').startup(function(use)
         end
     })
 
-    use { -- Highlight, edit, and navigate code
+   use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
-            pcall(require('nvim-treesitter.install').update { with_sync = true })
-        end,
-    }
-    use { -- Additional text objects via treesitter
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        after = 'nvim-treesitter',
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end
     }
     use('nvim-treesitter/playground')
+    use('nvim-treesitter/nvim-treesitter-context');
 
     use('aenichols/harpoon')
     use('mbbill/undotree')
