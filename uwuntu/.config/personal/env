@@ -54,7 +54,7 @@ commitDotFiles() {
     pushd $DOTFILES
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
+    git push
     popd
 }
 
@@ -62,7 +62,7 @@ commitWinDotFiles() {
     pushd $DOTFILES_WINDOWS
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
+    git push
     popd
 }
 
@@ -70,7 +70,7 @@ commitOffsec() {
     pushd $OFFSEC
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
+    git push
     popd
 }
 
@@ -78,7 +78,7 @@ commitAdv360() {
     pushd $ADV360
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
+    git push
     popd
 }
 
@@ -86,7 +86,7 @@ commitHarpoon() {
     pushd $HARPOON
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
+    git push
     popd
 }
 
@@ -94,7 +94,7 @@ commitMyCLI() {
     pushd $MYCLI
     git add .
     git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    git push origin main
+    git push
     popd
 }
 
