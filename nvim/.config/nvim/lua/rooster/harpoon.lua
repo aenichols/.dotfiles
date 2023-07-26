@@ -1,4 +1,7 @@
 require("harpoon").setup({
+    menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+    },
     global_settings = {
         create_with = ":terminal bash",
         enter_on_sendcmd = true,

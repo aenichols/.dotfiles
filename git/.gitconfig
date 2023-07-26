@@ -62,6 +62,7 @@
     untrackedCache = true
     editor = code --wait #nvim
     ignorecase = true
+	autocrlf = false
 
 [color]
     # Use colors in Git commands that are capable of colored output when

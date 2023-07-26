@@ -14,10 +14,10 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'rose-pine/neovim',
-        as = 'rose-pine',
+        "ellisonleao/gruvbox.nvim",
+        as = 'gruvbox',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme gruvbox')
         end
     }
 
@@ -72,7 +72,18 @@ return require('packer').startup(function(use)
     use 'folke/zen-mode.nvim'
     use 'github/copilot.vim'
     use 'eandrju/cellular-automaton.nvim'
-    use("laytan/cloak.nvim")
+    use 'laytan/cloak.nvim'
+    use({
+      "epwalsh/obsidian.nvim",
+      config = function()
+        require("obsidian").setup({
+          dir = "~/personal/inked/",
+          notes_subdir = "rooster",
+
+          -- see below for full list of options 👇
+        })
+      end,
+    })
 
     -- ADDITIONAL #############################################################
     -- ChatGPT
@@ -106,5 +117,8 @@ return require('packer').startup(function(use)
     use 'szw/vim-maximizer'
     -- Vim be good
     use 'theprimeagen/vim-be-good'
+    -- Magma for jupyter
+    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+
 
 end)
