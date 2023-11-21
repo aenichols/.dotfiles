@@ -47,8 +47,15 @@ lsp.set_preferences({
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
+  print('HALLO ' .. tostring(vim.g.custom_lsp_stop))
+  if vim.g.custom_lsp_stop == true then
+      print('HALLO from inside' .. tostring(client.name))
+      vim.cmd.LspStop(client.name)
+      return
+  end
+
   if client.name == "eslint" then
-      vim.cmd.LspStop('eslint')
+      -- vim.cmd.LspStop('eslint')
       return
   end
 

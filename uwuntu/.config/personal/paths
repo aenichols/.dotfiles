@@ -17,7 +17,7 @@
 
 addToPathFront "/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin"
 #addToPathFront "/C/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin"
-addToPathFront "/C/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin"
+addToPathFront "/C/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin"
 
 # OmniSharp.exe -v (find MSBuild Instance - Registered MSBuild Instances))
 # {"Event":"log","Body":{"LogLevel":"INFORMATION","Name":"OmniSharp.MSBuild.Discovery.MSBuildLocator","Message":"Located

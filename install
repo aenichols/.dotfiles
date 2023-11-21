@@ -11,9 +11,9 @@
 python -m pip install --upgrade pip
 python -m pip install dploy
 
-# source
-source $HOME/.dotfiles/bash/.bashrc
-source $HOME/.dotfiles/bash/.bash_profile
+# ensure export dotfiles
+export DOTFILES=$HOME/.dotfiles
+source $HOME/.dotfiles/uwuntu/.config/personal/env
 
 # use dploy stow instead of gnu stow since winders and stirf
 pushd $DOTFILES
@@ -23,3 +23,7 @@ do
     python -m dploy stow $folder $HOME
 done
 popd
+
+# source
+source $HOME/.dotfiles/bash/.bashrc
+source $HOME/.dotfiles/bash/.bash_profile

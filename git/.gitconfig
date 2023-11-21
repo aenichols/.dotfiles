@@ -119,3 +119,5 @@
 	useCoreFSMonitorConfig = false
 [credential "https://bngidentityserver.scm.azurewebsites.net"]
 	provider = generic
+[credential "https://cbportal-gv5z.scm.azurewebsites.net"]
+	provider = generic

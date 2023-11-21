@@ -42,3 +42,10 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.fillchars:append({ fold = " "})
 vim.opt.foldlevelstart = 20
 vim.opt.foldcolumn = "2"
+
+--lock splits
+vim.opt.splitright = true
+vim.opt.equalalways = false
+
+--lsp global stop check
+vim.g.custom_lsp_stop = false

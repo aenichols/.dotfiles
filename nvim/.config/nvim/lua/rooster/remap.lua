@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -53,7 +52,7 @@ vim.keymap.set("n", "<C-M-l>", "<C-w>>")
 vim.keymap.set("n", "S", "ddO")
 vim.keymap.set("n", "cc", "S")
 
---Close buffer
+-- Close buffer
 vim.keymap.set("n", "<Leader>q", ":bd<CR>")
 vim.keymap.set("n", "<Leader>qa", ":bufdo bd<CR>")
 
@@ -74,3 +73,5 @@ vim.keymap.set("n", "<Leader>ft", "<cmd>ToggleTerm<CR>", { silent = true })
 -- Maximizer
 vim.keymap.set("n", "<leader>m", "<cmd>MaximizerToggle<CR>")
 
+-- Fresh Start
+vim.keymap.set("n", "<leader>fs", ":%bd<CR>:G<CR>:wincmd j<CR>:vsplit<CR>:wincmd h<CR>:vert res -102<CR>:res 60<CR>:wincmd k<CR>:vsplit<CR>:bnext<CR>:wincmd h<CR>:vert res -102<CR>:wincmd j<CR>:wincmd l<CR>")

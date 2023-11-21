@@ -10,6 +10,7 @@ require("harpoon").setup({
         ["C:\\Users\\anthony.nichols\\work\\ConnectBooster\\ConnectBooster.Frontend"] = {
             term = {
                 cmds = {
+                    "npm run build",
                     "ng s",
                     "eslint --fix ",
                     "npm run test -- ",

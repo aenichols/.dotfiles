@@ -1,0 +1,13 @@
+lastupdatecheck: 0
+recentrepos:
+    - C:\Users\anthony.nichols\work\QuickerPay
+    - C:\Users\anthony.nichols\work\ConnectBooster
+    - C:\Users\anthony.nichols\work\Identity
+    - C:\Users\anthony.nichols\work\vpnhood
+    - C:\Users\anthony.nichols\personal\adv360-v3
+    - C:\Users\anthony.nichols\personal\Adv360-Pro-ZMK
+startuppopupversion: 5
+customcommandshistory:
+    - git status
+    - git reset --hard origin/vNext
+hidecommandlog: false

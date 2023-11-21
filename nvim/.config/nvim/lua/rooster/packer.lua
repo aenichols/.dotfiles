@@ -65,7 +65,10 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
 
             -- Useful status updates for LSP
-            { 'j-hui/fidget.nvim' },
+            {
+                'j-hui/fidget.nvim',
+                tag = 'legacy'
+            },
         }
     }
 
@@ -86,20 +89,7 @@ return require('packer').startup(function(use)
     })
 
     -- ADDITIONAL #############################################################
-    -- ChatGPT
-    use {
-      "jackMort/ChatGPT.nvim",
-        config = function()
-          require("chatgpt").setup({
-            -- optional configuration
-          })
-        end,
-        requires = {
-          "MunifTanjim/nui.nvim",
-          "nvim-lua/plenary.nvim",
-          "nvim-telescope/telescope.nvim"
-        }
-    }
+
     -- Fancier statusline
     use 'nvim-lualine/lualine.nvim'
     -- Comment

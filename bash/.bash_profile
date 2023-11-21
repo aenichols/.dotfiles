@@ -4,20 +4,20 @@
 #
 # for setting environment variables and sourcing files
 
-# export XDG_CONFIG_HOME=$HOME/.config
-# VIM="nvim"
+export XDG_CONFIG_HOME=$HOME/.config
+VIM="nvim"
 
 # my environment variables
-# export SCRIPTS=$HOME/.local/scripts
-# export ID="$HOME/work/Identity/src/Identity.Server"
-# export AU="$HOME/work/ConnectBooster/ConnectBooster.Frontend"
-# export QP="$HOME/work/QuickerPay/Source"
-# export CLI="$HOME/work/mycli"
+export SCRIPTS=$HOME/.local/scripts
+export ID="$HOME/work/Identity/src/Identity.Server"
+export AU="$HOME/work/ConnectBooster/ConnectBooster.Frontend"
+export QP="$HOME/work/QuickerPay/Source"
+export CLI="$HOME/work/mycli"
 
-# PERSONAL=$XDG_CONFIG_HOME/personal
-# source $PERSONAL/env
-# for i in `find -L $PERSONAL -type f | grep ".*personal/.*"`; do
-#     source $i
-# done
+PERSONAL=$XDG_CONFIG_HOME/personal
+source $PERSONAL/env
+for i in `/usr/bin/find -L $PERSONAL -type f | grep ".*personal/.*"`; do
+    source $i
+done
 
-# source $HOME/.secrets
+source $HOME/.secrets
