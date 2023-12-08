@@ -40,7 +40,6 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter-context');
 
-    use('aenichols/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
@@ -88,6 +87,13 @@ return require('packer').startup(function(use)
       end,
     })
 
+    -- use('aenichols/harpoon')
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
+
     -- ADDITIONAL #############################################################
 
     -- Fancier statusline
@@ -110,5 +116,5 @@ return require('packer').startup(function(use)
     -- Magma for jupyter
     use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
-
+    use 'airblade/vim-gitgutter'
 end)
