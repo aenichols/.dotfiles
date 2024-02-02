@@ -36,6 +36,7 @@ alias showPath="sed 's/:/\n/g' <<< '$PATH'"
 # mock cli ¯\_(ツ)_/¯ works
 alias identity="$HOME/work/mycli/identity/myidentity"
 alias qp="$HOME/work/mycli/quickerpay/myquickerpay"
+alias k1="$HOME/work/mycli/k1/k1"
 
 # environment aliases
 alias le="listEnv"

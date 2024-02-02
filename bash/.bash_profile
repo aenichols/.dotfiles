@@ -13,6 +13,9 @@ export ID="$HOME/work/Identity/src/Identity.Server"
 export AU="$HOME/work/ConnectBooster/ConnectBooster.Frontend"
 export QP="$HOME/work/QuickerPay/Source"
 export CLI="$HOME/work/mycli"
+export KOB="$HOME/work/k1/backend/src"
+export KOF="$HOME/work/k1/frontend/KaseyaOne"
+export KOD="$HOME/work/k1/backend/docker"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 source $PERSONAL/env

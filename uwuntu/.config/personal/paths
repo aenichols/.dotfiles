@@ -31,3 +31,5 @@ addToPathFront "/C/Program Files/Microsoft Visual Studio/2022/Professional/MSBui
 # {"Event":"log","Body":{"LogLevel":"DEBUG","Name":"OmniSharp.CompositionHostBuilder","Message":"MSBuild
 #     instance Visual Studio Professional 2019 16.11.32106.194 16.11.2 scored
 #     at 2"},"Seq":15,"Type":"event"}
+
+# addToPathFront "/C/Users/anthony.nichols/AppData/Local/nvim-data/mason/packages/omnisharp"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # stow it
-export STOW_FOLDERS="bin,nvim,tmux,uwuntu,i3,zsh,xkb,bash,git,ideavim,lazygit"
+export STOW_FOLDERS="nvim,tmux,uwuntu,i3,zsh,xkb,bash,git,ideavim,lazygit,wez"
 
 startWork() {
     nohup $HOME/AppData/Local/Programs/Opera/opera.exe &>/dev/null &
@@ -108,15 +108,15 @@ man() {
 
 setFavAnimoos() {
   pushd $DOTFILES
-  rm -rf $HOME/.dotfiles-windows/rooster/main_animoos/*
-  python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos/fav_animoos $HOME/.dotfiles-windows/rooster/main_animoos
+  rm -rf $HOME/.dotfiles-windows/rooster/animoos/main_animoos/*
+  python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos/fav_animoos $HOME/.dotfiles-windows/rooster/animoos/main_animoos
   popd
 }
 
 setAnimoos() {
   pushd $DOTFILES
-  rm -rf $HOME/.dotfiles-windows/rooster/main_animoos/*
-  python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos $HOME/.dotfiles-windows/rooster/main_animoos
+  rm -rf $HOME/.dotfiles-windows/rooster/animoos/main_animoos/*
+  python -m dploy stow $HOME/.dotfiles-windows/rooster/animoos $HOME/.dotfiles-windows/rooster/animoos/main_animoos
   popd
 }
 

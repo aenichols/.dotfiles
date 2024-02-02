@@ -1,17 +1,12 @@
 lastupdatecheck: 0
 recentrepos:
-    - C:\Users\anthony.nichols\work\k365\repos\kaseya-one
-    - C:\Users\anthony.nichols\work\QuickerPay
-    - C:\Users\anthony.nichols\work\QuickerPayClone
-    - C:\Users\anthony.nichols\work\Xero-NetStandard
-    - C:\Users\anthony.nichols\work\ConnectBooster
-    - C:\Users\anthony.nichols\work\AutotaskOpenApi
-    - C:\Users\anthony.nichols\work\Identity
-    - C:\Users\anthony.nichols\work\vpnhood
-    - C:\Users\anthony.nichols\personal\adv360-v3
-    - C:\Users\anthony.nichols\personal\Adv360-Pro-ZMK
+- C:\Users\anthony.nichols\work\k1
+- C:\Users\anthony.nichols\work\k1t\kaseya-one
 startuppopupversion: 5
 customcommandshistory:
-    - git status
-    - git reset --hard origin/vNext
+- git checkout -b KONE-5688-frontend-display-full-text-in-case-of-hovering-in-the-subject-field-in-the-support-table
+- git status
+- git reset --hard origin/vNext
+- git checkout -b KONE-8543-frontend-modules-with-tenants-listing-dialog
 hidecommandlog: false
+ignorewhitespaceindiffview: false
