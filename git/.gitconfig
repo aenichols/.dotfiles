@@ -107,6 +107,7 @@
 [user]
 	name = Anthony Nichols
 	email = anthony.nichols@bngholdingsinc.com
+	signingkey = 649D8DD9208C7D23
 
 [credential]
     helper = manager #wincred
@@ -121,3 +122,5 @@
 	provider = generic
 [credential "https://cbportal-gv5z.scm.azurewebsites.net"]
 	provider = generic
+[commit]
+	gpgsign = true

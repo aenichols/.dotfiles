@@ -1,12 +1,59 @@
 lastupdatecheck: 0
 recentrepos:
+- C:\Users\anthony.nichols\work\ConnectBooster
+- C:\Users\anthony.nichols\work\Identity
+- C:\Users\anthony.nichols\work\QuickerPay
 - C:\Users\anthony.nichols\work\k1
-- C:\Users\anthony.nichols\work\k1t\kaseya-one
+- C:\Users\anthony.nichols\work\k2
+- C:\Users\anthony.nichols\personal\powershell
+- C:\Users\anthony.nichols\work\k1t\k1
 startuppopupversion: 5
 customcommandshistory:
-- git checkout -b KONE-5688-frontend-display-full-text-in-case-of-hovering-in-the-subject-field-in-the-support-table
-- git status
-- git reset --hard origin/vNext
+- git checkout -b CBOOST-1646-frontend-data-transfer-left-navigation-item
+- git reset --hard origin/an/cboost-1587-sdlc-add-demos-to-pull-requests
+- git checkout -b an/cboost-1587-sdlc-add-demos-to-pull-requests
+- git push -u
+- git checkout -b CBOOST-1576-frontend-docker-implementation
+- git checkout -b KONE-10249-tooltip-gets-hidden-under-the-backup-status-section
+- git checkout -b KONE-10431-frontend-import-log-is-not-handled-for-invalid-access-group-for-bulk-user-invite
+- git checkout -b KONE-9517-frontend-user-portal-prevent-enabling-sso-provisioning-if-default-roles-or-default-access-groups-are-empty
+- git checkout -b KONE-9501-frontend-swap-to-new-version-of-bulk-invite-users-endpoints
+- git checkout -b KONE-10068-header-is-not-in-alphabetical-order-when-searching
+- git checkout -b KONE-10065-empty-page-appears-for-non-k-365-customers
+- git merge --abort
+- git checkout -b KONE-9514-frontend-completed-tickets-barchart-build-charts-per-module-create-the-main-chart-for-bar-chart
+- git stash list
+- git checkout -b KONE-8835-frontend-reports-empty-reports-state-for-ex-reports-page
+- git checkout -b KONE-9509-frontend-reports-create-metric-type-endpoints-build-skeleton-dynamically
+- git reset --hard origin/dev
+- git checkout -b KONE-9196-frontend-switch-users-listing-table-to-the-real-endpoint
+- git checkout -b KONE-9073-in-case-of-closing-the-modal-window-the-form-is-jumping
+- git rebase --abort
+- git checkout -b KONE-9033-kaseya-one-settings-page-required-field-error-message-does-not-display-first-time
+- git checkout -b KONE-9032-kaseya-one-settings-page-pagination-is-too-low-on-page
+- git rebase --continue
 - git checkout -b KONE-8543-frontend-modules-with-tenants-listing-dialog
+- git reset --hard origin/vNext
+- git status
+- git checkout -b KONE-5688-frontend-display-full-text-in-case-of-hovering-in-the-subject-field-in-the-support-table
+- q
+- git checkout -b KONE-8946-frontend-need-to-fix-console-log-error
+- git checkout -b KONE-9053-assign-to-all-value-is-not-retained-while-moving-to-next-page-and-coming-back
+- git checkout -b KONE-9140-kaseya-one-settings-page-next-button-functionality
+- git checkout -b KONE-8995-kaseya-one-settings-page-selecting-one-user-does-not-display-dropdowns
+- git checkout -b KONE-9349-frontend-reports-no-k-365-subscription-state
+- git checkout -b KONE-9352-frontend-reports-add-header-for-ex-reports-page
+- git stash apply --merge stash@{1}
+- qa
+- git checkout -b KONE-9945-frontend-header-issue-and-rendering-for-er-components
+- git checkout -b KONE-10020-frontend-remove-h-from-y-axis-of-completed-tickets-chart
+- git checkout -b KONE-10100-tooltips-are-not-displayed-for-bar-charts
+- git checkout -b KONE-10250-console-error-when-hovering-over-the-donut-chart
+- git checkout -b KONE-9502-frontend-passly-removal-swap-to-new-version-of-edit-create-user-endpoints
+- git checkout -b KONE-10449-frontend-spike-export-pdf-functionality
+- git reset --hard origin/an/cboost-1576-frontend-docker-implementation
+- git checkout -b CBOOST-1587-sdlc-add-demos-to-pull-requests
+- git checkout -b CBOOST-1610-frontend-feature-flag-infrastructure
+- git reset --hard origin/CBOOST-1646-frontend-data-transfer-left-navigation-item
 hidecommandlog: false
 ignorewhitespaceindiffview: false

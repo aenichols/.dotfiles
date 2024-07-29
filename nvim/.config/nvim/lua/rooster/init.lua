@@ -26,11 +26,14 @@ autocmd('TextYankPost', {
     end,
 })
 
--- autocmd({"BufWritePre"}, {
---     group = RoosterGroup,
---     pattern = "*",
---     command = [[%s/\s\+$//e]],
--- })
+autocmd({"BufWinEnter", "BufRead"}, {
+    group = RoosterGroup,
+    pattern = "*.cs,*.ts,*.cshtml,*.html,*.csproj,*.sln,*.csx,*.config,*.xml,*.xaml,*.json,*.yaml,*.yml,*.md,*.tf,*.tfvars,*.tfstate,*.css,*.scss",
+    callback = function()
+        vim.opt.fileformat = "unix"
+        vim.opt.fixendofline = true
+    end
+})
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

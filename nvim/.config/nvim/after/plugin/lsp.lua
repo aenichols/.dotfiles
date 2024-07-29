@@ -11,16 +11,10 @@ lsp_zero.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   -- custom lsp on attach configuration
-  print(' LSP >>> '  .. tostring(client.name) .. ' ATTACHING')
+  -- print(' LSP >>> '  .. tostring(client.name) .. ' ATTACHING')
   if vim.g.custom_lsp_stop == true then
-      print(' LSP >>> '  .. tostring(client.name) .. ' SKIPPED')
+      -- print(' LSP >>> '  .. tostring(client.name) .. ' SKIPPED')
       vim.cmd.LspStop(client.name)
-      return
-  end
-
-  if client.name == "eslint" then
-      -- vim.cmd.LspStop('eslint')
-      print(' LSP >>> '  .. tostring(client.name) .. ' SKIPPED')
       return
   end
 
@@ -111,7 +105,8 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-  print(' LSP >>> '  .. tostring(client.name) .. ' LOADED')
+
+  -- print(' LSP >>> '  .. tostring(client.name) .. ' LOADED')
 end)
 
 require('mason').setup({})
@@ -132,6 +127,17 @@ require('mason-lspconfig').setup({
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+    eslint = function()
+      require('lspconfig').eslint.setup({
+        filetypes = { 'typescript', 'html' },
+        -- on_attach = function(client, bufnr)
+        --   vim.api.nvim_create_autocmd("BufWritePre", {
+        --     buffer = bufnr,
+        --     command = "EslintFixAll",
+        --   })
+        -- end,
+      })
     end,
   }
 })

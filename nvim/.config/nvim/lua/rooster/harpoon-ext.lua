@@ -74,4 +74,15 @@ function M.gotoTerminal(idx)
     vim.api.nvim_set_current_buf(term_handle.buf_id)
 end
 
+function M.sendCommand(idx, command)
+    Logger:log("term: sendCommand(): Terminal:", { idx = idx, command = command })
+    local term_handle = find_terminal(idx)
+
+    if term_handle == nil then
+        return
+    end
+
+    vim.api.nvim_chan_send(term_handle.term_id, command)
+end
+
 return M

@@ -1,6 +1,7 @@
 local utils = require('telescope.utils')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
+local term = require("rooster.harpoon-ext")
 
 require("telescope").setup({
     defaults = {
@@ -115,7 +116,9 @@ actions.search_private_proxy = function()
         local selection = action_state.get_selected_entry()
 
         require('telescope.actions').close(prompt_bufnr)
-        require('harpoon.term').sendCommand(1,
+        -- require('harpoon.term').sendCommand(1,
+        --     'npm start -- --proxy-config ./.private_proxies/' .. transform_path_sep(selection.value))
+        term.sendCommand(1,
             'npm start -- --proxy-config ./.private_proxies/' .. transform_path_sep(selection.value))
     end
 
