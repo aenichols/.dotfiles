@@ -1,14 +1,21 @@
 lastupdatecheck: 0
 recentrepos:
-- C:\Users\anthony.nichols\work\ConnectBooster
-- C:\Users\anthony.nichols\work\Identity
 - C:\Users\anthony.nichols\work\QuickerPay
+- C:\Users\anthony.nichols\personal\psuedo-journal-site
+- C:\Users\anthony.nichols\work\ConnectBooster
 - C:\Users\anthony.nichols\work\k1
+- C:\Users\anthony.nichols\work\inked
+- C:\Users\anthony.nichols\work\clones\ConnectBoosterPdf
+- C:\Users\anthony.nichols\work\InternalProjects
+- C:\Users\anthony.nichols\work\Identity
 - C:\Users\anthony.nichols\work\k2
 - C:\Users\anthony.nichols\personal\powershell
 - C:\Users\anthony.nichols\work\k1t\k1
 startuppopupversion: 5
 customcommandshistory:
+- git checkout -b CBOOST-1680-frontend-data-transfer-compare-list-component-implementation
+- git checkout -b CBOOST-1671-frontend-data-transfer-bread-crumb-header-with-header-sub-header
+- git checkout -b CBOOST-1667-frontend-data-transfer-transfer-history-card-component-implementation
 - git checkout -b CBOOST-1646-frontend-data-transfer-left-navigation-item
 - git reset --hard origin/an/cboost-1587-sdlc-add-demos-to-pull-requests
 - git checkout -b an/cboost-1587-sdlc-add-demos-to-pull-requests
@@ -55,5 +62,7 @@ customcommandshistory:
 - git checkout -b CBOOST-1587-sdlc-add-demos-to-pull-requests
 - git checkout -b CBOOST-1610-frontend-feature-flag-infrastructure
 - git reset --hard origin/CBOOST-1646-frontend-data-transfer-left-navigation-item
+- git checkout -b CBOOST-1665-frontend-data-transfer-creation-card-component-implementation
+- git checkout -b CBOOST-1683-frontend-data-transfer-settings-page
 hidecommandlog: false
 ignorewhitespaceindiffview: false

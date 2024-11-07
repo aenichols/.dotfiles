@@ -131,6 +131,18 @@ require('mason-lspconfig').setup({
     eslint = function()
       require('lspconfig').eslint.setup({
         filetypes = { 'typescript', 'html' },
+        root_dir = require('lspconfig/util').root_pattern('.eslintrc', '.eslintrc.js', '.eslintrc.json'),
+        settings = {
+            workingDirectory = { mode = 'auto' },
+        },
+        on_new_config = function(config, new_root_dir)
+            print(' LSP ESLINT WS >>> '  .. tostring(config.settings.workspaceFolder))
+            config.settings.workspaceFolder = {
+                uri = vim.uri_from_fname(new_root_dir),
+                name = vim.fn.fnamemodify(new_root_dir, ':t')
+            }
+            print(' LSP ESLINT WS SET >>> '  .. tostring(config.settings.workspaceFolder))
+        end,
         -- on_attach = function(client, bufnr)
         --   vim.api.nvim_create_autocmd("BufWritePre", {
         --     buffer = bufnr,
@@ -170,6 +182,6 @@ vim.diagnostic.config({
 
 -- Severity limit override -- report Error, Warning, Information < Hint -- neovim.lsp.protocol.DiagnosticSeverity
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = { severity_limit = "Information" },
-    underline = { severity_limit  = "Warning" }
+    virtual_text = { min = "Information" },
+    underline = { min  = "Warning" }
 })
