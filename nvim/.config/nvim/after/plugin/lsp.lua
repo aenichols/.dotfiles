@@ -109,10 +109,11 @@ lsp_zero.on_attach(function(client, bufnr)
   -- print(' LSP >>> '  .. tostring(client.name) .. ' LOADED')
 end)
 
+-- no longer available? 'tsserver',
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-    'tsserver',
     'eslint',
     'lua_ls',
     'rust_analyzer',
@@ -134,14 +135,18 @@ require('mason-lspconfig').setup({
         root_dir = require('lspconfig/util').root_pattern('.eslintrc', '.eslintrc.js', '.eslintrc.json'),
         settings = {
             workingDirectory = { mode = 'auto' },
+            rules = {
+                ["@angular-eslint/template/no-any"] = "off",
+                ["@angular-eslint/template/use-track-by-function"] = "off"
+            },
         },
         on_new_config = function(config, new_root_dir)
-            print(' LSP ESLINT WS >>> '  .. tostring(config.settings.workspaceFolder))
+            -- print(' LSP ESLINT WS >>> '  .. tostring(config.settings.workspaceFolder))
             config.settings.workspaceFolder = {
                 uri = vim.uri_from_fname(new_root_dir),
                 name = vim.fn.fnamemodify(new_root_dir, ':t')
             }
-            print(' LSP ESLINT WS SET >>> '  .. tostring(config.settings.workspaceFolder))
+            -- print(' LSP ESLINT WS SET >>> '  .. tostring(config.settings.workspaceFolder))
         end,
         -- on_attach = function(client, bufnr)
         --   vim.api.nvim_create_autocmd("BufWritePre", {
@@ -180,8 +185,25 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+local function custom_eslint_on_publish_diagnostics(_, result, ctx, config)
+    if result.diagnostics then
+        local filtered_diagnostics = {}
+        local ignore_codes = { -9910002 } -- structual directive error
+
+        for _, diagnostic in ipairs(result.diagnostics) do
+            if not vim.tbl_contains(ignore_codes, diagnostic.code) then
+                table.insert(filtered_diagnostics, diagnostic)
+            end
+        end
+
+        result.diagnostics = filtered_diagnostics
+    end
+
+    vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+end
+
 -- Severity limit override -- report Error, Warning, Information < Hint -- neovim.lsp.protocol.DiagnosticSeverity
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(custom_eslint_on_publish_diagnostics, {
     virtual_text = { min = "Information" },
-    underline = { min  = "Warning" }
+    underline = { min  = "Warning" },
 })

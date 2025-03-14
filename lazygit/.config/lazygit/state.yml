@@ -1,18 +1,27 @@
 lastupdatecheck: 0
 recentrepos:
-- C:\Users\anthony.nichols\work\QuickerPay
-- C:\Users\anthony.nichols\personal\psuedo-journal-site
 - C:\Users\anthony.nichols\work\ConnectBooster
 - C:\Users\anthony.nichols\work\k1
+- C:\Users\anthony.nichols\work\QuickerPay
+- C:\Users\anthony.nichols\work\InternalProjects
+- C:\Users\anthony.nichols\personal\harpy
+- C:\Users\anthony.nichols\work\Identity
+- C:\Users\anthony.nichols\personal\psuedo-journal-site
 - C:\Users\anthony.nichols\work\inked
 - C:\Users\anthony.nichols\work\clones\ConnectBoosterPdf
-- C:\Users\anthony.nichols\work\InternalProjects
-- C:\Users\anthony.nichols\work\Identity
 - C:\Users\anthony.nichols\work\k2
 - C:\Users\anthony.nichols\personal\powershell
 - C:\Users\anthony.nichols\work\k1t\k1
 startuppopupversion: 5
 customcommandshistory:
+- git checkout -b CBOOST-2171-frontend-data-transfer-true-sync-shared-date-range-selector
+- git checkout -b CBOOST-2453-backend-data-transfer-get-settings-wrong-response-if-no-settings-data
+- git checkout -b CBOOST-2177-frontend-data-transfer-compare-data-in-progress
+- git checkout -b CBOOST-2396-frontend-data-transfer-bug-settings-ddl-broken-after-upgrade-to-multi-select-post-save-api-call-doesnt-send-request-body
+- git branch -f rely origin/rely
+- git branch -f dev @{u}
+- git checkout -b CBOOST-2156-frontend-data-transfer-compare-data-comparison-fields-ddl
+- git checkout -b CBOOST-2166-frontend-data-transfer-compare-data-missing-item-single-dialog
 - git checkout -b CBOOST-1680-frontend-data-transfer-compare-list-component-implementation
 - git checkout -b CBOOST-1671-frontend-data-transfer-bread-crumb-header-with-header-sub-header
 - git checkout -b CBOOST-1667-frontend-data-transfer-transfer-history-card-component-implementation
@@ -64,5 +73,19 @@ customcommandshistory:
 - git reset --hard origin/CBOOST-1646-frontend-data-transfer-left-navigation-item
 - git checkout -b CBOOST-1665-frontend-data-transfer-creation-card-component-implementation
 - git checkout -b CBOOST-1683-frontend-data-transfer-settings-page
+- git checkout -b CBOOST-2153-frontend-data-transfer-left-navigation-unlock-compare-data
+- git checkout -b CBOOST-1407-data-transfer
+- git checkout -b CBOOST-2248-frontend-left-navigation-back-office-not-accessible
+- git checkout -b CBOOST-2158-frontend-data-transfer-compare-data-table-empty-states
+- git reset --hard @{u}
+- git branch -f dev origin/dev
+- git checkout -b CBOOST-2177-data-transfer-compare-data-in-progress
+- git checkout -b CBOOST-2165-frontend-data-transfer-compare-data-conflicted-items-banner
+- git checkout -b CBOOST-2165-data-transfer-compare-data-conflicted-items-banner
+- git checkout -b CBOOST-1407-hotfix-for-tenant-context-based-controllers
+- git checkout -b CBOOST-2152-frontend-data-transfer-settings-page-validation-banners
+- git reset --hard origin/features/CBOOST-1407-invoice-true-sync
+- git checkout -b CBOOST-2467-backend-data-transfer-implement-validation-for-data-transfer-settings-page
+- git checkout -b CBOOST-2510-frontend-enable-strict-templates-in-tsconfig-json
 hidecommandlog: false
 ignorewhitespaceindiffview: false
