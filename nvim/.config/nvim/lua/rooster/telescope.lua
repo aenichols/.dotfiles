@@ -143,7 +143,16 @@ actions.search_curl_requests = function()
 
         require('telescope.actions').close(prompt_bufnr)
 
-        vim.api.nvim_command('!sh ' .. selection_fpath .. ' >> ' .. out_file .. ' 2>>&1')
+        local script_lines = vim.fn.readfile(selection_fpath)
+        local script_content = table.concat(script_lines, " && ")
+
+        -- Output curl command to out_file
+        -- vim.api.nvim_command('!sh ' .. selection_fpath .. ' >> ' .. out_file .. ' 2>>&1')
+
+        -- Open terminal and run the curl command
+        local cmd = "\"" .. script_content .. "\""
+
+        vim.cmd("TermExec cmd=" .. cmd .. " direction=float close_on_exit=false")
     end
 
     require('telescope.builtin').find_files({

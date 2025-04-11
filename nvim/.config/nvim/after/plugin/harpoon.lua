@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>ts", function() term.gotoTerminal({ idx = 2 }) end)
 -- harpoon 2
 local harpoon = require("harpoon")
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
 vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 vim.keymap.set("n", "<leader>g7", function() harpoon:list():select(1) end)

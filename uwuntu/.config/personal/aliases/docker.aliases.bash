@@ -30,3 +30,6 @@ alias dkritc='docker run --rm -it -v $PWD:/cwd -w /cwd '
 alias dkip='docker image prune -a -f'
 alias dkvp='docker volume prune -f'
 alias dksp='docker system prune -a -f'
+
+# List all Docker aliases
+alias dkh='alias | grep docker'
