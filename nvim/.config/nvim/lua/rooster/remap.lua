@@ -9,6 +9,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "=ap", "ma=ap'a")
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -37,7 +38,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 -- ADDITIONAL #################################################################
--- May remove
+-- Maps Navigating between splits to <leader>h/j/k/l
 vim.keymap.set("n", "<leader>h", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>j", "<cmd>wincmd j<CR>")
 vim.keymap.set("n", "<leader>k", "<cmd>wincmd k<CR>")
@@ -65,10 +66,6 @@ vim.keymap.set("n", "<Leader>ee", "oSystem.Console.WriteLine($\"HALLO {System.Te
 vim.keymap.set("n", "<C-f>", "<cmd>TermExec cmd=\"$SCRIPTS/tmux-cht.sh\"<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>lg", "<cmd>TermExec cmd=\"lazygit\"<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>ft", "<cmd>ToggleTerm<CR>", { silent = true })
-
--- Minimal
--- vim.keymap.set("<leader>ao", minimal.turn_on_guides)
--- vim.keymap.set("<leader>ae", minimal.turn_off_guides)
 
 -- Maximizer
 vim.keymap.set("n", "<leader>m", "<cmd>MaximizerToggle<CR>")

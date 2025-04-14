@@ -37,15 +37,12 @@ vim.opt.laststatus = 3
 vim.opt.listchars = "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»"
 
 --folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.fillchars:append({ fold = " "})
-vim.opt.foldlevelstart = 20
 vim.opt.foldcolumn = "2"
+vim.opt.foldlevelstart = 20
+vim.opt.foldmethod = "expr"
+vim.opt.fillchars:append({ fold = " "})
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 --lock splits
 vim.opt.splitright = true
 vim.opt.equalalways = false
-
---lsp global stop check
-vim.g.custom_lsp_stop = false

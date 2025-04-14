@@ -1,9 +1,9 @@
-require("rooster.packer")
 require("rooster.set")
 require("rooster.remap")
-require("rooster.visual-whitespace")
+require("rooster.lazy_init")
+
 require("rooster.language")
-require("rooster.harpoon")
+require("rooster.visual-whitespace")
 
 local augroup = vim.api.nvim_create_augroup
 local RoosterGroup = augroup('Rooster', {})
@@ -35,9 +35,19 @@ autocmd({"BufWinEnter", "BufRead"}, {
     end
 })
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
+autocmd('BufEnter', {
+    group = RoosterGroup,
+    callback = function()
+        local cwd = vim.fn.getcwd()
+        if cwd:find("%ConnectBooster") then
+            vim.cmd.colorscheme("gruvbox")
+        elseif cwd:find("%QuickerPay") then
+            vim.cmd.colorscheme("tokyonight-night")
+        else
+            vim.cmd.colorscheme("rose-pine-moon")
+        end
+    end
+})
 
 -- Defines behavior for formatting comments
 autocmd({"BufWinEnter", "BufRead", "BufNewFile"}, {
@@ -52,3 +62,9 @@ require("toggleterm").setup({
     direction = "float",
     shell = "bash"
 })
+
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+vim.g.netrw_browse_split = 0
+
+require("rooster.lsp")

@@ -1,6 +1,3 @@
-local harpoon = require("harpoon")
-local Logger = harpoon.logger
-
 local config = {
     create_with = ":term bash"
 }
@@ -12,7 +9,6 @@ local function create_terminal(create_with)
     if not create_with then
         create_with = config.create_with
     end
-    Logger:log("term: _create_terminal(): Init:", { create_with = create_with })
 
     local current_id = vim.api.nvim_get_current_buf()
 
@@ -21,7 +17,6 @@ local function create_terminal(create_with)
     local term_id = vim.b.terminal_job_id
 
     if term_id == nil then
-        Logger:log("_create_terminal(): term_id is nil", { term_id = term_id })
         return nil
     end
 
@@ -31,7 +26,6 @@ local function create_terminal(create_with)
 
     -- Sets the current buffer if the current one is invalid.
     if not vim.api.nvim_buf_is_valid(current_id) then
-        Logger:log("term: _create_terminal(): Invalid buffer ", { current_id = current_id })
         current_id = vim.api.nvim_create_buf(true, false)
     end
 
@@ -41,8 +35,6 @@ local function create_terminal(create_with)
 end
 
 local function find_terminal(args)
-    Logger:log("term: _find_terminal(): Terminal:", { args = args })
-
     if type(args) == "number" then
         args = { idx = args }
     end
@@ -64,7 +56,6 @@ local function find_terminal(args)
 end
 
 function M.gotoTerminal(idx)
-    Logger:log("term: gotoTerminal(): Terminal:", { idx = idx })
     local term_handle = find_terminal(idx)
 
     if term_handle == nil then
@@ -75,7 +66,6 @@ function M.gotoTerminal(idx)
 end
 
 function M.sendCommand(idx, command)
-    Logger:log("term: sendCommand(): Terminal:", { idx = idx, command = command })
     local term_handle = find_terminal(idx)
 
     if term_handle == nil then
