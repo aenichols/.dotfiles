@@ -72,3 +72,18 @@ vim.keymap.set("n", "<leader>m", "<cmd>MaximizerToggle<CR>")
 
 -- Fresh Start
 vim.keymap.set("n", "<leader>fs", ":%bd<CR>:G<CR>:wincmd j<CR>:vsplit<CR>:wincmd h<CR>:vert res -102<CR>:res 60<CR>:wincmd k<CR>:vsplit<CR>:bnext<CR>:wincmd h<CR>:vert res -102<CR>:wincmd j<CR>:wincmd l<CR>")
+
+-- Toggle LSP virtual lines
+vim.keymap.set('n', '<leader>lvl', function()
+    local new_config = not vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+-- Toggle LSP virtual text
+vim.keymap.set('n', '<leader>lvt', function()
+    local new_config = not vim.diagnostic.config().virtual_text
+    vim.diagnostic.config({ virtual_text = new_config })
+end, { desc = 'Toggle diagnostic virtual_text' })
+
+-- Sort lines
+vim.keymap.set("v", "<Leader>sl", ":'<,'>! awk '{ print length(), $0 }' | sort -n | cut -d' ' -f2-<CR>", { silent = true })

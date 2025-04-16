@@ -1,9 +1,13 @@
 gui:
   theme:
     activeBorderColor:
-      - '#00ff00'
+      - '#FF9E64'
       - bold
     selectedLineBgColor:
-      - reverse
+      - '#D55000'
+      - bold
 git:
   parseEmoji: true
+  overrideGpg: true
+os:
+  editPreset: 'nvim'

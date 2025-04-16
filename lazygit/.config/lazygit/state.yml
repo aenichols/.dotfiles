@@ -1,8 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
     - C:\Users\anthony.nichols\work\ConnectBooster
-    - C:\Users\anthony.nichols\.dotfiles
     - C:\Users\anthony.nichols\work\QuickerPay
+    - C:\Users\anthony.nichols\.dotfiles
     - C:\Users\anthony.nichols\work\Identity
     - C:\Users\anthony.nichols\work\k1
     - C:\Users\anthony.nichols\personal\harpy
@@ -11,6 +11,9 @@ recentrepos:
 startuppopupversion: 5
 lastversion: 0.48.0
 customcommandshistory:
+    - git rebase --abort
+    - git reset --hard @{u}
+    - git checkout -b CBOOST-2551-frontend-simple-integrations-add-modal-create-add-integration-modal
     - gitlazygit
     - git reset --soft HEAD~1
     - git checkout -b CBOOST-2171-frontend-data-transfer-true-sync-shared-date-range-selector
@@ -43,7 +46,6 @@ customcommandshistory:
     - git reset --hard origin/dev
     - git checkout -b KONE-9196-frontend-switch-users-listing-table-to-the-real-endpoint
     - git checkout -b KONE-9073-in-case-of-closing-the-modal-window-the-form-is-jumping
-    - git rebase --abort
     - git checkout -b KONE-9033-kaseya-one-settings-page-required-field-error-message-does-not-display-first-time
     - git checkout -b KONE-9032-kaseya-one-settings-page-pagination-is-too-low-on-page
     - git rebase --continue
@@ -76,7 +78,6 @@ customcommandshistory:
     - git checkout -b CBOOST-1407-data-transfer
     - git checkout -b CBOOST-2248-frontend-left-navigation-back-office-not-accessible
     - git checkout -b CBOOST-2158-frontend-data-transfer-compare-data-table-empty-states
-    - git reset --hard @{u}
     - git branch -f dev origin/dev
     - git checkout -b CBOOST-2177-data-transfer-compare-data-in-progress
     - git checkout -b CBOOST-2165-frontend-data-transfer-compare-data-conflicted-items-banner

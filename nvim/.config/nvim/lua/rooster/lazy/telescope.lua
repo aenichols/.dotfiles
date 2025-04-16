@@ -11,6 +11,7 @@ return {
         require('telescope').setup({})
 
         local builtin = require('telescope.builtin')
+        ---@diagnostic disable-next-line: different-requires
         local rooster = require("rooster.telescope")
 
 -- PRIME TIME BEGIN

@@ -1,5 +1,6 @@
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
+    virtual_lines = true,
     signs = {
         text = {
             [vim.diagnostic.severity.HINT] = '»',
@@ -33,12 +34,6 @@ end
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(custom_on_publish_diagnostics, {
     virtual_text = { min = "Information" },
     underline = { min  = "Warning" },
-})
-
-vim.lsp.config('*', {
-  on_init = function()
-    print('HALLO LSP')
-  end,
 })
 
 vim.lsp.config('luals', {
@@ -89,13 +84,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Inlay Hints
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- Inlay Hints - Enable Code lens
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--
+--     if client ~= nil and client:supports_method('textDocument/inlayHint') then
+--       vim.lsp.inlay_hint.enable(true, {bufnr = args.buf})
+--     end
+--   end,
+-- })
 
-    if client ~= nil and client:supports_method('textDocument/inlayHint') then
-      vim.lsp.inlay_hint.enable(true, {bufnr = args.buf})
-    end
-  end,
-})
+-- Inlay Hints - Disable Code lens
+vim.lsp.inlay_hint.enable(false);

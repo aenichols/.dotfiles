@@ -45,7 +45,10 @@ local default_probe_dirts = get_probe_dirts(vim.fn.getcwd())
 local default_probe_dirls = get_probe_dirls(vim.fn.getcwd())
 
 local cmd = {
+    'npm',
+    'exec',
     'ngserver',
+    '--',
     '--stdio',
     '--tsProbeLocations',
     default_probe_dirts,

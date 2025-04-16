@@ -5,6 +5,7 @@ return {
         'html',
         'javascript',
         'typescript',
+        'htmlangular',
         'javascript.jsx',
         'typescript.tsx',
         'javascriptreact',

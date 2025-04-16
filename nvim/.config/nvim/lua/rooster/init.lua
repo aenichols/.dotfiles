@@ -5,6 +5,8 @@ require("rooster.lazy_init")
 require("rooster.language")
 require("rooster.visual-whitespace")
 
+C = require("rooster.colors")
+
 local augroup = vim.api.nvim_create_augroup
 local RoosterGroup = augroup('Rooster', {})
 
@@ -37,16 +39,7 @@ autocmd({"BufWinEnter", "BufRead"}, {
 
 autocmd('BufEnter', {
     group = RoosterGroup,
-    callback = function()
-        local cwd = vim.fn.getcwd()
-        if cwd:find("%ConnectBooster") then
-            vim.cmd.colorscheme("gruvbox")
-        elseif cwd:find("%QuickerPay") then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("rose-pine-moon")
-        end
-    end
+    callback = ColorMe
 })
 
 -- Defines behavior for formatting comments
