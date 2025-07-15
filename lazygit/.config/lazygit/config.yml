@@ -11,3 +11,8 @@ git:
   overrideGpg: true
 os:
   editPreset: 'nvim'
+keybinding:
+  commits:
+    g: <disabled>
+  commitGraph:
+    g: <disabled>

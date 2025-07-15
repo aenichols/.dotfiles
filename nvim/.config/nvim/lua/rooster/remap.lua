@@ -85,5 +85,5 @@ vim.keymap.set('n', '<leader>lvt', function()
     vim.diagnostic.config({ virtual_text = new_config })
 end, { desc = 'Toggle diagnostic virtual_text' })
 
--- Sort lines
-vim.keymap.set("v", "<Leader>sl", ":'<,'>! awk '{ print length(), $0 }' | sort -n | cut -d' ' -f2-<CR>", { silent = true })
+-- Sort lines - go sort
+vim.keymap.set("v", "gs", ":'<,'>! awk '{ print length(), $0 }' | sort -n | cut -d' ' -f2-<CR>", { silent = true })

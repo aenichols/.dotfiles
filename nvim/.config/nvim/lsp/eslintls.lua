@@ -31,7 +31,7 @@ return {
         problems = {
             shortenToSingleLine = false,
         },
-        nodePath = '',
+        nodePath = root_dir .. '/node_modules',
         workingDirectory = { mode = 'auto' },
         workspaceFolder = {
             uri = vim.uri_from_fname(root_dir),
@@ -54,6 +54,7 @@ return {
             uri = vim.uri_from_fname(new_root_dir),
             name = vim.fn.fnamemodify(new_root_dir, ':t'),
         }
+        config.settings.nodePath = new_root_dir .. '/node_modules'
 
         if
             vim.fn.filereadable(new_root_dir .. '/eslint.config.js') == 1
@@ -62,8 +63,13 @@ return {
             or vim.fn.filereadable(new_root_dir .. '/eslint.config.ts') == 1
             or vim.fn.filereadable(new_root_dir .. '/eslint.config.mts') == 1
             or vim.fn.filereadable(new_root_dir .. '/eslint.config.cts') == 1
+            or vim.fn.filereadable(new_root_dir .. '/.eslintrc.js') == 1
+            or vim.fn.filereadable(new_root_dir .. '/.eslintrc.cjs') == 1
+            or vim.fn.filereadable(new_root_dir .. '/.eslintrc.json') == 1
+            or vim.fn.filereadable(new_root_dir .. '/.eslintrc.yaml') == 1
+            or vim.fn.filereadable(new_root_dir .. '/.eslintrc.yml') == 1
         then
-            config.settings.experimental.useFlatConfig = true
+            config.settings.experimental.useFlatConfig = false
         end
     end,
     handlers = {

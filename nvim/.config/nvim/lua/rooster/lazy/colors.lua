@@ -80,4 +80,15 @@ return {
             ColorMe()
         end
     },
+    {
+        "aenichols/harpy.nvim",
+        name = C.rosepine,
+        dependencies = "rktjmp/lush.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('harpy').setup()
+            ColorMe()
+        end
+    }
 }

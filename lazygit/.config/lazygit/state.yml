@@ -2,20 +2,50 @@ lastupdatecheck: 0
 recentrepos:
     - C:\Users\anthony.nichols\work\ConnectBooster
     - C:\Users\anthony.nichols\work\QuickerPay
-    - C:\Users\anthony.nichols\.dotfiles
+    - C:\Users\anthony.nichols\work\sandbox\lazyblue
     - C:\Users\anthony.nichols\work\Identity
+    - C:\Users\anthony.nichols\personal\harpy.nvim
     - C:\Users\anthony.nichols\work\k1
+    - C:\Users\anthony.nichols\.dotfiles
     - C:\Users\anthony.nichols\personal\harpy
     - C:\Users\anthony.nichols\personal\psuedo-journal-site
     - C:\Users\anthony.nichols\work\inked
 startuppopupversion: 5
 lastversion: 0.48.0
 customcommandshistory:
-    - git rebase --abort
     - git reset --hard @{u}
+    - git reset --soft HEAD~1
+    - git checkout -b CBOOST-2866-simple-integrations-prevent-concurrent-db-writes-per-tenant-collection
+    - git checkout -b CBOOST-2866-backend-simple-integrations-poc-prevent-concurrent-db-writes-per-tenant-collection
+    - git rebase --abort
+    - git checkout -b CBOOST-2888-simple-integrations-saving-new-sync-date-does-not-update-the-individual-entity-sync-from-dates
+    - git checkout -b CBOOST-2869-simple-integrations-migration-fixes
+    - git reset --hard origin/features/CBOOST-1749-Simple-Payments-Onboarding
+    - git checkout -b CBOOST-2850-frontend-simple-integrations-missing-banner-tooltips-on-truncation
+    - git checkout -b CBOOST-2845-simple-integrations-user-can-add-multiple-integrations-of-the-same-type-fe
+    - git checkout -b CBOOST-2845-simple-integrations-user-can-add-multiple-integrations-of-the-same-type-be
+    - git rebase --continue
+    - git checkout -b CBOOST-2555-simple-integrations-identifier-fields
+    - git checkout -b CBOOST-2555-simple-integrations-identifier-fields-and-xero-auth-bad-data
+    - git checkout -b CBOOST-2555-frontend-simple-integrations-autocomplete-and-sync-from-date
+    - git checkout -b CBOOST-2555-simple-integrations-define-ui-workflow-and-business-logic-fe
+    - git checkout -b CBOOST-2555-simple-integrations-define-ui-workflow-and-business-logic-am
+    - git checkout -b CBOOST-2555-simple-integrations-define-ui-workflow-and-business-logic
+    - git checkout -b CBOOST-2585-frontend-simple-integrations-implement-i-create-integration-command
+    - git checkout -b CBOOST-2718-frontend-simple-integrations-settings-and-application-workflow-bugs
+    - git checkout -b CBOOST-2561-overview-and-application-fixes
+    - git checkout -b CBOOST-2565-fix-facade-selectors
+    - git reset --hard origin/CBOOST-1749-Simple-Payments-Onboarding
+    - git checkout -b CBOOST-2565-fix-multiple-toast-subscription-procs
+    - git reset --hard origin/rely
+    - git checkout -b CBOOST-2698-frontend-testing-explore-adding-test-ids-to-the-ui
+    - git checkout -b CBOOST-2561-frontend-simple-integrations-implement-payment-overview-confirmation-modal
+    - git checkout -b CBOOST-2561-payment-platform-data-endpoint
+    - git checkout -b CBOOST-2683-frontend-simple-integrations-new-fix-facades-ddl-and-instance-card-menu
+    - git checkout -b CBOOST-2675-frontend-simple-integrations-new-fix-dialog-backdrop-implement-currency-dialog-and-banner
+    - git reba
     - git checkout -b CBOOST-2551-frontend-simple-integrations-add-modal-create-add-integration-modal
     - gitlazygit
-    - git reset --soft HEAD~1
     - git checkout -b CBOOST-2171-frontend-data-transfer-true-sync-shared-date-range-selector
     - git checkout -b CBOOST-2453-backend-data-transfer-get-settings-wrong-response-if-no-settings-data
     - git checkout -b CBOOST-2177-frontend-data-transfer-compare-data-in-progress
@@ -48,7 +78,6 @@ customcommandshistory:
     - git checkout -b KONE-9073-in-case-of-closing-the-modal-window-the-form-is-jumping
     - git checkout -b KONE-9033-kaseya-one-settings-page-required-field-error-message-does-not-display-first-time
     - git checkout -b KONE-9032-kaseya-one-settings-page-pagination-is-too-low-on-page
-    - git rebase --continue
     - git checkout -b KONE-8543-frontend-modules-with-tenants-listing-dialog
     - git reset --hard origin/vNext
     - git status

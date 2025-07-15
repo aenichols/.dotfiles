@@ -1,0 +1,15 @@
+[user]
+    name = "Anthony Nichols"
+    email = "anthony.nichols@kaseya.com"
+
+[signing]
+    behavior = "own"
+    backend = "gpg"
+    key = "649D8DD9208C7D23"
+
+[ui]
+default-command = "log"
+
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
+tug- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]

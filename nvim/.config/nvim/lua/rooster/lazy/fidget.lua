@@ -6,11 +6,19 @@ return {
             notification = {
                 override_vim_notify = true,
                 filter = vim.log.levels.OFF,
+                window = {
+                    winblend = 0,
+                    x_padding = 4,
+                    y_padding = 2,
+                    normal_hl = "",
+                    border = "rounded",
+                }
             }
         })
 
-        vim.notify_once = fidget.notify
+        require("telescope").load_extension("fidget")
 
+        vim.notify_once = fidget.notify
         -- Override print messages to notify, clean up messages, parse tables
         local _print = _G.print
         local clean_string = function(...)

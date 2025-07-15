@@ -24,5 +24,15 @@ return {
         local term = require("rooster.harpoon-ext")
         vim.keymap.set("n", "<leader>ta", function() term.gotoTerminal({ idx = 1 }) end)
         vim.keymap.set("n", "<leader>ts", function() term.gotoTerminal({ idx = 2 }) end)
+        vim.keymap.set("n", "<leader>el", function()
+            -- get current file path
+            local file_path = vim.fn.expand("%")
+            term.sendCommand({ idx = 1 }, "npx eslint " .. file_path .. "\r")
+        end)
+        vim.keymap.set("n", "<leader>elf", function()
+            -- get current file path
+            local file_path = vim.fn.expand("%")
+            term.sendCommand({ idx = 1 }, "npx eslint --fix " .. file_path .. "\r")
+        end)
     end
 }
