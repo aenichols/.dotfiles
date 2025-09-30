@@ -16,6 +16,9 @@ config.default_prog = { 'bash' }
 config.enable_tab_bar = false
 config.font_size = 11.0
 
+-- Window Decorations
+config.window_decorations = 'RESIZE'
+
 -- Launch Menu
 config.launch_menu = {
     {

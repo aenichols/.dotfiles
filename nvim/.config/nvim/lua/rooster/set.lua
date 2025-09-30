@@ -46,3 +46,6 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 --lock splits
 vim.opt.splitright = true
 vim.opt.equalalways = false
+
+--float border
+vim.opt.winborder = "solid"

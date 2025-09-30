@@ -42,7 +42,9 @@ alias k1="$HOME/work/mycli/k1/k1"
 alias le="listEnv"
 
 # lazy git
-alias lg="lazygit"
+alias lg="clear && lazygit"
+alias lgb="cd $QP && lg"
+alias lgf="cd $AU && lg"
 
 # screenkey
 alias sk=$SCRIPTS/screenkey.sh

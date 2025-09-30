@@ -2,22 +2,27 @@ lastupdatecheck: 0
 recentrepos:
     - C:\Users\anthony.nichols\work\ConnectBooster
     - C:\Users\anthony.nichols\work\QuickerPay
-    - C:\Users\anthony.nichols\work\sandbox\lazyblue
+    - C:\Users\anthony.nichols\work\SupportPortal
+    - C:\Users\anthony.nichols\work\InternalProjects
     - C:\Users\anthony.nichols\work\Identity
-    - C:\Users\anthony.nichols\personal\harpy.nvim
-    - C:\Users\anthony.nichols\work\k1
     - C:\Users\anthony.nichols\.dotfiles
-    - C:\Users\anthony.nichols\personal\harpy
-    - C:\Users\anthony.nichols\personal\psuedo-journal-site
     - C:\Users\anthony.nichols\work\inked
 startuppopupversion: 5
-lastversion: 0.48.0
+didshowhunkstaginghint: false
+lastversion: 0.54.1
 customcommandshistory:
+    - git checkout -b CBOOST-2180-dt-history-group
+    - git checkout -b AN/CBOOST-1396-build-time-poc
+    - git checkout -b CBOOST-2172-dt-history-table
+    - git checkout -b CBOOST-2178-dt-history-overview
+    - git checkout -b CBOOST-2973-dt-sync-clear-selection-dialog-on-date-range-change
+    - git rebase --abort
+    - git checkout -b CBOOST-2154-dt-left-navigation-unlock-sync-and-history
+    - git reset --hard origin/features/CBOOST-1407-invoice-true-sync
     - git reset --hard @{u}
     - git reset --soft HEAD~1
     - git checkout -b CBOOST-2866-simple-integrations-prevent-concurrent-db-writes-per-tenant-collection
     - git checkout -b CBOOST-2866-backend-simple-integrations-poc-prevent-concurrent-db-writes-per-tenant-collection
-    - git rebase --abort
     - git checkout -b CBOOST-2888-simple-integrations-saving-new-sync-date-does-not-update-the-individual-entity-sync-from-dates
     - git checkout -b CBOOST-2869-simple-integrations-migration-fixes
     - git reset --hard origin/features/CBOOST-1749-Simple-Payments-Onboarding
@@ -113,15 +118,7 @@ customcommandshistory:
     - git checkout -b CBOOST-2165-data-transfer-compare-data-conflicted-items-banner
     - git checkout -b CBOOST-1407-hotfix-for-tenant-context-based-controllers
     - git checkout -b CBOOST-2152-frontend-data-transfer-settings-page-validation-banners
-    - git reset --hard origin/features/CBOOST-1407-invoice-true-sync
     - git checkout -b CBOOST-2467-backend-data-transfer-implement-validation-for-data-transfer-settings-page
     - git checkout -b CBOOST-2510-frontend-enable-strict-templates-in-tsconfig-json
     - git checkout -b CBOOST-2452-dropdown-selection-is-blocked-for-accounting-hub
 hidecommandlog: false
-ignorewhitespaceindiffview: false
-diffcontextsize: 3
-renamesimilaritythreshold: 50
-localbranchsortorder: recency
-remotebranchsortorder: alphabetical
-gitlogorder: topo-order
-gitlogshowgraph: always

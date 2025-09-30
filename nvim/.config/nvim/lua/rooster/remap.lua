@@ -87,3 +87,6 @@ end, { desc = 'Toggle diagnostic virtual_text' })
 
 -- Sort lines - go sort
 vim.keymap.set("v", "gs", ":'<,'>! awk '{ print length(), $0 }' | sort -n | cut -d' ' -f2-<CR>", { silent = true })
+
+-- Copy current file path to clipboard
+vim.keymap.set("n", "<leader>cf", ":let @* = expand('%:.')<CR>", { silent = true })

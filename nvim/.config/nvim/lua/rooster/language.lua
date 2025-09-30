@@ -17,6 +17,7 @@ autocmd({"BufEnter"}, {
     pattern = '*.css,*.html,*.ts,*.tf,*.scss',
     callback = fe_setup,
 })
+
 -- Xaml
 autocmd({"BufEnter"}, {
     group = language_group,

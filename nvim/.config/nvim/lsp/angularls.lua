@@ -1,23 +1,10 @@
-local function get_probe_dir(root_dir)
-    local project_root = vim.fs.dirname(vim.fs.find('node_modules', { path = root_dir, upward = true })[1])
-
-    return project_root and (project_root .. '/node_modules') or ''
-end
-
-local function get_probe_dirts(root_dir)
-    local project_root = vim.fs.dirname(vim.fs.find('node_modules', { path = root_dir, upward = true })[1])
-
-    return project_root and (project_root .. '/node_modules/typescript/lib') or ''
-end
-
-local function get_probe_dirls(root_dir)
-    local project_root = vim.fs.dirname(vim.fs.find('node_modules/', { path = root_dir, upward = true })[1])
-
-    return project_root and (project_root .. '/node_modules/@angular/language-service') or ''
+local function get_project_root(root_dir)
+    local project_root = vim.fs.dirname(vim.fs.find('angular.json', { path = root_dir, upward = true })[1])
+    return project_root or root_dir
 end
 
 local function get_angular_core_version(root_dir)
-    local project_root = vim.fs.dirname(vim.fs.find('node_modules', { path = root_dir, upward = true })[1])
+    local project_root = get_project_root(root_dir)
 
     if not project_root then
         return ''
@@ -28,42 +15,63 @@ local function get_angular_core_version(root_dir)
         return ''
     end
 
-    local contents = io.open(package_json):read '*a'
+    local file = io.open(package_json, 'r')
+    if not file then
+        return ''
+    end
+
+    local contents = file:read('*a')
+    file:close()
+
     local json = vim.json.decode(contents)
     if not json.dependencies then
         return ''
     end
 
     local angular_core_version = json.dependencies['@angular/core']
-
-    return angular_core_version
+    return angular_core_version or ''
 end
 
-local default_probe_dir = get_probe_dir(vim.fn.getcwd())
-local default_angular_core_version = get_angular_core_version(vim.fn.getcwd())
-local default_probe_dirts = get_probe_dirts(vim.fn.getcwd())
-local default_probe_dirls = get_probe_dirls(vim.fn.getcwd())
-
-local cmd = {
-    'npm',
-    'exec',
-    'ngserver',
-    '--',
-    '--stdio',
-    '--tsProbeLocations',
-    default_probe_dirts,
-    '--ngProbeLocations',
-    default_probe_dirls,
-    '--angularCoreVersion',
-    default_angular_core_version
-}
+local function get_my_project_root(root_dir)
+    local project_root = root_dir .. 'HALLO'
+    return project_root
+end
 
 return {
-    cmd = cmd,
+    cmd = function()
+        -- local project_root = get_project_root(vim.fn.getcwd())
+        -- local angular_core_version = get_angular_core_version(vim.fn.getcwd())
+
+        local project_root = get_my_project_root(vim.fn.getcwd())
+
+        print("HALLO project root: " .. project_root)
+
+        return {
+            'ngserver',
+            '--stdio',
+            '--tsProbeLocations',
+            project_root,
+            '--ngProbeLocations',
+            project_root,
+        }
+    end,
     hint = { enable = true },
     root_markers = { 'angular.json' },
-    filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
+    filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx' },
     on_new_config = function(new_config, new_root_dir)
-        new_config.cmd = cmd
+        -- local project_root = get_project_root(new_root_dir)
+        -- local angular_core_version = get_angular_core_version(new_root_dir)
+
+        local project_root = get_my_project_root(vim.fn.getcwd())
+        print("HALLO project root: " .. project_root)
+
+        new_config.cmd = {
+            'ngserver',
+            '--stdio',
+            '--tsProbeLocations',
+            project_root,
+            '--ngProbeLocations',
+            project_root,
+        }
     end,
 }

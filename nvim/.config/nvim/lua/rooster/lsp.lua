@@ -42,11 +42,12 @@ vim.lsp.config('luals', {
   end,
 })
 
-vim.lsp.config('angularls', {
-  on_attach = function()
-    print('LSP: angularls is now active in this file.')
-  end,
-})
+-- local angularls_config = require('lsp/angularls')
+-- vim.lsp.config('angularls', vim.tbl_extend('force', angularls_config, {
+--   on_attach = function()
+--     print('LSP: angularls is now active in this file.')
+--   end,
+-- }))
 
 vim.lsp.config('tsls', {
   on_attach = function()
@@ -68,10 +69,24 @@ vim.lsp.config('eslintls', {
 
 -- Enabled LSP(s)
 vim.lsp.enable('luals')
-vim.lsp.enable('angularls');
 vim.lsp.enable('tsls');
 vim.lsp.enable('csls');
 vim.lsp.enable('eslintls');
+
+-- vim.lsp.enable('angularls');
+-- vim.lsp.config('angularls', {
+--   on_attach = function()
+--     print('LSP: angularls is now active in this file.')
+--   end,
+-- })
+-- vim.lsp.enable('angularls');
+
+vim.lsp.config('foo', {
+  on_attach = function()
+    print('LSP: foo is now active in this file.')
+  end,
+})
+vim.lsp.enable('foo');
 
 -- Completion
 vim.api.nvim_create_autocmd('LspAttach', {
