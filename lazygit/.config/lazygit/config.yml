@@ -11,6 +11,7 @@ git:
   overrideGpg: true
 os:
   editPreset: 'nvim'
+  editCommand: 'nvim'
 keybinding:
   commits:
     g: <disabled>

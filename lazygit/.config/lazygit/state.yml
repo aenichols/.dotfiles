@@ -1,25 +1,26 @@
 lastupdatecheck: 0
 recentrepos:
-    - C:\Users\anthony.nichols\work\ConnectBooster
     - C:\Users\anthony.nichols\work\QuickerPay
-    - C:\Users\anthony.nichols\work\SupportPortal
+    - C:\Users\anthony.nichols\work\ConnectBooster
     - C:\Users\anthony.nichols\work\InternalProjects
+    - C:\Users\anthony.nichols\work\SupportPortal
     - C:\Users\anthony.nichols\work\Identity
     - C:\Users\anthony.nichols\.dotfiles
     - C:\Users\anthony.nichols\work\inked
 startuppopupversion: 5
 didshowhunkstaginghint: false
-lastversion: 0.54.1
+lastversion: 0.56.0
 customcommandshistory:
+    - git reset --hard @{u}
+    - git rebase --continue
+    - git rebase --abort
     - git checkout -b CBOOST-2180-dt-history-group
     - git checkout -b AN/CBOOST-1396-build-time-poc
     - git checkout -b CBOOST-2172-dt-history-table
     - git checkout -b CBOOST-2178-dt-history-overview
     - git checkout -b CBOOST-2973-dt-sync-clear-selection-dialog-on-date-range-change
-    - git rebase --abort
     - git checkout -b CBOOST-2154-dt-left-navigation-unlock-sync-and-history
     - git reset --hard origin/features/CBOOST-1407-invoice-true-sync
-    - git reset --hard @{u}
     - git reset --soft HEAD~1
     - git checkout -b CBOOST-2866-simple-integrations-prevent-concurrent-db-writes-per-tenant-collection
     - git checkout -b CBOOST-2866-backend-simple-integrations-poc-prevent-concurrent-db-writes-per-tenant-collection
@@ -29,7 +30,6 @@ customcommandshistory:
     - git checkout -b CBOOST-2850-frontend-simple-integrations-missing-banner-tooltips-on-truncation
     - git checkout -b CBOOST-2845-simple-integrations-user-can-add-multiple-integrations-of-the-same-type-fe
     - git checkout -b CBOOST-2845-simple-integrations-user-can-add-multiple-integrations-of-the-same-type-be
-    - git rebase --continue
     - git checkout -b CBOOST-2555-simple-integrations-identifier-fields
     - git checkout -b CBOOST-2555-simple-integrations-identifier-fields-and-xero-auth-bad-data
     - git checkout -b CBOOST-2555-frontend-simple-integrations-autocomplete-and-sync-from-date
