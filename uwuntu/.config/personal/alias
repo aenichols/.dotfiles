@@ -46,6 +46,16 @@ alias lg="clear && lazygit"
 alias lgb="cd $QP && lg"
 alias lgf="cd $AU && lg"
 
+# change directory to project folders
+alias cau="cd $AU && clear"
+alias cid="cd $ID && clear"
+alias cqp="cd $QP && clear"
+alias ccli="cd $CLI && clear"
+alias cdot="cd $DOTFILES && clear"
+
+# crush with custom data dir flag
+alias crushme="clear && crush --data-dir $HOME/.local/share/crush/data"
+
 # screenkey
 alias sk=$SCRIPTS/screenkey.sh
 alias killSK=$SCRIPTS/kill_screenkey.sh

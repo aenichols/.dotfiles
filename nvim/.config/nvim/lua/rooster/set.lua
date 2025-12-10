@@ -49,3 +49,20 @@ vim.opt.equalalways = false
 
 --float border
 vim.opt.winborder = "solid"
+
+--disable shellslash for windows for dap
+--review: might be able to remove - also set in dap config
+vim.opt.shellslash = false
+vim.defer_fn(function()
+  vim.opt.shellslash = false
+end, 5000)
+
+-- Set explicit Python host to avoid pyenv warning
+vim.g.python3_host_prog = 'C:/Users/anthony.nichols/scoop/apps/python/current/python.exe'
+
+-- Disable optional providers that have path issues on Windows
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- set shada explicitly
+vim.opt.shadafile = vim.fn.stdpath("data") .. "/shada/main.shada"

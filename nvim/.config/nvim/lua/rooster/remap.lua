@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
+-- this is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -37,14 +37,14 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
--- ADDITIONAL #################################################################
--- Maps Navigating between splits to <leader>h/j/k/l
+-- additional #################################################################
+-- maps navigating between splits to <leader>h/j/k/l
 vim.keymap.set("n", "<leader>h", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>j", "<cmd>wincmd j<CR>")
 vim.keymap.set("n", "<leader>k", "<cmd>wincmd k<CR>")
 vim.keymap.set("n", "<leader>l", "<cmd>wincmd l<CR>")
 
--- Maps Ctrl-[Arrows] to resizing a window split
+-- maps ctrl-[arrows] to resizing a window split
 vim.keymap.set("n", "<C-M-h>", "<C-w><")
 vim.keymap.set("n", "<C-M-j>", "<C-W>-")
 vim.keymap.set("n", "<C-M-k>", "<C-W>+")
@@ -53,40 +53,40 @@ vim.keymap.set("n", "<C-M-l>", "<C-w>>")
 vim.keymap.set("n", "S", "ddO")
 vim.keymap.set("n", "cc", "S")
 
--- Close buffer
+-- close buffer
 vim.keymap.set("n", "<Leader>q", ":bd<CR>")
 vim.keymap.set("n", "<Leader>qa", ":bufdo bd<CR>")
 
 vim.keymap.set({"n", "i"},"<MiddleMouse>", "<Nop>")
 
--- Log Line
+-- log line
 vim.keymap.set("n", "<Leader>ee", "oSystem.Console.WriteLine($\"HALLO {System.Text.Json.JsonSerializer.Serialize()}\");<esc>hhhhi")
 
--- Float Terminal
+-- float terminal
 vim.keymap.set("n", "<C-f>", "<cmd>TermExec cmd=\"$SCRIPTS/tmux-cht.sh\"<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>lg", "<cmd>TermExec cmd=\"lazygit\"<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>ft", "<cmd>ToggleTerm<CR>", { silent = true })
 
--- Maximizer
+-- maximizer
 vim.keymap.set("n", "<leader>m", "<cmd>MaximizerToggle<CR>")
 
--- Fresh Start
+-- fresh start
 vim.keymap.set("n", "<leader>fs", ":%bd<CR>:G<CR>:wincmd j<CR>:vsplit<CR>:wincmd h<CR>:vert res -102<CR>:res 60<CR>:wincmd k<CR>:vsplit<CR>:bnext<CR>:wincmd h<CR>:vert res -102<CR>:wincmd j<CR>:wincmd l<CR>")
 
--- Toggle LSP virtual lines
+-- toggle lsp virtual lines
 vim.keymap.set('n', '<leader>lvl', function()
     local new_config = not vim.diagnostic.config().virtual_lines
     vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
--- Toggle LSP virtual text
+-- toggle lsp virtual text
 vim.keymap.set('n', '<leader>lvt', function()
     local new_config = not vim.diagnostic.config().virtual_text
     vim.diagnostic.config({ virtual_text = new_config })
 end, { desc = 'Toggle diagnostic virtual_text' })
 
--- Sort lines - go sort
+-- sort lines - go sort
 vim.keymap.set("v", "gs", ":'<,'>! awk '{ print length(), $0 }' | sort -n | cut -d' ' -f2-<CR>", { silent = true })
 
--- Copy current file path to clipboard
+-- copy current file path to clipboard
 vim.keymap.set("n", "<leader>cf", ":let @* = expand('%:.')<CR>", { silent = true })
