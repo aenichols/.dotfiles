@@ -121,6 +121,9 @@ return {
                     return get_project_root()
                         .. "/QuickerPay.TenantPortal/bin/Debug/net8.0/QuickerPay.TenantPortal.dll"
                 end,
+                sourceFileMap = {
+                    ["/_/"] = get_project_root(),   -- most common required map for .NET builds
+                },
                 env = {
                     ASPNETCORE_ENVIRONMENT = "Development",
                     ASPNETCORE_URLS = "http://localhost:50838",
