@@ -60,3 +60,9 @@ alias crushme="clear && crush --data-dir $HOME/.local/share/crush/data"
 alias sk=$SCRIPTS/screenkey.sh
 alias killSK=$SCRIPTS/kill_screenkey.sh
 
+# lazy alias for getting clip board in windows
+alias wgc="powershell.exe -command 'Get-Clipboard' | tr -d '\r'"
+alias wsc="powershell.exe -command 'Set-Clipboard'"
+
+# weather
+alias weather="curl wttr.in/Horace?F"

@@ -1,5 +1,7 @@
 vim.api.nvim_create_augroup("DapGroup", { clear = true })
 
+local IS_LISTENING = false
+
 return {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -192,6 +194,25 @@ return {
             callback = function()
                 -- remove trailing \r characters silently
                 vim.cmd([[silent! %s/\r$//g]])
+
+                if not IS_LISTENING then
+                    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+                    for _, line in ipairs(lines) do
+                        if line:match("Now listening on:") then
+                            IS_LISTENING = true
+                            print(line)
+                            break
+                        end
+                    end
+                end
+            end,
+        })
+
+        vim.api.nvim_create_autocmd("BufLeave", {
+            group = "DapGroup",
+            pattern = "*dap-repl*",
+            callback = function()
+                IS_LISTENING = false
             end,
         })
 
